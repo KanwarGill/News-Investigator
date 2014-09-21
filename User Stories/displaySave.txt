@@ -1,0 +1,36 @@
+User Stories
+Display/Save
+============
+
+As a researcher, I want to save the results of the web crawl, so that I can access the data at a later date and provide more data for the librarian to extract.
+    - news source
+    - article name
+    - number of times it references articles
+    - number of times it is being referenced
+    - date article created
+    - author
+    - any relevant keywords
+    
+As a researcher, I want to display the result of the web crawl in a table, so that I obtain an overall status/general report.
+
+As a researcher, I want to filter the result of the table, so that I can be more efficient in my analysis/research.
+    - filter by news source
+    - filter by author
+    - filter by keywords
+
+As a researcher, I want to search the result of the table, so that I can be more efficient in my analysis/research.
+    - search by article name
+    - search by keywords
+    
+As a researcher, I want to sort the result of the table, so that I can be more efficient in my analysis/research.
+    - sort by number of times it references articles from monitored sources
+    - sort by number of times it is being referenced
+    - sort by date article created
+    
+As a researcher, I want to view each article being referenced over time in a line graph, so that I am more efficient in my analysis of the data.
+
+As a researcher, I want to display how sources are being referenced in a directed graph, where the nodes are the articles, and the edge representing an article referencing another article, so that I can anaylze the data and understand how sources are being referenced.
+
+Other ideas (time permitting)
+- generate pdf report for printing
+- hyperlinks to the actual article

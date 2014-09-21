@@ -1,0 +1,49 @@
+CSCC01 - Team 16 (Team Hexadecimal)
+===================================
+September 19th
+IC Computer Labs
+Members Present: Samson, Vinicius, Kenny, Carlos
+
+Time Start: 3:10pm
+------------------
+
+Personas
+- Decided to have 3 personas: Researcher, Grad Student, Librarian
+- Difference bewteen researcher and grad student is the permission level
+- Names, background and activities can be made up, just make sure to include the technical aspects (can refer to previous meeting minutes)
+- Carlos and Vinicius will write the personas
+
+User Stories
+- Done by Kanwar, Samson, Kenny
+- Break down the big pieces from previous
+- Include basic functionality
+- Big features
+  - log in/out -> Kenny
+  - add sources -> Kenny
+  - modify sources -> Kenny
+  - web crawl
+  - save
+  - display
+  - export -> Kenny
+
+- Break down as much as possible
+- Anything we cant break down we can ask Alejandro and Krista, through Piazza
+
+Deadlines
+- Personas and User Stories should be finished by Monday
+- System Design by Tuesday
+- Release Plan/Planning Game by Tuesday
+- Interview by Wednesday Tutorial
+- Submit Package by Thursday
+
+Format to submit
+- Preferred: PDF
+- Each member does their work separately, then combine later on Git
+
+TODOs / Other
+- Stuff assigned above
+- Discussing possible better time to do planning game (Monday morning? Tuesday afternoon? Weekends?)
+- Include a picture of yourself and 150-word biography
+
+----------------
+Time End: 3:51pm

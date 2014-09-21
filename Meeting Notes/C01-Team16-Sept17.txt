@@ -1,0 +1,61 @@
+CSCC01 - Team 16
+September 17th - Tutorial
+=========================
+Members Present: Vinicius, Kenny, Carlos, Samson, Kanwar
+
+User Stories (US)
+-----------------
+US1
+As a Researcher, I want to define a list of global English language news sources to monitor, so that I can set the scope of my research
+- How to define the list? GUI/Website? Import a file?
+
+US2
+As a Researcher, I want to modify the list of sources that are monitored, so that I can adjust my research scope as needed.
+- How to redefine? GUI/Website? Import a file?
+
+US3
+As a researcher, I want to be able to view the collected data in interactive visualizations, so that I am more efficient in my analysis and presentation of the data.
+- What data to pull? [How to pull?]
+- What data to show? [How to show?]
+    - Graphs by frequency
+    - Source being referenced over time
+
+US4
+As a librarian, I want to obtain the collected data in existing best-practice standards, so that I maximize its reuse and stability over time.
+- What is the standard?
+- How to obtain? Terminal? Batch call? GUI?
+
+Personas (P)
+------------
+P1:"Alejandro" (Researcher)
+- Computer skills: browsing, typing
+- Time on computer: Often (2-3 hrs)
+- Other: More privileges/features to the application
+
+P2:"Grady" (Graduate)
+- [Insert research interest]
+- Computer skills: browsing, typing
+- Time on computer: Often
+
+P3:"Krista" (Librarian)
+- Computer skills: above average; works with servers/terminals, familiar with batch calls
+- Time on computer: Very ofter (5-6 hrs)
+- Other: Requires a different permission
+
+Other Notes
+-----------
+- Currently 2 types of sources: Twitter and Web content(website, and possibly YouTube)
+- What to store:
+    - URL - Snapshot of the page or the actual link? What if the webpage changes over time?
+    - Title
+    - Date
+    - Keywords
+- Monitoring sources - How?
+    - Scan the entire site? URL pattern matching? A specific section of the site?
+
+Next Steps
+----------
+- Continue refining US and P
+- Project Phase I is posted on the website; due date is Thursday September 25th
+- Date of next meeting: Friday September 19th 3-4pm (Subject to change)
+
