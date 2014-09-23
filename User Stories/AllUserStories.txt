@@ -8,6 +8,10 @@ As a researcher, I want to be able to add sources to the program, so that I can 
 
 As a researcher, I want to be able to modify the sources monitored by the program, so that I can add/remove sources as the focus of my research changes.
 
+As a researcher, I want to be able to find relationships between news source, so that I can better quantify my research
+
+As a researcher, I want to find all the links to other news sources for a particular topic, so that I can better understand the relationships.
+
 As a librarian, I want to be able to export the data to storage, so that it can be preserved for future reference.
 
 As a librarian, I want to be able to export the data to best practice formats, so that I can ensure compatibility in the future.
@@ -40,7 +44,3 @@ As a researcher, I want to save the results of the web crawl, so that I can acce
  - date article created
  - author
  - any relevant keywords
-
-As a researcher, I want to be able to find relationships between news source, so that I can better quantify my research
-
-As a researcher, I want to find all the links to other news sources for a particular topic, so that I can better understand the relationships.
