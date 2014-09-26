@@ -1,0 +1,40 @@
+Time: 3 - 5 pm
+
+Location: IC406
+
+Here are the things we discussed:
+
+1) Updated the user stories on github. We would need to have another release meeting earlier next week to re-estimate.
+
+2) We discussed about how to monitor news sources. Since there are so many, we can't have the application just work well with a few news sources. In the future, if there's need for more then that might break the whole application. I have posted a question on Piazza asking Alejandro to give us examples of news sources and keywords that he's interested in monitoring.
+
+3) We talked further about the tools/technologies that we can use for the project
+
+    - HTML5
+
+    - jQuery
+
+    - JavaScript
+
+    - Plugins for Javascript that can help with graphing etc.
+
+    - PHP or node.js
+
+    - Bootstrap library
+
+    - MySQL
+
+Does anyone know of an efficient web development framework that we can use for the project?
+
+Here are the things we will do before the next meeting:
+- Everyone come up with the list of tools that we can use for the project
+
+- Update and add more user stories (commit on github)
+
+Here are the things we will do at the next meeting:
+
+- Planning game
+
+- Burn down chart for Phase II
+
+- Iteration plan(s) for Phase II (things Anya talked in today's lecture)
