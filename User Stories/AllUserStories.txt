@@ -1,46 +1,76 @@
-As a user, I want to be able to create an account, so that I can access the program.
+1) As an admin, I want different permissions levels for the users, so that they only have access to the functions they require for the execution of their duties. 
+    - Only an admin can grant admin rights
+    - Researcher will be granted admin (add, modify, delete) access
+    - Grad student, and librarian will be granted edit/read/add access
 
-As an admin, I want different permissions levels for the users, so that they only have access to the functions they require for the execution of their duties. 
-
-As a user, I want to be able to log in and out of my account, so that I can access the program.
-
-As a researcher, I want to be able to add sources to the program, so that I can accommodate the expanding needs of my research.
-
-As a researcher, I want to be able to modify the sources monitored by the program, so that I can add/remove sources as the focus of my research changes.
-
-As a researcher, I want to be able to find relationships between news source, so that I can better quantify my research
-
-As a researcher, I want to find all the links to other news sources for a particular topic, so that I can better understand the relationships.
-
-As a librarian, I want to be able to export the data to storage, so that it can be preserved for future reference.
-
-As a librarian, I want to be able to export the data to best practice formats, so that I can ensure compatibility in the future.
-
-As a researcher, I want to display the result of the web crawl in a table, so that I obtain an overall status/general report.
-
-As a researcher, I want to filter the result of the table, so that I can be more efficient in my analysis/research.
-    - filter by news source
-    - filter by author
-    - filter by keywords
-
-As a researcher, I want to search the result of the table, so that I can be more efficient in my analysis/research.
-    - search by article name
-    - search by keywords
+2) As a grad student, I want to request a list of sources to monitor, so that I can expand the scope of my research.
+    - Only a researcher can approve the request
+    - The researcher will get a notification of the request in real-time
     
-As a researcher, I want to sort the result of the table, so that I can be more efficient in my analysis/research.
-    - sort by number of times it references articles from monitored sources
-    - sort by number of times it is being referenced
-    - sort by date article created
+3) As a user, I want to be able to create an account using a form, so that I can access the program.
+Rectangular box containing the following info:
+    - Username and Password
+    - Link for signing up
+    - Link for "Forgot Password"
+
+4) As a user, I want to be able to log in and out of my account, so that I can access the program.
+    - Display an informational message if the username is not recognized
+    - Lock the account if the password is entered incorrectly five times
+
+5) As a researcher, I want to be able to add sources to the program, so that I can accommodate the expanding needs of my research.
+    - Add it one at a time or specify a list of comma-separated URLs
+    - Enusre it's a valid URL
+    - Ensure the news source is not already in the list of sources
     
-As a researcher, I want to view each article being referenced over time in a line graph, so that I am more efficient in my analysis of the data.
+6) As a researcher, I want to be able to specify the list of keywords that I want to monitor in the list of given news sources, so that I can get the information needed to complete my research.
+    - Add it one at a time or specify a list of comma-separated words
+    - Ensure that the length of the keyword is not 0
+    - Ensure that the keyword doesn't contain anything except a-z or space or hyphen. Example: "test;" won't be allowed.
 
-As a researcher, I want to display how sources are being referenced in a directed graph, where the nodes are the articles, and the edge representing an article referencing another article, so that I can analyze the data and understand how sources are being referenced.
+7) As a researcher, I want to be able to delete the sources monitored by the program, so that I can exclude irrevelant news sources.
 
-As a researcher, I want to save the results of the web crawl, so that I can access the data at a later date and provide more data for the librarian to extract.
+8) As a researcher, I want to be able to find all the articles from a news source with the given keywords, so that I can better quantify my research
+
+9) As a researcher, I want to find all the links to other news sources for a particular article, so that I can better understand the relationships.
+
+10) As a researcher, I want to find all the mentions to other news sources for a particular article, so that I can better understand the relationships.
+
+11) As a researcher, I want to find all the quotes in a particular article, so that I can better understand the relationships.
+
+13) As a librarian, I want to be able to export the data to best practice formats, so that I can ensure compatibility in the future.
+
+14) As a researcher, I want to save the results of the web crawl, so that I can access the data at a later date and provide more data for the librarian to extract.
  - news source
+ - url or screenshot
  - article name
  - number of times it references articles
  - number of times it is being referenced
  - date article created
  - author
  - any relevant keywords
+
+15) As a researcher, I want to display the results of the web crawl in a table, so that I obtain an overall status/general report.
+
+16) As a researcher, I want to filter the results of the table, so that I can be more efficient in my analysis/research.
+    - filter by news source [drop down]
+    - filter by keywords    [drop down]
+
+17) As a researcher, I want to search the results of the table, so that I can be more efficient in my analysis/research.
+    - search by article name
+    - search by keywords
+    - search by author
+    
+18) As a researcher, I want to sort the results of the table, so that I can be more efficient in my analysis/research.
+    - sort by number of times it references articles from monitored sources
+    - sort by number of times it is being referenced
+    - sort by date article created
+    
+19) As a researcher, I want to view each article being referenced over time in a line graph, so that I am more efficient in my analysis of the data.
+    - article on y-axis
+    - time on x-axis
+
+20) As a researcher, I want to display how sources are being referenced in a directed graph, where the nodes are the articles, and the edge representing an article referencing another article, so that I can analyze the data and understand how sources are being referenced.
+    -
+    -
+    
+21) As a researcher, I want to see the number of tweets by people on a topics with certain keywords, so that I can see which topic is the most famous. 
