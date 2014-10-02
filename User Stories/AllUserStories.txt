@@ -1,31 +1,41 @@
-1) As an admin, I want different permissions levels for the users, so that they only have access to the functions they require for the execution of their duties. 
+1) As Alejandro (Researcher), I want different permissions levels for the users, so that they only have access to the functions they require for the execution of their duties. 
     - Only an admin can grant admin rights
     - Researcher will be granted admin (add, modify, delete) access
     - Grad student, and librarian will be granted edit/read/add access
-MUST, HIGH
+Acceptance criteria: Librarian can't remove sources, e.g.
+Business Priority: 2
+Developer Days estimate: 1
 
-2) As a grad student, I want to request a list of sources to monitor, so that I can expand the scope of my research.
+2) As Alex (Grad student), I want to request a list of sources to monitor, so that I can expand the number of sources monitored by my research.
     - Only a researcher can approve the request
     - The researcher will get a notification of the request in real-time
-MUST, LOW
+Acceptance criteria: A list of sources to monitor is created and is readable.
+Business Priority: 2
+Developer Days estimate: 2
 
-3) As a user, I want to be able to create an account using a form, so that I can access the program.
+3) As Alejandro (Researcher), I want to be able to create an account using a form, so that I can access the program properly.
 Rectangular box containing the following info:
     - Username and Password
     - Link for signing up
     - Link for "Forgot Password"
-MUST, MEDIUM
+Acceptance criteria: An account is created and can acces the program properly.
+Business Priority: 1
+Developer Days estimate: 1
 
-4) As a user, I want to be able to log in and out of my account, so that I can access the program.
+4) As Alejandro (Researcher), I want to be able to log in and out of my account, so that I can access the program properly.
     - Display an informational message if the username is not recognized
     - Lock the account if the password is entered incorrectly five times
-MUST, HIGH
+Acceptance criteria: The user can log in into the program and access it properly.
+Business Priority: 1
+Developer Days estimate: 1
 
-5) As a researcher, I want to be able to add sources to the program, so that I can accommodate the expanding needs of my research.
+5) As Alejandro (Researcher), I want to be able to add sources to the program, so that I can increase and accommodate the new sources needed by my research.
     - Add it one at a time or specify a list of comma-separated URLs
     - Enusre it's a valid URL
     - Ensure the news source is not already in the list of sources
-MUST, HIGH
+Acceptance criteria: The source is added to the list of monitored sources by the program.
+Business Priority: 1
+Developer Days estimate: 3
     
 6) As a researcher, I want to be able to specify the list of keywords that I want to monitor in the list of given news sources, so that I can get the information needed to complete my research.
     - Add it one at a time or specify a list of comma-separated words
