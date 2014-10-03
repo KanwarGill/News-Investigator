@@ -37,17 +37,29 @@ Acceptance criteria: The source is added to the list of monitored sources by the
 Business Priority: 1
 Developer Days estimate: 3
     
-6) As a researcher, I want to be able to specify the list of keywords that I want to monitor in the list of given news sources, so that I can get the information needed to complete my research.
+6) As Alejandro (a researcher), I want to be able to specify the list of keywords that I want to monitor in the list of given news sources, so that I can get the information on the relationships between these news sources needed to complete my research.
     - Add it one at a time or specify a list of comma-separated words
     - Ensure that the length of the keyword is not 0
     - Ensure that the keyword doesn't contain anything except a-z or space or hyphen. Example: "test;" won't be allowed.
-MUST, HIGH
+Acceptance criteria: A keyword, for example "Israel", is added to the list. A keyword, for example ";Israel", isn't added to the list.
+Business priority: 1
+Developer Days estimate: 2
 
-7) As a researcher, I want to be able to delete the sources monitored by the program, so that I can exclude irrevelant news sources.
-MUST, HIGH
+7) As Alejandro (a researcher), I want to be able to delete the sources monitored by the program, so that I can exclude irrevelant news sources.
+		- Ensure the role has admin privilege
+		- Have a cross button beside the news source for easy deletion
+		- Remove the news source from the interface or show it as a strikethrough
+Acceptance criteria: The source is removed (or strikethrough-ed) when you click on the cross button.
+Business Priority: 3
+Developer days estimate: 1
 
-8) As a researcher, I want to be able to find all the articles from a news source with the given keywords, so that I can better quantify my research.
-MUST, HIGH
+8) As Alejandro (a researcher), I want to be able to see all the articles from a news source with the given keywords, so that I can better quantify my research.
+		- Ensure only articles containing the defined keywords are displayed
+		- Display the result in a tabular format for easy viewing
+		- Display the number of hits i.e. the articles containing the given keywords for analysis purposes
+Acceptance criteria: Articles with the defined keywords are displayed
+Business priority: 1
+Developer days estimate: 4
 
 9) As a researcher, I want to find all the links to other news sources for a particular article, so that I can better understand the relationships.
 MUST, HIGH
