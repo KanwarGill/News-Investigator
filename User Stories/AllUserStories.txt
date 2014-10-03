@@ -1,16 +1,16 @@
-1) As Alejandro (Researcher), I want different permissions levels for the users, so that they only have access to the functions they require for the execution of their duties. 
-    - Only an admin can grant admin rights
-    - Researcher will be granted admin (add, modify, delete) access
-    - Grad student, and librarian will be granted edit/read/add access
-Acceptance criteria: Librarian can't remove sources, e.g.
-Business Priority: 2
-Developer Days estimate: 1
+	1) As Alejandro (Researcher), I want different permissions levels for the users, so that they only have access to the functions they require for the execution of their duties. 
+	    - Only an admin can grant admin rights
+	    - Researcher will be granted admin (add, modify, delete) access
+	    - Grad student, and librarian will be granted edit/read/add access
+	Acceptance criteria: Librarian can't remove sources, e.g.
+	Business Priority: 4
+	Developer Days estimate: 1
 
 2) As Alex (Grad student), I want to request a list of sources to monitor, so that I can expand the number of sources monitored by my research.
     - Only a researcher can approve the request
     - The researcher will get a notification of the request in real-time
 Acceptance criteria: A list of sources to monitor is created and is readable.
-Business Priority: 2
+Business Priority: 4
 Developer Days estimate: 2
 
 3) As Alejandro (Researcher), I want to be able to create an account using a form, so that I can access the program properly.
@@ -19,14 +19,14 @@ Rectangular box containing the following info:
     - Link for signing up
     - Link for "Forgot Password"
 Acceptance criteria: An account is created and can access the program properly.
-Business Priority: 1
+Business Priority: 3
 Developer Days estimate: 1
 
 4) As Alejandro (Researcher), I want to be able to log in and out of my account, so that I can access the program properly.
     - Display an informational message if the username is not recognized
     - Lock the account if the password is entered incorrectly five times
 Acceptance criteria: The user can log in into the program and access it properly.
-Business Priority: 1
+Business Priority: 3
 Developer Days estimate: 1
 
 5) As Alejandro (Researcher), I want to be able to add sources to the program, so that I can increase and accommodate the new sources needed by my research.
