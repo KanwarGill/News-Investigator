@@ -18,7 +18,7 @@ Rectangular box containing the following info:
     - Username and Password
     - Link for signing up
     - Link for "Forgot Password"
-Acceptance criteria: An account is created and can acces the program properly.
+Acceptance criteria: An account is created and can access the program properly.
 Business Priority: 1
 Developer Days estimate: 1
 
@@ -57,21 +57,29 @@ Developer days estimate: 1
 		- Ensure only articles containing the defined keywords are displayed
 		- Display the result in a tabular format for easy viewing
 		- Display the number of hits i.e. the articles containing the given keywords for analysis purposes
-Acceptance criteria: Articles with the defined keywords are displayed
+Acceptance criteria: Articles with the defined keywords are displayed in a table
 Business priority: 1
 Developer days estimate: 4
 
-9) As a researcher, I want to find all the links to other news sources for a particular article, so that I can better understand the relationships.
-MUST, HIGH
+9) As Alejandro (a researcher), I want to display all the hyperlinks to other news sources for a particular article, so that I can better understand the relationships.
+Acceptance criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a hyperlink will be shown. 
+Business priorty: 1
+Developer days estimate: 5
 
-10) As a researcher, I want to find all the mentions to other news sources for a particular article, so that I can better understand the relationships.
-SHOULD, HIGH-MEDIUM
+10) As Alejandro (a researcher), I want to display all the quotes in a particular article, so that I can better understand the relationships.
+Acceptance criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a quote will be shown.
+Business priorty: 2
+Developer days estimate: 5
 
-11) As a researcher, I want to find all the quotes in a particular article, so that I can better understand the relationships.
-SHOULD, HIGH-MEDIUM
+11) As Alejandro (a researcher), I want to display all the mentions to other news sources for a particular article, so that I can better understand the relationships.
+Acceptance Criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a mention will be shown.
+Business priority: 2
+Developer dats estimate: 5
 
-12) As a librarian, I want to be able to export the data to best practice formats, so that I can ensure compatibility in the future.
-MUST, MEDIUM
+12) As Andrew (a librarian), I want to be able to export the data to best practice formats, so that I can ensure compatibility and archive the data for future use.
+Acceptance criteria: After logging in, click on the export button to save the results of the most recent search (the librarian can specify a time interval as well). The application will prompt the librarian to save the data to the computer.
+Business priority: 1
+Developer days estimate: 4
 
 13) As a researcher, I want to save the results of the web crawl, so that I can access the data at a later date and provide more data for the librarian to extract.
  - news source
