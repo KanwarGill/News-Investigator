@@ -81,7 +81,7 @@ Acceptance criteria: After logging in, click on the export button to save the re
 Business priority: 1
 Developer days estimate: 4
 
-13) As a researcher, I want to save the results of the web crawl, so that I can access the data at a later date and provide more data for the librarian to extract.
+13) As Alejandro (a researcher), I want to save the results of the web crawl to a database, so that I can access the data at a later date and provide more data for the librarian to extract.
  - news source
  - url or screenshot
  - article name
@@ -90,28 +90,38 @@ Developer days estimate: 4
  - date article created
  - author
  - any relevant keywords
-SHOULD, HIGH
+Acceptance criteria: After doing a web crawl, click on the save results button to place the data in the database.
+Business priority: 1
+Developer days estimate: 2
 
-14) As a researcher, I want to display the results of the web crawl in a table, so that I obtain an overall status/general report.
+14) As Alejandro (a researcher), I want to display the results of the web crawl in a table, so that I obtain an overall status/general report.
  - user story can also pertain the grad student as well
-SHOULD, HIGH
+Acceptance criteria: After logging in, click display data button to display the contents of the database in table format.
+Business priority: 2
+Developer days estimate: 4
 
-15) As a researcher, I want to filter the results of the table, so that I can be more efficient in my analysis/research.
+15) As a researcher, I want to filter the results of the table, so that I can be more efficient in my analysis/research on the data.
     - filter by news source [drop down]
     - filter by keywords    [drop down]
-COULD, LOW
+Acceptance criteria: While looking through the data table, type in keyword/news source in textbox and click filter button to show only relevant data.
+Business priority: 3
+Developer days estimate: 3
 
-16) As a researcher, I want to search the results of the table, so that I can be more efficient in my analysis/research.
+16) As a researcher, I want to search the results of the table, so that I can be more efficient in my analysis/research on the data.
     - search by article name
     - search by keywords
     - search by author
-COULD, LOW   
+Acceptance criteria: While looking through the data table, type in keywords/article name/author and sort by the relevance of the data.
+Business priority: 3
+Developer days estimate: 3
    
-17) As a researcher, I want to sort the results of the table, so that I can be more efficient in my analysis/research.
+17) As a researcher, I want to sort the results of the table, so that I can be more efficient in my analysis/research on the data.
     - sort by number of times it references articles from monitored sources
     - sort by number of times it is being referenced
     - sort by date article created
-COULD, LOW
+Acceptance criteria: While looking through the data table, select a sort option from a box of radio buttons and sort the table by that method.
+Business priority: 4
+Developer days estimate: 2
     
 18) As a researcher, I want to view each article being referenced over time in a line graph, so that I am more efficient in my analysis of the data.
     - article on y-axis
