@@ -1,0 +1,42 @@
+Oct 3, 2014
+Meeting time: 9 - 11 am
+Members present: All
+Next Meeting: Oct 6, 2014 at 9pm on Hangouts
+
+Points of discussion:
+
+1) Technologies that we can use:
+Frontend:
+- Twitter Bootstrap
+- backbone.js
+- jQuery and/or jQuery UI
+- Dracula library for directed graphing
+- chart.js for all types of graphing
+- scrapy (python framework for web crawl)
+
+Backend:
+- CouchDB or node.js or PHP
+
+2) We re-did the release plan based on the updated user stories. All the user stories have been split into 8 weeks (iterations).
+You can find the information for each week on trello.com
+
+3) Modified the system metaphor from journalist to investigator
+
+Things to do for next week:
+
+1) Week 1 (Iteration 1)
+- User story #5: As Alejandro (Researcher), I want to be able to add sources to the program, so that I can increase and accommodate the new sources needed by my research.
+    - Add it one at a time or specify a list of comma-separated URLs
+    - Enusre it's a valid URL
+    - Ensure the news source is not already in the list of sources
+Acceptance criteria: The source is added to the list of monitored sources by the program.
+Business Priority: 1
+Developer Days estimate: 3
+
+- User story #6: As Alejandro (a researcher), I want to be able to specify the list of keywords that I want to monitor in the list of given news sources, so that I can get the information on the relationships between these news sources needed to complete my research.
+    - Add it one at a time or specify a list of comma-separated words
+    - Ensure that the length of the keyword is not 0
+    - Ensure that the keyword doesn't contain anything except a-z or space or hyphen. Example: "test;" won't be allowed.
+Acceptance criteria: A keyword, for example "Israel", is added to the list. A keyword, for example ";Israel", isn't added to the list.
+Business priority: 1
+Developer Days estimate: 2
