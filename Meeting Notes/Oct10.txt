@@ -1,0 +1,18 @@
+Meeting Minutes
+Oct 10, 2014
+Team Chihuahuas
+Members Present: All
+
+Items of discussion
+- Finished release planning video for Phase I improvement. Will be uploaded on GitHub after processing
+- Formed a burndown chart: https://BurndownForTrello.com/share/iq8ugmsnxt
+- Using Trello for iteration plans
+- Next Iteration:
+	- Things to do:
+		- User Story #7, #8, and #13 on Trello
+
+
+Next Meeting:
+Oct 13, 2014
+7pm on Hangouts
+Discussion for CRC cards
