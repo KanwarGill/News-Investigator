@@ -1,0 +1,284 @@
+1) As Alejandro (Researcher), I want different permissions levels for the users, so that they only have access to the functions they require for the execution of their duties. 
+    - Only an admin can grant admin rights
+    - Researcher will be granted admin (add, modify, delete) access
+    - Grad student, and librarian will be granted edit/read/add access
+Acceptance criteria: Librarian can't remove sources, e.g.
+Business Priority: 4
+Developer Days estimate: 1
+
+2) As Alex (a Grad student), I want to request a list of sources to monitor, so that I can expand the number of sources monitored by my research.
+    - Only a researcher can approve the request
+    - The researcher will get a notification of the request in real-time
+Acceptance criteria: A list of sources to monitor is created and is readable.
+Business Priority: 4
+Developer Days estimate: 2
+
+3) As Alejandro (a Researcher), I want to be able to create an account using a form, so that I can access the program properly.
+Rectangular box containing the following info:
+    - Username and Password
+    - Link for signing up
+    - Link for "Forgot Password"
+Acceptance criteria: An account is created and can access the program properly.
+Business Priority: 3
+Developer Days estimate: 1
+
+4) As Alex (a Grad Student), I want to be able to create an account using a form, so that I can access the program properly.
+Rectangular box containing the following info:
+    - Username and Password
+    - Link for signing up
+    - Link for "Forgot Password"
+Acceptance criteria: An account is created and can access the program properly.
+Business Priority: 3
+Developer Days estimate: 1
+
+5) As Andrew (a Librarian), I want to be able to create an account using a form, so that I can access the program properly.
+Rectangular box containing the following info:
+    - Username and Password
+    - Link for signing up
+    - Link for "Forgot Password"
+Acceptance criteria: An account is created and can access the program properly.
+Business Priority: 3
+Developer Days estimate: 1
+
+6) As Alejandro (a Researcher), I want to be able to log in and out of my account, so that I can access the program properly.
+    - Display an informational message if the username is not recognized
+    - Lock the account if the password is entered incorrectly five times
+Acceptance criteria: The user can log in into the program and access it properly.
+Business Priority: 3
+Developer Days estimate: 1
+
+7) As Andrew (a Librarian), I want to be able to log in and out of my account, so that I can access the program properly.
+    - Display an informational message if the username is not recognized
+    - Lock the account if the password is entered incorrectly five times
+Acceptance criteria: The user can log in into the program and access it properly.
+Business Priority: 3
+Developer Days estimate: 1
+
+8) As Alex (a Grad Student), I want to be able to log in and out of my account, so that I can access the program properly.
+    - Display an informational message if the username is not recognized
+    - Lock the account if the password is entered incorrectly five times
+Acceptance criteria: The user can log in into the program and access it properly.
+Business Priority: 3
+Developer Days estimate: 1
+
+9) As Alejandro (a researcher), I want to be able to add sources to the program, so that I can increase and accommodate the new sources needed by my research.
+    - Add it one at a time or specify a list of comma-separated URLs
+    - Enusre it's a valid URL
+    - Ensure the news source is not already in the list of sources
+Acceptance criteria: The source is added to the list of monitored sources by the program.
+Business Priority: 1
+Developer Days estimate: 3
+
+10) As Alex (a grad student), I want to be able to add sources to the program, so that I can increase and accommodate the new sources needed by my research.
+    - Add it one at a time or specify a list of comma-separated URLs
+    - Enusre it's a valid URL
+    - Ensure the news source is not already in the list of sources
+Acceptance criteria: The source is added to the list of monitored sources by the program.
+Business Priority: 1
+Developer Days estimate: 3
+    
+11) As Alejandro (a researcher), I want to be able to specify the list of keywords that I want to monitor in the list of given news sources, so that I can get the information on the relationships between these news sources needed to complete my research.
+    - Add it one at a time or specify a list of comma-separated words
+    - Ensure that the length of the keyword is not 0
+    - Ensure that the keyword doesn't contain anything except a-z or space or hyphen. Example: "test;" won't be allowed.
+Acceptance criteria: A keyword, for example "Israel", is added to the list. A keyword, for example ";Israel", isn't added to the list.
+Business priority: 1
+Developer Days estimate: 2
+
+12) As Alejandro (a researcher), I want to be able to delete the sources monitored by the program, so that I can exclude irrevelant news sources.
+		- Ensure the role has admin privilege
+		- Have a cross button beside the news source for easy deletion
+		- Remove the news source from the interface or show it as a strikethrough
+Acceptance criteria: The source is removed (or strikethrough-ed) when you click on the cross button.
+Business Priority: 3
+Developer days estimate: 1
+
+13) As Alejandro (a researcher), I want to be able to see all the articles from a news source with the given keywords, so that I can better quantify my research.
+		- Ensure only articles containing the defined keywords are displayed
+		- Display the result in a tabular format for easy viewing
+		- Display the number of hits i.e. the articles containing the given keywords for analysis purposes
+Acceptance criteria: Articles with the defined keywords are displayed in a table
+Business priority: 1
+Developer days estimate: 4
+
+14) As Alex (a Grad Student), I want to be able to see all the articles from a news source with the given keywords, so that I can better quantify my research.
+		- Ensure only articles containing the defined keywords are displayed
+		- Display the result in a tabular format for easy viewing
+		- Display the number of hits i.e. the articles containing the given keywords for analysis purposes
+Acceptance criteria: Articles with the defined keywords are displayed in a table
+Business priority: 1
+Developer days estimate: 4
+
+15) As Alejandro (a researcher), I want to see all the hyperlinks to other news sources for a particular article, so that I can better understand the relationships.
+Acceptance criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a hyperlink will be shown. 
+Business priorty: 1
+Developer days estimate: 5
+
+16) As Alex (a grad student), I want to see all the hyperlinks to other news sources for a particular article, so that I can better understand the relationships.
+Acceptance criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a hyperlink will be shown. 
+Business priorty: 1
+Developer days estimate: 5
+
+17) As Alejandro (a researcher), I want to see all the quotes in a particular article, so that I can better understand the relationships.
+Acceptance criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a quote will be shown.
+Business priorty: 2
+Developer days estimate: 5
+
+18) As Alex (a grad student), I want to see all the quotes in a particular article, so that I can better understand the relationships.
+Acceptance criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a quote will be shown.
+Business priorty: 2
+Developer days estimate: 5
+
+19) As Alejandro (a researcher), I want to see all the mentions to other news sources for a particular article, so that I can better understand the relationships.
+Acceptance Criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a mention will be shown.
+Business priority: 2
+Developer dats estimate: 5
+
+20) As Andrew (a librarian), I want to be able to export the data to best practice formats, so that I can ensure compatibility and archive the data for future use.
+Acceptance criteria: After logging in, click on the export button to save the results of the most recent search (the librarian can specify a time interval as well). The application will prompt the librarian to save the data to the computer.
+Business priority: 1
+Developer days estimate: 4
+
+21) As Alejandro (a researcher), I want to save the results of the web crawl to a database, so that I can access the data at a later date and provide more data for the librarian to extract.
+ - news source
+ - url or screenshot
+ - article name
+ - number of times it references articles
+ - number of times it is being referenced
+ - date article created
+ - author
+ - any relevant keywords
+Acceptance criteria: After doing a web crawl, click on the save results button to place the data in the database.
+Business priority: 1
+Developer days estimate: 2
+
+22) As Alex (a grad student), I want to save the results of the web crawl to a database, so that I can access the data at a later date and provide more data for the librarian to extract.
+ - news source
+ - url or screenshot
+ - article name
+ - number of times it references articles
+ - number of times it is being referenced
+ - date article created
+ - author
+ - any relevant keywords
+Acceptance criteria: After doing a web crawl, click on the save results button to place the data in the database.
+Business priority: 1
+Developer days estimate: 2
+
+23) As Alejandro (a researcher), I want to see the results of the web crawl in a table, so that I obtain an overall status/general report.
+ - user story can also pertain the grad student as well
+Acceptance criteria: After logging in, click display data button to display the contents of the database in table format.
+Business priority: 2
+Developer days estimate: 4
+
+24) As Alex (a grad student), I want to see the results of the web crawl in a table, so that I obtain an overall status/general report.
+ - user story can also pertain the grad student as well
+Acceptance criteria: After logging in, click display data button to display the contents of the database in table format.
+Business priority: 2
+Developer days estimate: 4
+
+25) As Alejandro (a researcher), I want to filter the results of the table, so that I can be more efficient in my analysis/research on the data.
+    - filter by news source [drop down]
+    - filter by keywords    [drop down]
+Acceptance criteria: While looking through the data table, type in keyword/news source in textbox and click filter button to show only relevant data.
+Business priority: 3
+Developer days estimate: 3
+
+26) As Alex (a grad student), I want to filter the results of the table, so that I can be more efficient in my analysis/research on the data.
+    - filter by news source [drop down]
+    - filter by keywords    [drop down]
+Acceptance criteria: While looking through the data table, type in keyword/news source in textbox and click filter button to show only relevant data.
+Business priority: 3
+Developer days estimate: 3
+
+27) As Alejandro (a researcher), I want to search the results of the table, so that I can be more efficient in my analysis/research on the data.
+    - search by article name
+    - search by keywords
+    - search by author
+Acceptance criteria: While looking through the data table, type in keywords/article name/author and sort by the relevance of the data.
+Business priority: 3
+Developer days estimate: 3
+
+28) As Alex (a grad student), I want to search the results of the table, so that I can be more efficient in my analysis/research on the data.
+    - search by article name
+    - search by keywords
+    - search by author
+Acceptance criteria: While looking through the data table, type in keywords/article name/author and sort by the relevance of the data.
+Business priority: 3
+Developer days estimate: 3
+   
+29) As Alejandro (a researcher), I want to sort the results of the table, so that I can be more efficient in my analysis/research on the data.
+    - sort by number of times it references articles from monitored sources
+    - sort by number of times it is being referenced
+    - sort by date article created
+Acceptance criteria: While looking through the data table, select a sort option from a box of radio buttons and sort the table by that method.
+Business priority: 4
+Developer days estimate: 2
+
+30) As Alex (a grad student), I want to sort the results of the table, so that I can be more efficient in my analysis/research on the data.
+    - sort by number of times it references articles from monitored sources
+    - sort by number of times it is being referenced
+    - sort by date article created
+Acceptance criteria: While looking through the data table, select a sort option from a box of radio buttons and sort the table by that method.
+Business priority: 4
+Developer days estimate: 2
+    
+31) As Alejandro (a researcher), I want to view each article being referenced over time in a line graph, so that I am more efficient in my analysis of the data.
+    - article on y-axis
+    - time on x-axis
+Acceptance criteria: A line graph is displayed for a particular article of the user's choice, showing the
+number of times it has been referenced every day by our source list.
+Business priority: 2
+Developer days estimate: 3
+
+32) As Alex (a grad student), I want to view each article being referenced over time in a line graph, so that I am more efficient in my analysis of the data.
+    - article on y-axis
+    - time on x-axis
+Acceptance criteria: A line graph is displayed for a particular article of the user's choice, showing the
+number of times it has been referenced every day by our source list.
+Business priority: 2
+Developer days estimate: 3
+
+33) As Alejandro (a researcher), I want to see how sources are being referenced in a directed graph, where the nodes are the articles, and the edge representing an article referencing another article, so that I can analyze the data and understand how sources are being referenced.
+Acceptance criteria: A directed graph is displayed, with every article having an outward edge to any
+articles it references.
+Business priority: 1
+Developer days estimate: 3
+
+34) As Alex (a grad student), I want to see how sources are being referenced in a directed graph, where the nodes are the articles, and the edge representing an article referencing another article, so that I can analyze the data and understand how sources are being referenced.
+Acceptance criteria: A directed graph is displayed, with every article having an outward edge to any
+articles it references.
+Business priority: 1
+Developer days estimate: 3
+
+35) As Alejandro (a researcher), I want to add a list of Twitter handles to monitor, so that I can accommodate the expanding needs of my research.
+Acceptance criteria: A list of Twitter handles is created, and is readable
+Business priority: 1
+Developer days estimate: 1
+
+36) As Alex (a grad student), I want to add a list of Twitter handles to monitor, so that I can accommodate the expanding needs of my research.
+Acceptance criteria: A list of Twitter handles is created, and is readable
+Business priority: 1
+Developer days estimate: 1
+    
+37) As Alejandro (a researcher), I want to see the number of tweets by people on a topics with certain keywords, so that I can see which topic is the most famous.
+    - timeline for x-axis
+    - number of tweets on y-axis
+Acceptance criteria: A line graph is displayed for a particular keyword of the user's choice, showing the
+number of times the topic has been tweeted from the list of twitter handles to monitor.
+Business priority: 1
+Developer days estimate: 2
+
+38) As Alex (a grad student), I want to see the number of tweets by people on a topics with certain keywords, so that I can see which topic is the most famous.
+    - timeline for x-axis
+    - number of tweets on y-axis
+Acceptance criteria: A line graph is displayed for a particular keyword of the user's choice, showing the
+number of times the topic has been tweeted from the list of twitter handles to monitor.
+Business priority: 1
+Developer days estimate: 2
+
+39) As Alejandro, I want to delete Twitter handles from the list, so that I can accommodate the expanding needs of my research.
+Acceptance critera: The Twitter handle specified by the user is removed from the monitor list and will
+no longer be monitored by the program
+Business priority: 1
+Developer days estimate: 1

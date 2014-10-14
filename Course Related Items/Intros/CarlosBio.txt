@@ -1,0 +1,5 @@
+I am a student at University of Toronto Scarborough, in the computer science Comprehensive stream.
+I started an interest in programming since before highschool and have learned C, Java, and Python 
+over the years of learning both on my own time and through academic courses. I've also picked up techniques in
+program efficiency, the software development lifecycle, databases, embedded systems, mobile development, and 
+version control. Out of class, hobbies include coding personal projects to explore, badminton, and origami

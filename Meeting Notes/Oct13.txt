@@ -1,0 +1,26 @@
+-	Using CouchDB
+    o	https://chihuahuas.iriscouch.com/_utils/
+-	Name for the application: News Investigator
+
+Buttons: Carlos, Kenny
+Crawling: Samson
+-	Python
+Save to database: Kanwar
+
+Phase 2 Report
+-	Video need to upload - Kanwar
+-	Release plan on Trello, give David access
+-	User stories: need to be renumbered - Kanwar
+-	CRC – clean-up – Samson
+-	Burndown chart
+    o	https://www.burndownfortrello.com/share/iq8ugmsnxt
+-	Librarian Programmer Persona – Vinicius
+-	Taskboard – online
+-	1 page summary on the state of the project
+-	Export a working copy
+    o	TA needs to pull a snapshot and follow instructions from README file to run it
+
+Next meeting: Wednesday 4pm on Hangouts
+-	Do the state of the project
+-	Wrap up phase 2 report
+-	Ensure something works for TA
