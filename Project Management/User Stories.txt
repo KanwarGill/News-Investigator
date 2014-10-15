@@ -63,7 +63,7 @@ Developer Days estimate: 1
 
 5.1) As Alejandro (a researcher), I want to be able to add sources to the program, so that I can increase and accommodate the new sources needed by my research.
     - Add it one at a time or specify a list of comma-separated URLs
-    - Enusre it's a valid URL
+    - Ensure it's a valid URL
     - Ensure the news source is not already in the list of sources
 Acceptance criteria: The source is added to the list of monitored sources by the program.
 Business Priority: 1
@@ -71,7 +71,7 @@ Developer Days estimate: 3
 
 5.2) As Alex (a grad student), I want to be able to add sources to the program, so that I can increase and accommodate the new sources needed by my research.
     - Add it one at a time or specify a list of comma-separated URLs
-    - Enusre it's a valid URL
+    - Ensure it's a valid URL
     - Ensure the news source is not already in the list of sources
 Acceptance criteria: The source is added to the list of monitored sources by the program.
 Business Priority: 1
@@ -93,7 +93,7 @@ Acceptance criteria: A keyword, for example "Israel", is added to the list. A ke
 Business priority: 1
 Developer Days estimate: 2
 
-7) As Alejandro (a researcher), I want to be able to delete the sources monitored by the program, so that I can exclude irrevelant news sources.
+7) As Alejandro (a researcher), I want to be able to delete the sources monitored by the program, so that I can exclude irrelavant news sources.
 		- Ensure the role has admin privilege
 		- Have a cross button beside the news source for easy deletion
 		- Remove the news source from the interface or show it as a strikethrough
@@ -119,33 +119,33 @@ Developer days estimate: 4
 
 9.1) As Alejandro (a researcher), I want to see all the hyperlinks to other news sources for a particular article, so that I can better understand the relationships.
 Acceptance criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a hyperlink will be shown. 
-Business priorty: 1
+Business priority: 1
 Developer days estimate: 5
 
 9.2) As Alex (a grad student), I want to see all the hyperlinks to other news sources for a particular article, so that I can better understand the relationships.
 Acceptance criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a hyperlink will be shown. 
-Business priorty: 1
+Business priority: 1
 Developer days estimate: 5
 
 10.1) As Alejandro (a researcher), I want to see all the quotes in a particular article, so that I can better understand the relationships.
 Acceptance criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a quote will be shown.
-Business priorty: 2
+Business priority: 2
 Developer days estimate: 5
 
 10.2) As Alex (a grad student), I want to see all the quotes in a particular article, so that I can better understand the relationships.
 Acceptance criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a quote will be shown.
-Business priorty: 2
+Business priority: 2
 Developer days estimate: 5
 
 11.1) As Alejandro (a researcher), I want to see all the mentions to other news sources for a particular article, so that I can better understand the relationships.
 Acceptance Criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a mention will be shown.
 Business priority: 2
-Developer dats estimate: 5
+Developer days estimate: 5
 
 11.2) As Alex (a grad student), I want to see all the mentions to other news sources for a particular article, so that I can better understand the relationships.
 Acceptance Criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a mention will be shown.
 Business priority: 2
-Developer dats estimate: 5
+Developer days estimate: 5
 
 12) As Andrew (a librarian), I want to be able to export the data to best practice formats, so that I can ensure compatibility and archive the data for future use.
 Acceptance criteria: After logging in, click on the export button to save the results of the most recent search (the librarian can specify a time interval as well). The application will prompt the librarian to save the data to the computer.
@@ -290,8 +290,13 @@ number of times the topic has been tweeted from the list of twitter handles to m
 Business priority: 1
 Developer days estimate: 2
 
-22) As Alejandro, I want to delete Twitter handles from the list, so that I can accommodate the expanding needs of my research.
+22) As Alejandro (a researcher), I want to delete Twitter handles from the list, so that I can accommodate the expanding needs of my research.
 Acceptance critera: The Twitter handle specified by the user is removed from the monitor list and will
 no longer be monitored by the program
+Business priority: 1
+Developer days estimate: 1
+
+23) As Robert (a librarian programmer), I want to have well documented code, so that I can easily extend and maintain the current system.
+Acceptance critera: The source code of the project follows good software engineering practices and it's easy to understand.
 Business priority: 1
 Developer days estimate: 1
