@@ -1,6 +1,6 @@
 import scrapy
 
-from tutorial.items import AlJazeeraItem
+from webcrawl.items import AlJazeeraItem
 
 class AlJazeeraSpider(scrapy.Spider):
     name = "aljazeera"

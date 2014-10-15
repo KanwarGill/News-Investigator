@@ -1,6 +1,6 @@
 import scrapy
 
-from tutorial.items import DmozItem
+from webcrawl.items import DmozItem
 
 class DmozSpider(scrapy.Spider):
     name = "dmoz"
