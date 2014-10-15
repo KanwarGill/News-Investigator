@@ -295,3 +295,8 @@ Acceptance critera: The Twitter handle specified by the user is removed from the
 no longer be monitored by the program
 Business priority: 1
 Developer days estimate: 1
+
+23) As Robert (a librarian programmer), I want to have well documented code, so that I can easily extend and maintain the current system.
+Acceptance critera: The source code of the project follows good software engineering practices and it's easy to understand.
+Business priority: 1
+Developer days estimate: 1
