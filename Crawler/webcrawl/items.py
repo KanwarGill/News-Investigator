@@ -12,3 +12,11 @@ class DmozItem(scrapy.Item):
     title = scrapy.Field()
     link = scrapy.Field()
     desc = scrapy.Field()
+    
+class AlJazeeraItem(scrapy.Item):
+    title = scrapy.Field()
+    link = scrapy.Field()
+    
+class NewYorkTimesItem(scrapy.Item):
+    title = scrapy.Field()
+    link = scrapy.Field()
