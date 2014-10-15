@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Website Investigator</title>
+    <title>News Investigator</title>
     
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -41,18 +41,25 @@
   </div><!-- /.container-fluid -->
 </nav>
     <div class="customline">
-        <h1>Website Investigator</h1><br/>
+        <h1>News Investigator</h1><br/>
         <input type="text" name="source" class="custominput" id="inputsource" placeholder="Example: www.aljazeera.com" size="50"/>
         <div class="btn btn-primary custombtn" href="#" id="btnAddSource">
         Add Source
-        </div><br /><br />
+        </div>
+        <div class="btn btn-primary custombtn" href="#" id="btnGetSources">
+        Get Sources 
+        </div><div class="getsources"></div><br/>
         <input type="text" name="keyword" class="custominput" id="inputkeyword" placeholder="Example: Israel"/>
         <div class="btn btn-primary custombtn" href="#" id="btnAddKeyword">
         Add Keyword
         </div>
+        <div class="btn btn-primary custombtn" href="#" id="btnGetKeywords">
+        Get Keywords
+        </div><br/><br/>
+        <input type="text" name="deletekeyword" class="custominput" id="deletekeyword" placeholder=""/>
         <div class="btn btn-primary custombtn" href="#" id="btnDeleteKeyword">
         Delete Keyword
-        </div>
+        </div><div class="getkeywords"></div>
     </div>
 
 
@@ -61,37 +68,101 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script>
-      var uuid;
-      $.getJSON("http://www.chihuahuas.iriscouch.com/_uuids?count=2", function(data) {
-        console.log(data["uuids"][0]);
+
         $("#btnAddSource").click(function () {
-          var key = $("#inputsource").val();
+          var source = $("#inputsource").val();
+          var id = source.substring(source.indexOf(".") + 1, source.lastIndexOf("."));
+          // console.log(id);
           $.ajax({
               type: "POST",
               url: "http://www.chihuahuas.iriscouch.com/news_source",
               dataType: "json",
-              data: '{ "' + key + '" : "" }',
+              data: '{ "_id" : "' + id + '", "url": "' + source + '" }',
               contentType: "application/json",
-              processData: false
+              processData: false,
+              success: function (data) {
+                alert("Successfully added " + source);
+              },
+              error: function(){
+                alert("Cannot get data");
+              }
           });
-          // console.log($("#inputsource").val());
+        });
+
+        $("#btnGetSources").click(function() {
+          $(".getsources").empty();
+          // Display the current sources form the DB
+          $.getJSON("http://www.chihuahuas.iriscouch.com/news_source/_all_docs?include_docs=true", function(data) {
+            var sources = [];
+            $.each(data.rows, function(key, val) {
+              // console.log(val.doc);
+              sources.push("<li id='" + val.doc._id + "'>" + val.doc.url + "</li>");
+            });
+
+            $("<ul/>", {
+              "class": "listofsources",
+              html: sources.join("")
+            }).appendTo(".getsources");
+          });
         });
 
         $("#btnAddKeyword").click(function () {
           var key = $("#inputkeyword").val();
           $.ajax({
               type: "POST",
-              url: "http://www.chihuahuas.iriscouch.com/keywords",
+              url: "http://www.chihuahuas.iriscouch.com/keywords/",
               dataType: "json",
-              data: '{ "' + key + '" : "" }',
+              data: '{ "_id" : "' + key + '", "keyword" : "' + key + '" }',
               contentType: "application/json",
-              processData: false
+              processData: false,
+              success: function (data) {
+                alert("Successfully added " + key);
+              },
+              error: function(){
+                alert("Cannot get data");
+              }
           });
-          // console.log($("#inputsource").val());
         });
 
+        $("#btnGetKeywords").click(function() {
+          $(".getkeywords").empty();
+          // Display the current keywords form the DB
+          $.getJSON("http://www.chihuahuas.iriscouch.com/keywords/_all_docs?include_docs=true", function(data) {
+            var keywords = [];
+            $.each(data.rows, function(key, val) {
+              // console.log(val.doc);
+              keywords.push("<li class='keywords'>" + val.doc.keyword + "</li>");
+            });
 
-      });
+            $("<ul/>", {
+              "class": "listofkeywords",
+              html: keywords.join("")
+            }).appendTo(".getkeywords");
+          });
+        });
+
+        $("#btnDeleteKeyword").click(function () {
+          var key = $("#deletekeyword").val();
+          var rev = "";
+          $.getJSON("http://www.chihuahuas.iriscouch.com/keywords/" + key, function(data) {
+            $.each(data, function(key, val) {
+              rev = data._rev;
+            });
+            $.ajax({
+              type: "DELETE",
+              url: "http://www.chihuahuas.iriscouch.com/keywords/" + key + "?rev=" + rev,
+              dataType: "json",
+              contentType: "application/json",
+              success: function (data) {
+                alert("Successfully deleted " + key);
+              },
+              error: function(){
+                alert("ERROR: Cannot get keyword");
+              }
+            });
+          });
+        });
+
     </script>
   </body>
 </html>
