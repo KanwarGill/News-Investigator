@@ -51,12 +51,14 @@ Build and Run instructions:
 
 -Current Functionality:
 
-  addSource,getSources,addKeyword,getKeywords,deleteKeyword
+  addSource,getSources,deleteSource,addKeyword,getKeywords,deleteKeyword
   
 
   addSource: type in source URL into textbox next to "Add Source" button then click the button
 
   getSources: click on "Get Sources" button
+  
+  deleteSource: type in source URL into textbox next to "Delete Source" button then click the button
 
   addKeyword: type in keyword into textbox next to "Add Keyword" button then click the button
 
