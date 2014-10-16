@@ -42,24 +42,28 @@
 </nav>
     <div class="customline">
         <h1>News Investigator</h1><br/>
-        <input type="text" name="source" class="custominput" id="inputsource" placeholder="Example: www.aljazeera.com" size="50"/>
+        <input type="text" name="source" class="custominput" id="inputsource" pattern="www\.[a-zA-Z0-9]{3,}\.[a-z]{2,3}" placeholder="Example: www.aljazeera.com" size="50"/>
         <div class="btn btn-primary custombtn" href="#" id="btnAddSource">
         Add Source
         </div>
         <div class="btn btn-primary custombtn" href="#" id="btnGetSources">
         Get Sources 
-        </div><div class="getsources"></div><br/>
-        <input type="text" name="keyword" class="custominput" id="inputkeyword" placeholder="Example: Israel"/>
+        </div><div class="getsources"></div>
+        <input type="text" name="deletesource" class="custominput" id="deletesource" placeholder="Ex: www.aljazeera.com" size="30"/>
+        <div class="btn btn-primary custombtn" href="#" id="btnDeleteSource">
+        Delete Source
+        </div><br/><br/>
+        <input type="text" name="keyword" class="custominput" id="inputkeyword" pattern="[a-zA-Z0-9]+" placeholder="Example: Israel" size="45"/>
         <div class="btn btn-primary custombtn" href="#" id="btnAddKeyword">
         Add Keyword
         </div>
         <div class="btn btn-primary custombtn" href="#" id="btnGetKeywords">
         Get Keywords
-        </div><br/><br/>
+        </div><div class="getkeywords"></div>
         <input type="text" name="deletekeyword" class="custominput" id="deletekeyword" placeholder=""/>
         <div class="btn btn-primary custombtn" href="#" id="btnDeleteKeyword">
         Delete Keyword
-        </div><div class="getkeywords"></div>
+        </div>
     </div>
 
 
@@ -70,7 +74,11 @@
     <script>
 
         $("#btnAddSource").click(function () {
+          // var urlRegex = '/^(https?://)?([da-z.-]+).([a-z.]{2,6})([/w .-]*)*/?$/';
           var source = $("#inputsource").val();
+          // if (source.match(urlRegex) == "") {
+          //   alert("Please enter a valid url");
+          // }
           var id = source.substring(source.indexOf(".") + 1, source.lastIndexOf("."));
           // console.log(id);
           $.ajax({
@@ -84,7 +92,7 @@
                 alert("Successfully added " + source);
               },
               error: function(){
-                alert("Cannot get data");
+                alert("Cannot add duplicate news source");
               }
           });
         });
@@ -106,6 +114,29 @@
           });
         });
 
+        $("#btnDeleteSource").click(function () {
+          var source = $("#deletesource").val();
+          var id = source.substring(source.indexOf(".") + 1, source.lastIndexOf("."));
+          var rev = "";
+          $.getJSON("http://www.chihuahuas.iriscouch.com/news_source/" + id, function(data) {
+            $.each(data, function(key, val) {
+              rev = data._rev;
+            });
+            $.ajax({
+              type: "DELETE",
+              url: "http://www.chihuahuas.iriscouch.com/news_source/" + id + "?rev=" + rev,
+              dataType: "json",
+              contentType: "application/json",
+              success: function (data) {
+                alert("Successfully deleted " + source);
+              },
+              error: function(){
+                alert("ERROR: Cannot get keyword");
+              }
+            });
+          });
+        });
+
         $("#btnAddKeyword").click(function () {
           var key = $("#inputkeyword").val();
           $.ajax({
@@ -119,7 +150,7 @@
                 alert("Successfully added " + key);
               },
               error: function(){
-                alert("Cannot get data");
+                alert("Cannot add duplicate keyword");
               }
           });
         });

@@ -93,7 +93,7 @@ Acceptance criteria: A keyword, for example "Israel", is added to the list. A ke
 Business priority: 1
 Developer Days estimate: 2
 
-7) As Alejandro (a researcher), I want to be able to delete the sources monitored by the program, so that I can exclude irrelavant news sources.
+7) As Alejandro (a researcher), I want to be able to delete the sources and keywords monitored by the program, so that I can exclude irrelavant news sources.
 		- Ensure the role has admin privilege
 		- Have a cross button beside the news source for easy deletion
 		- Remove the news source from the interface or show it as a strikethrough
