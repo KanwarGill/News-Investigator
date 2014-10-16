@@ -24,3 +24,18 @@ Not contained in Phase 2 Report.pdf: The report does not contain
 
 -release plan, iteration plan, taskboard:
   these are contained in our team trello account. The access to this account has already been given to you.
+
+Build and Run instructions:
+-Clone the repo from the master branch
+-open the git repo
+-open the website folder
+-open the c01 folder
+-double click the index.html file this should open the file in your browser
+-Current Functionality:
+  addSource,getSources,addKeyword,getKeywords,deleteKeyword
+  
+  addSource: type in source URL into textbox next to "Add Source" button then click the button
+  getSources: click on "Get Sources" button
+  addKeyword: type in keyword into textbox next to "Add Keyword" button then click the button
+  getKeywords: click on "Get Keywords" button
+  deleteKeyword: type in keyword into textbox next to "Delete Keyword" button then click the button
