@@ -9,15 +9,15 @@ Phase 2 Report.pdf
 Contents of Phase 2 Report.pdf: The report contains 
 
 - the bio's of the group members
-- 
+
 - the user stories
-- 
+ 
 - the system metaphor
-- 
+
 - the personas
-- 
+
 - the state of the project
-- 
+
 - the CRC model
 
 Not contained in Phase 2 Report.pdf: The report does not contain
