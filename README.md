@@ -7,15 +7,15 @@ From master branch click folder named Course Related Items then click folder nam
 
 Contents of Phase 2 Report.pdf: The report contains 
 
-- the bio's of the group members
+- the state of the project
+
+- iteration plan
 
 - the user stories
- 
-- the system metaphor
 
 - the personas
-
-- the state of the project
+ 
+- the system metaphor
 
 - the CRC model
 
@@ -31,7 +31,7 @@ Not contained in Phase 2 Report.pdf: The report does not contain
   there is a link to the burndown chart contained in Phase 2 Report.pdf simply click this link and if prompted for access from
   trello click the green button. Please note that for the purposes of burndown chart we denoted 1 Developer Day as 8 hours of work.
 
--release plan, iteration plan, taskboard:
+-release plan, and taskboard:
   
   these are contained in our team trello account. The access to this account has already been given to you.
   
