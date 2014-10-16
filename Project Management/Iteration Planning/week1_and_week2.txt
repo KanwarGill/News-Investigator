@@ -1,0 +1,80 @@
+Iteration Planning
+==================
+
+BP stands for Business Priority
+DD stands for Developer Days
+PD stands for Programming Days
+
+BP1, then, means Business priority 1 for example.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Iteration 1
+Oct 3 - Oct 9
+
+Project Velocity: 5 Developer Days
+
+User stories implemented in this iteration:
+
+User Story #5 (#5.1 and #5.2) [BP1 DD3]: 
+As Alejandro (a researcher), I want to be able to add sources to the program, so that I can increase and accommodate the new sources needed for my research.
+As Alex (a grad student), I want to be able to add sources to the program, so that I can increase and accommodate the new sources needed for my research.
+
+Tasks for this user story:
+1) Use bootstrap to create the front-end with the add sources button (Vinicius) [PD1]
+2) Set up the database with the news source table (Kanwar) [PD2]
+3) Add action for the add source/get sources button so that it saves information in database [PD1] -- moved to iteration 2
+
+Total: PD4
+
+Acceptance Tests: N/A since the action for the buttons wasn't yet implemented
+
+User Story #6 (#6.1 and #6.2) [BP1 DD2]:
+As Alejandro (a researcher), I want to be able to specify the list of keywords that I want to monitor in the list of given news sources, so that I can get the information on the relationships between these news sources needed to complete my research. 
+As Alex (a grad student), I want to be able to specify the list of keywords that I want to monitor in the list of given news sources, so that I can get the information on the relationships between these news sources needed to complete my research.
+
+Tasks for this user story:
+1) Use bootstrap to create the front-end with the add keywords button (Vinicius) [PD1]
+2) Set up the database with the keywords table (Kanwar) [PD1]
+3) Add action for the add keyword/get keywords button so that it saves information in database [PD1] -- moved to iteration 2
+
+Total: PD3
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Iteration 2
+Oct 10 - Oct 16
+
+Project Velocity: 6 + 2(previous iteration) = 8
+
+Tasks from previous iteration:
+1) Add action for the add source/get sources button so that it saves information in database (Kanwar) [PD2]
+2) Add action for the add keyword/get keywords button so that it saves information in database (Kanwar) [PD2]
+
+User Stories implemented in this iteration:
+
+User Story #8 (#8.1 and #8.2) [BP1 DD4]:
+As Alejandro (a researcher), I want to be able to see all the articles from a news source with the given keywords, so that I can better quantify my research.
+As Alex (a grad student), I want to be able to see all the articles from a news source with the given keywords, so that I can better quantify my research. 
+
+Tasks for this user story:
+1) Use the Scrapy library to get the information (link and title) from a website and store the results in a json file (Samson) [PD4]
+Total: PD4
+
+
+User Story #13 (#13.1 and #13.2) [BP1 DD2]: 
+As Alejandro (a researcher), I want to save the results of the web crawl to a database, so that I can access the data at a later date and provide more data for the librarian to extract. 
+As Alex (a grad student), I want to save the results of the web crawl to a database, so that I can access the data at a later date and provide more data for the librarian to extract.
+
+Tasks for this user story:
+1) Using that json file save it in the database in a new table (Kanwar) [PD1]
+2) Display the information in the front-end using CouchDB's HTTP API (Kenny) [PD1]
+Total: PD2
+
+User Story #7 [BP3 DD1]:
+As Alejandro (a researcher), I want to be able to delete the sources and keywords monitored by the program, so that I can exclude irrelevant news sources.
+
+Tasks for this user story:
+1) Add action for the delete keyword and delete source (Kanwar)[PD1] 
+TotalL PD1
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
