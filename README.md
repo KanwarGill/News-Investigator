@@ -34,6 +34,8 @@ Not contained in Phase 2 Report.pdf: The report does not contain
 -release plan, iteration plan, taskboard:
   
   these are contained in our team trello account. The access to this account has already been given to you.
+  
+  Note: In order to see the archived cards on Trello, type this in the search bar "is:archived"
 
 Build and Run instructions:
 
