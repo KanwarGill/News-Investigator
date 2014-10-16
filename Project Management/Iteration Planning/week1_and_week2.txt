@@ -75,6 +75,6 @@ As Alejandro (a researcher), I want to be able to delete the sources and keyword
 
 Tasks for this user story:
 1) Add action for the delete keyword and delete source (Kanwar)[PD1] 
-TotalL PD1
+Total: PD1
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
