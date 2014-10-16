@@ -3,7 +3,7 @@ Team Chihuahuas (16) CSCC01 Project
 
 To locate the phase 2 report:
 
-From master branch click folder named Course Related Items then click folder named Reports which contians Phase 2 Report.pdf
+From master branch click folder named Course Related Items then click folder named Reports which contains Phase 2 Report.pdf
 
 Contents of Phase 2 Report.pdf: The report contains 
 
