@@ -29,7 +29,7 @@ Not contained in Phase 2 Report.pdf: The report does not contain
 -the burndown chart:
   
   there is a link to the burndown chart contained in Phase 2 Report.pdf simply click this link and if prompted for access from
-  trello click the green button
+  trello click the green button. Please note that for the purposes of burndown chart we denoted 1 Developer Day as 8 hours of work.
 
 -release plan, iteration plan, taskboard:
   
