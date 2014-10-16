@@ -19,6 +19,7 @@ _All items are located under the master branch._
 **Burndown Chart**: See link provided in the report or https://www.burndownfortrello.com/share/iq8ugmsnxt
 
 Please note that for the purposes of burndown chart we denoted 1 Developer Day as 8 hours of work.
+Please note that to avoid problems accessing the chart you should log into Trello on another tab first.
 
 **Release Plan & Taskboard**: These are contained in our team trello account. The access to this account has already been given to you.
 _Note: In order to see the archived cards on Trello, type this in the search bar "is:archived"_
