@@ -1,0 +1,22 @@
+Members Present: All except Carlos
+
+Items:
+- add, delete buttons on the web page completed
+- librarian programmer persona added
+- web crawl started (under branch 'crawler'). Results of the crawl are in JSON files. The url is currently rss sites as their xml structure is the same for each site.
+- David now has access to our Trello page.
+- Our release plan and task board is the Trello page.
+
+Things to do:
+- Phase 2 report gathering info/clean-up - Samson
+- State of the project one page summary - Vinicius
+- Librarian programmer user stories - Vinicius
+- README file - Kenny
+- Iteration plan for this week - Kanwar
+Have these things finished by tomorrow for the Phase 2 deadline
+
+Next Meeting:
+Friday, October 17th, 3-4pm on Google Hangouts
+- Start iteration plan for week 3
+
+Please feel free to add any other items that we need need to discuss for next meeting.
