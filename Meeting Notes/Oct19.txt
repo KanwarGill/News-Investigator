@@ -1,0 +1,17 @@
+Meeting Minutes
+
+NOTE: WHEN COMMITTING MAKE SURE YOU COMMIT TO THE CORRECT BRANCH.
+
+Right now we have master and crawler branches.
+
+Skype IDs: kanwar245, vinicius.barbosa94
+
+Oct 17, 2014
+Members Present: All except Kenny
+
+Iteration planning for Week 3
+- Working on user stories 9 and 10. For each user story, we split it into tasks and assigned to each member. Please make sure you understand your tasks.
+- Since the two user stories are almost the same, we changed the DD estimate for user stor #10 to 2 from 5. 
+- Project velocity for this iteration will be 7 (5DD + 2DD)
+
+Next meeting: Oct 20 at 9pm (Hangouts)
