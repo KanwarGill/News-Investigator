@@ -2,7 +2,6 @@ from scrapy.contrib.spiders import CrawlSpider
 from scrapy.selector import HtmlXPathSelector
 from webcrawl.items import AlJazeeraItem
 from scrapy.http import Request
-from scrapy.spider import BaseSpider
 
 class AlJazzera2Spider(CrawlSpider):
     name = "al2"
@@ -28,6 +27,9 @@ class AlJazzera2Spider(CrawlSpider):
         # The articles in Al Jazeera is under the td tag,
         # Detailed Summary class
         item ["source"] = hxs.select('//td[@class="DetailedSummary"]/p').extract()
+        
+        # Extract hyperlinks, extract quotes, extract mentions here
+        
         return item
 
 
