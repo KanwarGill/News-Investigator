@@ -13,5 +13,12 @@ BOT_NAME = 'webcrawl'
 SPIDER_MODULES = ['webcrawl.spiders']
 NEWSPIDER_MODULE = 'webcrawl.spiders'
 
+ITEM_PIPELINES = {
+    'webcrawl.pipelines.CouchDBPipeline': 300,
+}
+
+COUCHDB_SERVER = 'http://chihuahuas.iriscouch.com:5984/'
+COUCHDB_DB = 'results'
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'webcrawl (+http://www.yourdomain.com)'

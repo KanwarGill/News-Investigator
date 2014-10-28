@@ -11,7 +11,8 @@ class AlJazeeraItem(scrapy.Item):
     title = scrapy.Field()
     link = scrapy.Field()
     source = scrapy.Field()
-    hyperlinks = scrapy.Field() 
+    hyperlinks = scrapy.Field()
+    date = scrapy.Field()
     # etc...
     
 class NewYorkTimesItem(scrapy.Item):

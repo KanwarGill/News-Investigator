@@ -16,9 +16,11 @@ class AlJazzera2Spider(CrawlSpider):
             # Grab the title and the link to the article
             item ["title"] = article.xpath("title/text()").extract()
             item ["link"] = article.xpath("link/text()").extract()
+            item ["date"] = article.xpath("pubDate/text()").extract()
+            
             link = item["link"][0]
             # Grab the source of the page by making another Request
-            yield Request(link,callback = self.parse_link,meta = dict(item = item))
+            yield Request(link,callback = self.parse_link, meta = dict(item = item))
                 
     def parse_link(self, response):
         self.log('Grabbing source from %s' % response.url)
