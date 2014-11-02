@@ -1,0 +1,9 @@
+REGEX to match hyperlinks:
+
+/<a[^>]* href="([^"]*)"/
+
+then use:
+
+/"(?:[^"\\]|\\.)*"/
+
+to get the actual link value
