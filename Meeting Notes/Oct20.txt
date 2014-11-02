@@ -1,0 +1,30 @@
+Oct 20th Meeting Minutes
+Members Present: Kanwar, Samson
+
+Phase 2 Interview
+- Kanwar asked David to schedule our meeting during the tutorial, need to confirm
+- Everyone please understand the CRC cards
+
+Web Framework
+- Currently we have none. Should we use one? [Can ask David]
+- If so, we can use Backbone or Django [suggestions welcome]
+    - If we use Django, it can be integrated with CouchDB. Other possible DB we can use is SQLite.
+
+Web Crawl
+- The web crawl is currently done on command line.
+- The user will click on a button on the website to initiate the web crawl.
+- Need to create a Python script to
+    1. Grab sources from the database
+    2. Call the scrapy command to execute
+    3. Save the results of the crawl to the database
+
+Website
+- BUG: Adding '123' as a source gives an incorrect error
+- BUG: Adding 'wwww.google.ca' incorrectly adds the source to the database
+- The website needs a bit more redesign to make it more user friendly.
+
+Future Phases
+- Phase 3 - Nov 13 - Our Week 6 Iteration
+- Phase 4 - Our Week 8 Iteration
+
+Next Meeting: Wednesday October 22 at 4pm (Tutorial)

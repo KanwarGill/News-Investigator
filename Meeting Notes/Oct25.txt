@@ -1,0 +1,66 @@
+October 25th Meeting Minutes
+============================
+Members Present: Kenny, Samson, Carlos, Vinicius
+
+Tasks from Previous Iteration
+-----------------------------
+From User Story #9 & #10
+
+- Add the sources and keywords information to scrapy from the database - Samson
+- Look for hyperlink tags (using regex) - Carlos
+    -<a href ... </a>
+    - modify the aljazeera_spider2.py and items.py
+- Save the results to the database - Kanwar
+- Show the results in the frontend via HTTP ajax call to the database - Vinicius
+    - Need to know the format of the data
+    - Can use fake data to display
+
+Tasks for Current Iteration
+---------------------------
+User Story #3
+As Alejandro (Researcher), I want to be able to create an account using a form, so that I can access the program properly. [BP3 DD1]
+
+Rectangular box containing the following info:
+
+- Username and Password
+- Link for signing up
+- Link for "Forgot Password"
+
+Acceptance criteria: An account is created and can access the program properly.
+Tasks:
+    - Design on website - Vinicius
+        -2 textfields: username, password
+    - Database setup
+    - Ajax call to the database - Kenny
+        - Just replicate the code we have currently
+    - Test - Everyone else
+
+User Story #4
+As Alejandro (Researcher), I want to be able to log in and out of my account, so that I can access the program properly. [BP3 DD1]
+
+- Display an informational message if the username is not recognized
+- Lock the account if the password is entered incorrectly five times 
+
+Acceptance criteria: The user can log in into the program and access it properly.
+Tasks:
+    - Website design (login page) - Vinicius
+    - GET ajax call to see if it matches - Samson
+        - Call to the database?
+        - once logged in, redirect to main page
+        - log out, redirect to login page
+    - Lock the account[?]
+        - Counter[?]
+    - Test - Everyone else
+
+User Story #11
+As Alejandro (a researcher), I want to see all the mentions to other news sources for a particular article, so that I can better understand the relationships. [BP2 DD5]
+
+Acceptance Criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a mention will be shown.
+
+Tasks:
+    - Similar to the previous two user stories (Finding hyperlinks and quotes)
+    - We just need to create a regex for mentions
+        - TODO: Find examples of mentions
+    - Test - Everyone
+
+Next Meeting: Monday, October 27th 7pm on Hangouts
