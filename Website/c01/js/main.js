@@ -1,9 +1,11 @@
           $("#btnAddSource").click(function () {
-          // var urlRegex = '/^(https?://)?([da-z.-]+).([a-z.]{2,6})([/w .-]*)*/?$/';
+          //var urlRegex = new RegExp("/^(https?://)?([da-z.-]+).([a-z.]{2,6})([/w .-]*)*/?$/");
+	  var urlRegex = new RegExp("^w{3}\.[a-zA-Z0-9]{2,}\.[a-z]{2,3}$");
           var source = $("#inputsource").val();
-          // if (source.match(urlRegex) == "") {
-          //   alert("Please enter a valid url");
-          // }
+           if (!urlRegex.test(source)) {
+             alert("Please enter a valid url");
+	     return;
+           }
           var id = source.substring(source.indexOf(".") + 1, source.lastIndexOf("."));
           // console.log(id);
           $.ajax({
@@ -64,6 +66,11 @@
 
         $("#btnAddKeyword").click(function () {
           var key = $("#inputkeyword").val();
+	  var keyRegex = new RegExp("^[a-zA-Z0-9]+$");
+           if (!keyRegex.test(key)) {
+             alert("Please enter an alphanumeric keyword");
+	     return;
+           }	
           $.ajax({
               type: "POST",
               url: "http://www.chihuahuas.iriscouch.com/keywords/",
