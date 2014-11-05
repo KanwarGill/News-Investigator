@@ -41,45 +41,27 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-    <div class="customline">
-        <h1>News Investigator</h1><br/>
-        <input type="text" name="source" class="custominput" id="inputsource" pattern="www\.[a-zA-Z0-9]{3,}\.[a-z]{2,3}" placeholder="Example: www.aljazeera.com" size="50"/>
-        <div class="btn btn-primary custombtn" href="#" id="btnAddSource">
-          Add Source
+    <div class="customLogin">
+        <h2>Login</h2><br/>
+        <input type="text" name="username" class="custominput" id="inputusername" placeholder="Username" size="30"/><br>
+        <input type="text" name="password" class="custominput" id="inputpassword" placeholder="Password" size="30"/><br>
+        <div class="btn btn-primary custombtn" href="#" id="btnLogin">
+          Login
         </div>
-        <div class="btn btn-primary custombtn" href="#" id="btnGetSources">
-          Get Sources 
+        <div class="btn btn-primary custombtn" href="#" id="btnForgotPassword">
+          Forgot my password
         </div>
-        <div class="getsources"></div>
-        <input type="text" name="deletesource" class="custominput" id="deletesource" placeholder="Ex: www.aljazeera.com" size="30"/>
-        <div class="btn btn-primary custombtn" href="#" id="btnDeleteSource">
-          Delete Source
-        </div><br/><br/>
-        <input type="text" name="keyword" class="custominput" id="inputkeyword" pattern="[a-zA-Z0-9]+" placeholder="Example: Israel" size="50"/>
-        <div class="btn btn-primary custombtn" href="#" id="btnAddKeyword">
-          Add Keyword
-        </div>
-        <div class="btn btn-primary custombtn" href="#" id="btnGetKeywords">
-          Get Keywords
-        </div>
-        <div class="getkeywords"></div>
-        <input type="text" name="deletekeyword" class="custominput" id="deletekeyword" placeholder="Ex: Israel" size="30"/>
-        <div class="btn btn-primary custombtn" href="#" id="btnDeleteKeyword">
-          Delete Keyword
-        </div>
-
-
-        <div class="btn btn-primary custombtn" href="#" id="btnTest">
-	  Test
+        <div></div>
+        <div class="btn btn-primary custombtn" href="#" id="btnSignUp">
+          Don't have an account? Sign up!
         </div>
     </div>
-
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/test.js"></script>
+	<script src="js/login.js"></script>
   </body>
 </html>

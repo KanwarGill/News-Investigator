@@ -2,8 +2,23 @@
     margin-left: 5px;
 }
 
+.btnlogin{
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
 .customline{
     margin-left: 10px;
+    float: left;
+}
+
+.customlogin h2{
+    margin-left: 60px;
+    float: left;
+}
+
+.customlogin{
+    margin-left: 500px;
     float: left;
 }
 
@@ -13,6 +28,26 @@
     clear:both;
     margin-right: 10px;
     margin-top: 3px;
+}
+
+.logininput{
+    margin-left: 5px;
+    float:left;
+    clear:both;
+    margin-right: 10px;
+    margin-top: 3px;
+    height: 35px;
+}
+
+.signupinput{
+    margin-left: 5px;
+    float:left;
+    clear:both;
+    margin-right: 10px;
+    margin-top: 3px;
+    height:40px;
+    font-size:12pt;
+}
 }
 
 .getsources{
