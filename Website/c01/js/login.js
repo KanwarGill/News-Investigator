@@ -4,6 +4,7 @@ $("#btnLogin").click(function() {
 	$.getJSON("https://chihuahuas.iriscouch.com/user/" + username, function(data){
 		if (data.password == password) {
 			alert("login successful\n User: " + username);
+			location.href="index.html";
 		} else if(data.password != password) {
 			alert("login unsuccessful\n User: " + username);
 		}
