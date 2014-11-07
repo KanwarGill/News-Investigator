@@ -8,6 +8,7 @@
     
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-table.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="img/favicon.png" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -67,6 +68,21 @@
         <div class="btn btn-primary custombtn" href="#" id="btnDeleteKeyword">
           Delete Keyword
         </div>
+
+        <table data-toggle="table" data-url="js/data1.json" data-height="299" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1">
+    <thead>
+    <tr>
+        <th data-field="id" data-align="center">Title</th>
+        <th data-field="name" data-align="center">Link</th>
+        <th data-field="price" data-align="center">Hyperlink</th>
+        <th data-field="price" data-align="center">Quotes</th>
+        <th data-field="price" data-align="center">Mentions</th>
+    </tr>
+    </thead>
+</table>
+       
+
+
     </div>
 
 
@@ -74,6 +90,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-table.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
