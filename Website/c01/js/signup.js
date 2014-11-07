@@ -5,6 +5,10 @@ $("#btnCreateAccount").click(function() {
 	var security_q = $("#inputsecurityquestion").val();
 	var security_a = $("#inputsecurityanswer").val();
 	
+	if (username == "" || password == "" || security_q == "" || security_a == "") {
+		alert("Please enter values into all the text fields");
+		return;
+	}
 	if (password == password2){
 		$.ajax({
 			type: "POST",
