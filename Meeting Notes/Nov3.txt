@@ -1,0 +1,22 @@
+Meeting Minutes
+Nov 3rd
+Members Present: Samson, Vinicius, Kenny
+
+Discussed current plan/progress for this iteration.
+We will use Django as our back-end/web framework.
+Try to do more pair-programming.
+
+From Kanwar:
+The keywords section has been pushed github so that only the articles that contain the keywords will be saved in the results database.
+Also, I am working on creating the regex in the python code itself to search for quotes and hyperlinks in the article source. My idea is to store this information in the database as well as that will ease the process of retrieving the information in the front-end to the table.
+
+Mentions
+-Need some research
+-if some sentence containing the name of a source we are supposed to be following or a keyword then we just copy that sentence and keep a tally of the number of "mentions" for the source or keyword
+
+If someone has the time, try to clean up the task board and possible separate the iteration plan from it. Would have to create a separate burndown chart as well.
+
+Next week is Phase 3, so try to have regular commits/branches on the project.
+
+Next Meeting:
+Wednesday November 5th (Tutorial)

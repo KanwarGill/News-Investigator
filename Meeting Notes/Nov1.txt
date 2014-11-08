@@ -1,0 +1,14 @@
+Meeting Minutes
+Nov 1, 2014
+Members Absent: Kenny, Carlos
+
+Items of Discussion:
+User Stories 8, 9, 10, 3, 4, 11 needs to be completed. 
+At this point scrapy is storing the results into couchDB from the terminal. Samson will configure running scrapy from the browser so that it's easier to
+store the results in the database. After that, we can run the regex against the source for each article to get the hyperlinks, quotes, and mentions
+and display that information in a tabular format.
+
+Kenny and Carlos to work on getting the regex for mentions and testing the current system.
+
+Next Meeting:
+Monday, Nov 3, at 7pm on Hangouts. 

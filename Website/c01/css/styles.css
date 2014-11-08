@@ -3,7 +3,7 @@
 }
 
 .btnlogin{
-    margin-top: 8px;
+    margin-top: 10px;
     margin-left: 5px;
 }
 
@@ -36,6 +36,18 @@
     clear:both;
     margin-right: 10px;
     margin-top: 3px;
+    height: 35px;
+}
+
+.signupinput{
+    margin-left: 5px;
+    float:left;
+    clear:both;
+    margin-right: 10px;
+    margin-top: 3px;
+    height:40px;
+    font-size:12pt;
+}
 }
 
 .getsources{
