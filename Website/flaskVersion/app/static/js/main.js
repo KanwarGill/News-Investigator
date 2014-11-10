@@ -6,6 +6,7 @@
 	     return;
            }
           var id = source.substring(source.indexOf(".") + 1, source.lastIndexOf("."));
+          /*
           $.ajax({
               type: "POST",
               url: "http://www.chihuahuas.iriscouch.com/news_source",
@@ -19,6 +20,21 @@
               error: function(){
                 alert("Cannot add duplicate news source");
               }
+          });
+          */
+          $.ajax({
+            type: "POST",
+            url: "/add_source",
+            dataType: "json",
+            data: {_id: id, url: source},
+            contentType: "application/json",
+            processData: false,
+            success: function(data) {
+                alert("Successfully added " + source);
+            },
+            error: function() {
+                alert("Cannot add duplicate news source");
+            }
           });
         });
 
@@ -100,7 +116,7 @@ $("#btnDeleteSource").click(function() {
               rev = data._rev;
           });
         });
-
+});
         $("#btnAddKeyword").click(function () {
           var key = $("#inputkeyword").val();
 	         var keyRegex = new RegExp("^[a-zA-Z0-9]+$");
@@ -126,7 +142,7 @@ $("#btnDeleteSource").click(function() {
               }
           });
       });
-});
+
 
         $("#btnDeleteKeyword").click(function () {
           var key = $("#deletekeyword").val();
