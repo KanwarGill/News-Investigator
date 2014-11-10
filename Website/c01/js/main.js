@@ -1,53 +1,92 @@
-$("#btnAddSource").click(function() {
-  //var urlRegex = new RegExp("/^(https?://)?([da-z.-]+).([a-z.]{2,6})([/w .-]*)*/?$/");
-  var urlRegex = new RegExp("^w{3}\.[a-zA-Z0-9]{2,}\.[a-z]{2,3}$");
-  var source = $("#inputsource").val();
-  if (!urlRegex.test(source)) {
-      alert("Please enter a valid url");
-      return;
-  }
-  var id = source.substring(source.indexOf(".") + 1, source
-      .lastIndexOf("."));
-  // console.log(id);
-  $.ajax({
-      type: "POST",
-      url: "http://www.chihuahuas.iriscouch.com/news_source",
-      dataType: "json",
-      data: '{ "_id" : "' + id + '", "url": "' +
-          source + '" }',
-      contentType: "application/json",
-      processData: false,
-      success: function(data) {
-          alert("Successfully added " + source);
-      },
-      error: function() {
-          alert(
-              "Cannot add duplicate news source"
-          );
-      }
-  });
-});
-
-$("#btnGetSources").click(function() {
-  $(".getsources").empty();
-  // Display the current sources form the DB
-  $.getJSON(
-      "http://www.chihuahuas.iriscouch.com/news_source/_all_docs?include_docs=true",
-      function(data) {
-          var sources = [];
-          $.each(data.rows, function(key, val) {
-              // console.log(val.doc);
-              sources.push("<li id='" + val.doc
-                  ._id + "'>" + val.doc.url +
-                  "</li>");
+      $("#btnAddSource").click(function () {
+	       var urlRegex = new RegExp("^w{3}\.[a-zA-Z0-9]{2,}\.[a-z]{2,3}$");
+          var source = $("#inputsource").val();
+           if (!urlRegex.test(source)) {
+             alert("Please enter a valid url");
+	     return;
+           }
+          var id = source.substring(source.indexOf(".") + 1, source.lastIndexOf("."));
+          $.ajax({
+              type: "POST",
+              url: "http://www.chihuahuas.iriscouch.com/news_source",
+              dataType: "json",
+              data: '{ "_id" : "' + id + '", "url": "' + source + '" }',
+              contentType: "application/json",
+              processData: false,
+              success: function (data) {
+                alert("Successfully added " + source);
+              },
+              error: function(){
+                alert("Cannot add duplicate news source");
+              }
           });
+        });
+
+      $('#show-sources').on('click', function () {
+      //get collapse content selector
+      var collapse_content_selector = $(this).attr('href');         
+ 
+      //make the collapse content to be shown or hide
+      var toggle_switch = $(this);
+
+        $(collapse_content_selector).toggle(function(){
+          if($(this).css('display')=='none'){
+          //change the button label to be 'Show'
+          toggle_switch.html('Show Sources');
+          }else{
+          //change the button label to be 'Hide'
+          toggle_switch.html('Hide Sources');
+          }
+        });
+      });
+
+      $('#show-keywords').on('click', function () {
+      //get collapse content selector
+      var collapse_content_selector = $(this).attr('href');         
+
+      //make the collapse content to be shown or hide
+      var toggle_switch = $(this);
+
+        $(collapse_content_selector).toggle(function(){
+          if($(this).css('display')=='none'){
+          //change the button label to be 'Show'
+          toggle_switch.html('Show Keywords');
+          }else{
+          //change the button label to be 'Hide'
+          toggle_switch.html('Hide Keywords');
+          }
+        });
+      });
+
+      window.onload = function() {
+        $(".getsources").empty();
+        $.getJSON("http://www.chihuahuas.iriscouch.com/news_source/_all_docs?include_docs=true", function(data) {
+            var sources = [];
+            $.each(data.rows, function(key, val) {
+              sources.push("<li id='" + val.doc._id + "'>" + val.doc.url + "</li>");
+            });
 
           $("<ul/>", {
               "class": "listofsources",
               html: sources.join("")
-          }).appendTo(".getsources");
-      });
-});
+            }).appendTo(".getsources");
+          });
+
+        $(".getkeywords").empty();
+          // Display the current keywords form the DB
+          $.getJSON("http://www.chihuahuas.iriscouch.com/keywords/_all_docs?include_docs=true", function(data) {
+            var keywords = [];
+            $.each(data.rows, function(key, val) {
+              // console.log(val.doc);
+              keywords.push("<li class='keywords'>" + val.doc.keyword + "</li>");
+            });
+
+            $("<ul/>", {
+              "class": "listofkeywords",
+              html: keywords.join("")
+            }).appendTo(".getkeywords");
+          });
+        };
 
 $("#btnDeleteSource").click(function() {
   var source = $("#deletesource").val();
@@ -60,6 +99,15 @@ $("#btnDeleteSource").click(function() {
           $.each(data, function(key, val) {
               rev = data._rev;
           });
+        });
+
+        $("#btnAddKeyword").click(function () {
+          var key = $("#inputkeyword").val();
+	         var keyRegex = new RegExp("^[a-zA-Z0-9]+$");
+           if (!keyRegex.test(key)) {
+             alert("Please enter an alphanumeric keyword");
+	     return;
+           }	
           $.ajax({
               type: "DELETE",
               url: "http://www.chihuahuas.iriscouch.com/news_source/" +
@@ -80,58 +128,11 @@ $("#btnDeleteSource").click(function() {
       });
 });
 
-$("#btnAddKeyword").click(function() {
-  var key = $("#inputkeyword").val();
-  var keyRegex = new RegExp("^[a-zA-Z0-9]+$");
-  if (!keyRegex.test(key)) {
-      alert("Please enter an alphanumeric keyword");
-      return;
-  }
-  $.ajax({
-      type: "POST",
-      url: "http://www.chihuahuas.iriscouch.com/keywords/",
-      dataType: "json",
-      data: '{ "_id" : "' + key +
-          '", "keyword" : "' + key + '" }',
-      contentType: "application/json",
-      processData: false,
-      success: function(data) {
-          alert("Successfully added " + key);
-      },
-      error: function() {
-          alert("Cannot add duplicate keyword");
-      }
-  });
-});
-
-$("#btnGetKeywords").click(function() {
-  $(".getkeywords").empty();
-  // Display the current keywords form the DB
-  $.getJSON(
-      "http://www.chihuahuas.iriscouch.com/keywords/_all_docs?include_docs=true",
-      function(data) {
-          var keywords = [];
-          $.each(data.rows, function(key, val) {
-              // console.log(val.doc);
-              keywords.push(
-                  "<li class='keywords'>" +
-                  val.doc.keyword + "</li>"
-              );
-          });
-
-          $("<ul/>", {
-              "class": "listofkeywords",
-              html: keywords.join("")
-          }).appendTo(".getkeywords");
-      });
-});
-
-$("#btnDeleteKeyword").click(function() {
-  var key = $("#deletekeyword").val();
-  var rev = "";
-  $.getJSON("http://www.chihuahuas.iriscouch.com/keywords/" +
-      key, function(data) {
-          $.each(data, function(key, val) {
+        $("#btnDeleteKeyword").click(function () {
+          var key = $("#deletekeyword").val();
+          var rev = "";
+          $.getJSON("http://www.chihuahuas.iriscouch.com/keywords/" + key, function(data) {
+            $.each(data, function(key, val) {
               rev = data._rev;
           });
           $.ajax({
@@ -151,14 +152,12 @@ $("#btnDeleteKeyword").click(function() {
                   );
               }
           });
-      });
-});
+        });
 
-$("#btnStartCrawl").click(function() {
-    console.log("YAYs!");
-    $.post("crawlmanagement.py",
-            {action: "crawl"},
-            function(result) {
-                console.log(result);
-            });
-});
+        $("#btnTableSources").click(function () {
+            location.href="table.html";
+        });
+
+        $("#btnReturnIndex").click(function () {
+            location.href="index.html";
+        });

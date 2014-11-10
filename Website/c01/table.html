@@ -42,34 +42,26 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-    <div class="customline">
+    <div class="container">
         <h1>News Investigator</h1><br/>
-        <input type="text" name="source" class="custominput" id="inputsource" pattern="www\.[a-zA-Z0-9]{3,}\.[a-z]{2,3}" placeholder="Example: www.aljazeera.com" size="50"/>
-        <div class="btn btn-primary custombtn" href="#" id="btnAddSource">
-          Add Source
-        </div>
-        <button type="button" href="#collapse1" id="show-sources" class="btn btn-primary">Show Sources</button>
-        <div id="collapse1" style="display:none">
-        <div class="getsources"></div>
-        </div>
-        <input type="text" name="deletesource" class="custominput" id="deletesource" placeholder="Ex: www.aljazeera.com" size="30"/>
-        <div class="btn btn-primary custombtn" href="#" id="btnDeleteSource">
-          Delete Source
-        </div><br/><br/>
-        <input type="text" name="keyword" class="custominput" id="inputkeyword" pattern="[a-zA-Z0-9]+" placeholder="Example: Israel" size="50"/>
-        <div class="btn btn-primary custombtn" href="#" id="btnAddKeyword">
-          Add Keyword
-        </div>
-        <button type="button" href="#collapse2" id="show-keywords" class="btn btn-primary">Show Keywords</button>
-        <div id="collapse2" style="display:none">
-        <div class="getkeywords"></div>
-        </div>
-        <input type="text" name="deletekeyword" class="custominput" id="deletekeyword" placeholder="Ex: Israel" size="30"/>
-        <div class="btn btn-primary custombtn" href="#" id="btnDeleteKeyword">
-          Delete Keyword
-        </div>
-        <div></div><br>
-        <div class="btn btn-success" id="btnTableSources"><span class="glyphicon glyphicon-align-justify"></span> View Sources Table</div>
+
+        <table data-toggle="table" data-url="js/data1.json" data-height="399" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1">
+          <thead>
+          <tr>
+              <th data-field="title" data-align="center">Title</th>
+              <th data-field="link" data-align="center">Link</th>
+              <th data-field="hyperlink" data-align="center">Hyperlink</th>
+              <th data-field="quote" data-align="center">Quotes</th>
+              <th data-field="mention" data-align="center">Mentions</th>
+          </tr>
+          </thead>
+      </table>
+      <div></div><br>
+      <div class="btn btn-primary custombtn" href="#" id="btnReturnIndex">
+          Back to main page
+      </div>
+
+
     </div>
 
 
