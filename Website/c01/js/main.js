@@ -66,7 +66,7 @@
               sources.push("<li id='" + val.doc._id + "'>" + val.doc.url + "</li>");
             });
 
-          $("<ul/>", {
+            $("<ul/>", {
               "class": "listofsources",
               html: sources.join("")
             }).appendTo(".getsources");
@@ -88,16 +88,26 @@
           });
         };
 
-$("#btnDeleteSource").click(function() {
-  var source = $("#deletesource").val();
-  var id = source.substring(source.indexOf(".") + 1, source
-      .lastIndexOf("."));
-  var rev = "";
-  $.getJSON(
-      "http://www.chihuahuas.iriscouch.com/news_source/" +
-      id, function(data) {
-          $.each(data, function(key, val) {
+        $("#btnDeleteSource").click(function () {
+          var source = $("#deletesource").val();
+          var id = source.substring(source.indexOf(".") + 1, source.lastIndexOf("."));
+          var rev = "";
+          $.getJSON("http://www.chihuahuas.iriscouch.com/news_source/" + id, function(data) {
+            $.each(data, function(key, val) {
               rev = data._rev;
+            });
+            $.ajax({
+              type: "DELETE",
+              url: "http://www.chihuahuas.iriscouch.com/news_source/" + id + "?rev=" + rev,
+              dataType: "json",
+              contentType: "application/json",
+              success: function (data) {
+                alert("Successfully deleted " + source);
+              },
+              error: function(){
+                alert("ERROR: Cannot get keyword");
+              }
+            });
           });
         });
 
@@ -109,24 +119,20 @@ $("#btnDeleteSource").click(function() {
 	     return;
            }	
           $.ajax({
-              type: "DELETE",
-              url: "http://www.chihuahuas.iriscouch.com/news_source/" +
-                  id + "?rev=" + rev,
+              type: "POST",
+              url: "http://www.chihuahuas.iriscouch.com/keywords/",
               dataType: "json",
+              data: '{ "_id" : "' + key + '", "keyword" : "' + key + '" }',
               contentType: "application/json",
-              success: function(data) {
-                  alert(
-                      "Successfully deleted " +
-                      source);
+              processData: false,
+              success: function (data) {
+                alert("Successfully added " + key);
               },
-              error: function() {
-                  alert(
-                      "ERROR: Cannot get keyword"
-                  );
+              error: function(){
+                alert("Cannot add duplicate keyword");
               }
           });
-      });
-});
+        });
 
         $("#btnDeleteKeyword").click(function () {
           var key = $("#deletekeyword").val();
@@ -134,23 +140,19 @@ $("#btnDeleteSource").click(function() {
           $.getJSON("http://www.chihuahuas.iriscouch.com/keywords/" + key, function(data) {
             $.each(data, function(key, val) {
               rev = data._rev;
-          });
-          $.ajax({
+            });
+            $.ajax({
               type: "DELETE",
-              url: "http://www.chihuahuas.iriscouch.com/keywords/" +
-                  key + "?rev=" + rev,
+              url: "http://www.chihuahuas.iriscouch.com/keywords/" + key + "?rev=" + rev,
               dataType: "json",
               contentType: "application/json",
-              success: function(data) {
-                  alert(
-                      "Successfully deleted " +
-                      key);
+              success: function (data) {
+                alert("Successfully deleted " + key);
               },
-              error: function() {
-                  alert(
-                      "ERROR: Cannot get keyword"
-                  );
+              error: function(){
+                alert("ERROR: Cannot get keyword");
               }
+            });
           });
         });
 
@@ -161,3 +163,4 @@ $("#btnDeleteSource").click(function() {
         $("#btnReturnIndex").click(function () {
             location.href="index.html";
         });
+
