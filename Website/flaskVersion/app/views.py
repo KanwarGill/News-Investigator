@@ -82,6 +82,10 @@ def crawling():
 def start_crawl():
     return webcrawl()
     
+@app.route('/table')
+def view_table():
+    return render_template("table.html", title='Crawl Results')
+    
 if __name__ == "__main__":
     port = int(environ.get("PORT", 5000))
     app.run(host='localhost', port=port, debug=True)
