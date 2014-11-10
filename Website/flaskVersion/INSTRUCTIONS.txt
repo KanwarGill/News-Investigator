@@ -1,0 +1,32 @@
+How to start the back end
+-------------------------
+Requires the following installed:
+rabbitmq - the broker for celery
+celery - queue processing
+flask - backend
+scrapy - webcrawl
+couchdb - database
+
+Except for rabbitmq, the rest can be installed using:
+    pip install [celery | flask | scrapy | couchdb]
+rabbitmq can be installed from their webpage, and would also require Erlang.
+
+Instructions:
+1) Go to Website/flaskVersion/app and start celery by:
+    celery -A views.celery worker
+2) Open another terminal, head to the same location, and start flask by:
+    python views.py
+3) At this point the website should be available with the url:
+    http://localhost:5000
+4) Can try the following test pages:
+    http://localhost:5000/index
+        Main page
+    http://localhost:5000/test
+        Would start a task to add two numbers (16+16).
+        To view the results, take the id from the "goto" and head to:
+        http://localhost:5000/test/result/<Enter the id here>
+    http://localhost:5000/crawl
+        Should have a button that says start crawl.
+        Clicking on it will start the crawl, but nothing will be displayed to the user.
+        Checking the console, you can see that the task has started.
+        You can check the database to see the results.

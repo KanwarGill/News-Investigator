@@ -1,6 +1,3 @@
 *.pyc
 *.pyo
-app.db
-search.db
-flask
 
