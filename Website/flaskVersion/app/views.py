@@ -82,11 +82,6 @@ def crawling():
 def start_crawl():
     return webcrawl()
     
-@app.route("/result/<task_id>")
-def show_crwal_result(task_id):
-    retval = start_crawl.AsyncResult(task_id).get(timeout=1.0)
-    return repr(retval)
-    
 if __name__ == "__main__":
     port = int(environ.get("PORT", 5000))
     app.run(host='localhost', port=port, debug=True)
