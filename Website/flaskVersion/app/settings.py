@@ -1,4 +1,5 @@
 SECRET_KEY = 'not_a_secret'
 CELERY_BROKER_URL='amqp://guest@localhost'
 CELERY_RESULT_BACKEND='amqp://guest@localhost'
-COUCHDB_SERVER='www.chihuahuas.iriscouch.com'
+COUCHDB_SERVER = 'http://student:123@www.chihuahuas.iriscouch.com/'
+COUCHDB_DATABASE = 'results'

@@ -1,14 +1,11 @@
 from celery import Celery, task
 from crawl import webcrawl
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, g
 from flaskext.couchdb import CouchDBManager
 from os import path, environ
 
+import json
 import settings
-
-# Initialize the web application
-app = Flask(__name__)
-app.config.from_object(settings)
 
 def make_celery(app):
     '''Return a celery object, given the app'''
@@ -22,15 +19,17 @@ def make_celery(app):
                 return TaskBase.__call__(self, *args, **kwargs)
     celery.Task = ContextTask
     return celery
-    
+
+# Initialize the web application
+app = Flask(__name__)
+app.config.from_object(settings)
+
 # Create the celery task queue
 celery = make_celery(app)
 
-def make_db_manager(database):
-    manager = CouchDBManager()
-    COUCHDB_DATABASE = database
-    manager.setup(app)
-    return manager
+# Setup database
+manager = CouchDBManager()
+manager.setup(app)
 
 '''
 Celery tasks
@@ -93,9 +92,12 @@ def crawling_task():
 
 @app.route('/add_source', methods=['POST'])
 def add_source():
+    '''TODO: Does not work at the moment, need to reconfigure database'''
     id = request.args.get("id", id)
     source = request.args.get("url", source)
-    manager = make_db_manager('news_source')
+    app.config.update(
+        COUCHDB_DATABASE = 'news_source')
+    manager.setup(app)
     # Error checking here
     document = dict(_id=id, source=source)
     g.couch[id] = document
@@ -110,11 +112,24 @@ def add_keywords():
     
 def delete_keywords():
     pass
-    
+
+@app.route('/get_results', methods=['GET'])
 def get_results():
-    '''Return the results of the crawl.
-    Possibly save it as a JSON file in /static/js/data1.json'''
-    pass
+    '''Return the results of the crawl in a JSON object.'''
+    query = '''function(doc) {
+        if (doc.id) {
+            emit(doc.id, doc)
+        }
+    }
+    '''
+    results = []
+    for row in g.couch.query(query):
+        datarow = {
+            'title': row.value['title'],
+            'link': row.value['link'],
+            'date': row.value['date']}
+        results.append(datarow)
+    return json.dumps(results)
     
 if __name__ == "__main__":
     # Run the web app on localhost:5000
