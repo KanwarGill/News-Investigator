@@ -1,10 +1,10 @@
 
       $("#btnAddSource").click(function () {
-	       var urlRegex = new RegExp("^w{3}\.[a-zA-Z0-9]{2,}\.[a-z]{2,3}$");
+         var urlRegex = new RegExp("^w{3}\.[a-zA-Z0-9]{2,}\.[a-z]{2,3}$");
           var source = $("#inputsource").val();
            if (!urlRegex.test(source)) {
              alert("Please enter a valid url");
-	     return;
+       return;
            }
           var id = source.substring(source.indexOf(".") + 1, source.lastIndexOf("."));
           $.ajax({
@@ -71,7 +71,7 @@
               sources.push("<li id='" + val.doc._id + "'>" + val.doc.url + "</li>");
             });
 
-          $("<ul/>", {
+            $("<ul/>", {
               "class": "listofsources",
               html: sources.join("")
             }).appendTo(".getsources");
@@ -93,18 +93,13 @@
           });
         };
 
-$("#btnDeleteSource").click(function() {
-  var source = $("#deletesource").val();
-  var id = source.substring(source.indexOf(".") + 1, source
-      .lastIndexOf("."));
-  var rev = "";
-  $.getJSON(
-      "http://www.chihuahuas.iriscouch.com/news_source/" +
-      id, function(data) {
-          $.each(data, function(key, val) {
+        $("#btnDeleteSource").click(function () {
+          var source = $("#deletesource").val();
+          var id = source.substring(source.indexOf(".") + 1, source.lastIndexOf("."));
+          var rev = "";
+          $.getJSON("http://www.chihuahuas.iriscouch.com/news_source/" + id, function(data) {
+            $.each(data, function(key, val) {
               rev = data._rev;
-<<<<<<< HEAD
-=======
             });
             $.ajax({
               type: "DELETE",
@@ -120,35 +115,23 @@ $("#btnDeleteSource").click(function() {
                 location.reload();
               }
             });
->>>>>>> table_testing
           });
           
         });
 
         $("#btnAddKeyword").click(function () {
           var key = $("#inputkeyword").val();
-	         var keyRegex = new RegExp("^[a-zA-Z0-9]+$");
+           var keyRegex = new RegExp("^[a-zA-Z0-9]+$");
            if (!keyRegex.test(key)) {
              alert("Please enter an alphanumeric keyword");
-	     return;
-           }	
+       return;
+           }  
           $.ajax({
-              type: "DELETE",
-              url: "http://www.chihuahuas.iriscouch.com/news_source/" +
-                  id + "?rev=" + rev,
+              type: "POST",
+              url: "http://www.chihuahuas.iriscouch.com/keywords/",
               dataType: "json",
+              data: '{ "_id" : "' + key + '", "keyword" : "' + key + '" }',
               contentType: "application/json",
-<<<<<<< HEAD
-              success: function(data) {
-                  alert(
-                      "Successfully deleted " +
-                      source);
-              },
-              error: function() {
-                  alert(
-                      "ERROR: Cannot get keyword"
-                  );
-=======
               processData: false,
               success: function (data) {
                 alert("Successfully added " + key);
@@ -157,11 +140,9 @@ $("#btnDeleteSource").click(function() {
               error: function(){
                 alert("Cannot add duplicate keyword");
                 location.reload();
->>>>>>> table_testing
               }
           });
-      });
-});
+        });
 
         $("#btnDeleteKeyword").click(function () {
           var key = $("#deletekeyword").val();
@@ -169,24 +150,12 @@ $("#btnDeleteSource").click(function() {
           $.getJSON("http://www.chihuahuas.iriscouch.com/keywords/" + key, function(data) {
             $.each(data, function(key, val) {
               rev = data._rev;
-          });
-          $.ajax({
+            });
+            $.ajax({
               type: "DELETE",
-              url: "http://www.chihuahuas.iriscouch.com/keywords/" +
-                  key + "?rev=" + rev,
+              url: "http://www.chihuahuas.iriscouch.com/keywords/" + key + "?rev=" + rev,
               dataType: "json",
               contentType: "application/json",
-<<<<<<< HEAD
-              success: function(data) {
-                  alert(
-                      "Successfully deleted " +
-                      key);
-              },
-              error: function() {
-                  alert(
-                      "ERROR: Cannot get keyword"
-                  );
-=======
               success: function (data) {
                 alert("Successfully deleted " + key);
                 location.reload();
@@ -194,8 +163,8 @@ $("#btnDeleteSource").click(function() {
               error: function(){
                 alert("ERROR: Cannot get keyword");
                 location.reload();
->>>>>>> table_testing
               }
+            });
           });
         });
 
