@@ -32,10 +32,11 @@
         $(collapse_content_selector).toggle(function(){
           if($(this).css('display')=='none'){
           //change the button label to be 'Show'
-          toggle_switch.html('Show Sources');
+			getSources();
+			toggle_switch.html('Show Sources');
           }else{
           //change the button label to be 'Hide'
-          toggle_switch.html('Hide Sources');
+			toggle_switch.html('Hide Sources');
           }
         });
       });
@@ -50,6 +51,7 @@
         $(collapse_content_selector).toggle(function(){
           if($(this).css('display')=='none'){
           //change the button label to be 'Show'
+		  getKeywords();
           toggle_switch.html('Show Keywords');
           }else{
           //change the button label to be 'Hide'
@@ -68,6 +70,7 @@
 			$(collapse_content_selector).toggle(function(){
 				if($(this).css('display')=='none'){
 					//change the button label to be 'Show'
+					getHandles();
 					toggle_switch.html('Show Handles');
 				}else{
 					//change the button label to be 'Hide'
@@ -76,48 +79,58 @@
 			});
 		});
 
-      window.onload = function() {
-        $(".getsources").empty();
-        $.getJSON("http://www.chihuahuas.iriscouch.com/news_source/_all_docs?include_docs=true", function(data) {
-            var sources = [];
-            $.each(data.rows, function(key, val) {
-              sources.push("<li id='" + val.doc._id + "'>" + val.doc.url + "</li>");
-            });
+		function getSources(){
+			$(".getsources").empty();
+			$.getJSON("http://www.chihuahuas.iriscouch.com/news_source/_all_docs?include_docs=true", function(data) {
+				var sources = [];
+				$.each(data.rows, function(key, val) {
+				  sources.push("<li class='sources'>" + val.doc.url + "</li>");
+				});
 
-            $("<ul/>", {
-              "class": "listofsources",
-              html: sources.join("")
-            }).appendTo(".getsources");
-          });
-
-        $(".getkeywords").empty();
-          // Display the current keywords form the DB
-          $.getJSON("http://www.chihuahuas.iriscouch.com/keywords/_all_docs?include_docs=true", function(data) {
-            var keywords = [];
-            $.each(data.rows, function(key, val) {
-              // console.log(val.doc);
-              keywords.push("<li class='keywords'>" + val.doc.keyword + "</li>");
-            });
-
-            $("<ul/>", {
-              "class": "listofkeywords",
-              html: keywords.join("")
-            }).appendTo(".getkeywords");
-          });
-		 
-		$(".gethandles").empty();
-		$.getJSON("http://www.chihuahuas.iriscouch.com/handles/_all_docs?include_docs=true", function(data) {
-			var handles = [];
-            $.each(data.rows, function(key, val) {
-			  handles.push("<li class='handles'>" + val.doc.handle + "</li>");
-            });
-			
-			$("<ul/>", {
-				"class": "listofhandles",
-				html: handles.join("")
-			}).appendTo(".gethandles");
+				$("<ul/>", {
+				  "class": "listofsources",
+				  html: sources.join("")
+				}).appendTo(".getsources");
 			});
-        };
+		};
+		
+		function getKeywords(){
+			$(".getkeywords").empty();
+			  // Display the current keywords form the DB
+			$.getJSON("http://www.chihuahuas.iriscouch.com/keywords/_all_docs?include_docs=true", function(data) {
+				var keywords = [];
+				$.each(data.rows, function(key, val) {
+				  // console.log(val.doc);
+				  keywords.push("<li class='keywords'>" + val.doc.keyword + "</li>");
+				});
+
+				$("<ul/>", {
+				  "class": "listofkeywords",
+				  html: keywords.join("")
+				}).appendTo(".getkeywords");
+			});
+		};
+		
+		function getHandles(){
+			$(".gethandles").empty();
+			$.getJSON("http://www.chihuahuas.iriscouch.com/handles/_all_docs?include_docs=true", function(data) {
+				var handles = [];
+				$.each(data.rows, function(key, val) {
+					handles.push("<li class='handles'>" + val.doc.handle + "</li>");
+				});
+				
+				$("<ul/>", {
+					"class": "listofhandles",
+					html: handles.join("")
+				}).appendTo(".gethandles");
+			});
+		};
+		
+		window.onload = function() {
+			getSources();
+			getKeywords();
+			getHandles();
+		};
 
         $("#btnDeleteSource").click(function () {
           var source = $("#deletesource").val();
@@ -136,10 +149,10 @@
                 alert("Successfully deleted " + source);
               },
               error: function(){
-                alert("ERROR: Cannot get keyword");
+                alert("ERROR: Cannot get Source URL");
               }
             });
-          });
+          }).error(function(){alert("ERROR: Source URL not in database");});
         });
 
         $("#btnAddKeyword").click(function () {
@@ -184,7 +197,7 @@
                 alert("ERROR: Cannot get keyword");
               }
             });
-          });
+          }).error(function(){alert("ERROR: Keyword not in database");});
         });
 
         $("#btnTableSources").click(function () {
@@ -241,5 +254,5 @@
 						alert("ERROR: cannot get twitter handle");
 					}
 				});
-			});
+			}).error(function(){alert("ERROR: twitter handle not in database");});
 		});
