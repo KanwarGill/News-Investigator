@@ -112,7 +112,7 @@
 			  handles.push("<li class='handles'>" + val.doc.handle + "</li>");
             });
 			
-			$("ul/>", {
+			$("<ul/>", {
 				"class": "listofhandles",
 				html: handles.join("")
 			}).appendTo(".gethandles");
