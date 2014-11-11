@@ -1,0 +1,38 @@
+Meeting Minutes
+November 10th
+Members Present: Vinicius, Kenny, Kanwar, Samson
+------------------------------------------------
+
+Things currently being done:
+Samson -> Backend migration, unit testing (Flask branch)
+Kenny -> Twitter (Branch from Flask or use Flask branch)
+Kanwar, Vinicius -> Testing (Testing branch)
+Carlos -> Encrypt (Branch from Flask or use Flask branch)
+    Save the passwords to the database encrypted, and compare the encrypted values
+
+Code review schedule:
+Kanwar -> Samson (Flask backend code)
+Vinicius -> Carlos (Regex/Encrypt passwords)
+Kenny -> Vinicius (HTML code)
+Samson -> Kanwar (Pipeline code)
+Carlos -> Kenny (Login (Ajax+HTML) OR Twitter)
+
+Checklist should have:
+0) Code description + Person who wrote the code + Time of inspection (OR name of commit)
+1) Quality of documentation
+2) Coding style
+3) Follows appropriate coding guidelines
+4) Quality of testing
+5) Correctness
+Need to be done by Wednesday
+
+Video of code review: Wednesday at 1pm
+
+Branches:
+Do not use loginAction branch; use flask branch instead
+
+Burndown chart needs to reflect current release plan; may need to use Excel.
+
+Next meeting: Wednesday at 1pm to do code inspection CMS Offices (Red chairs)
+
+
