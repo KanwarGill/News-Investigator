@@ -1,3 +1,4 @@
+
       $("#btnAddSource").click(function () {
 	       var urlRegex = new RegExp("^w{3}\.[a-zA-Z0-9]{2,}\.[a-z]{2,3}$");
           var source = $("#inputsource").val();
@@ -15,14 +16,17 @@
               processData: false,
               success: function (data) {
                 alert("Successfully added " + source);
+                location.reload();
               },
               error: function(){
                 alert("Cannot add duplicate news source");
+                location.reload();
               }
           });
         });
 
       $('#show-sources').on('click', function () {
+
       //get collapse content selector
       var collapse_content_selector = $(this).attr('href');         
  
@@ -41,6 +45,7 @@
       });
 
       $('#show-keywords').on('click', function () {
+        
       //get collapse content selector
       var collapse_content_selector = $(this).attr('href');         
 
@@ -103,12 +108,15 @@
               contentType: "application/json",
               success: function (data) {
                 alert("Successfully deleted " + source);
+                location.reload();
               },
               error: function(){
                 alert("ERROR: Cannot get keyword");
+                location.reload();
               }
             });
           });
+          
         });
 
         $("#btnAddKeyword").click(function () {
@@ -127,9 +135,11 @@
               processData: false,
               success: function (data) {
                 alert("Successfully added " + key);
+                location.reload();
               },
               error: function(){
                 alert("Cannot add duplicate keyword");
+                location.reload();
               }
           });
         });
@@ -148,9 +158,11 @@
               contentType: "application/json",
               success: function (data) {
                 alert("Successfully deleted " + key);
+                location.reload();
               },
               error: function(){
                 alert("ERROR: Cannot get keyword");
+                location.reload();
               }
             });
           });
@@ -163,3 +175,4 @@
         $("#btnReturnIndex").click(function () {
             location.href="index.html";
         });
+
