@@ -68,7 +68,19 @@
         <div class="btn btn-primary custombtn" href="#" id="btnDeleteKeyword">
           Delete Keyword
         </div>
-        <div></div><br>
+		<input type="text" name="twitterhandle" class="custominput" id="inputtwitterhandle" pattern="^@[a-zA-Z0-9_]{1,15}$" placeholder="Example: @Bob" size="50"/>
+        <div class="btn btn-primary custombtn" href="#" id="btnAddHandle">
+          Add Twitter Handle
+        </div>
+        <button type="button" href="#collapse3" id="show-handles" class="btn btn-primary">Show Twitter Handles</button>
+        <div id="collapse3" style="display:none">
+        <div class="gethandles"></div>
+        </div>
+        <input type="text" name="deletehandle" class="custominput" id="deletetwitterhandle" placeholder="Ex: @Bob" size="30"/>
+        <div class="btn btn-primary custombtn" href="#" id="btnDeleteHandle">
+          Delete Twitter Handle
+        </div>
+		<div></div><br>
         <div class="btn btn-success" id="btnTableSources"><span class="glyphicon glyphicon-align-justify"></span> View Sources Table</div>
     </div>
 

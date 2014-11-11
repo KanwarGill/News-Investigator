@@ -58,23 +58,7 @@
         });
       });
 	  
-	  $('#show-handles').click(function () {
-			//get collapse content selector
-			var collapse_content_selector = $(this).attr('href');         
-
-			//make the collapse content to be shown or hide
-			var toggle_switch = $(this);
-
-			$(collapse_content_selector).toggle(function(){
-				if($(this).css('display')=='none'){
-					//change the button label to be 'Show'
-					toggle_switch.html('Show Handles');
-				}else{
-					//change the button label to be 'Hide'
-					toggle_switch.html('Hide Handles');
-				}
-			});
-		});
+	  $(
 
       window.onload = function() {
         $(".getsources").empty();
@@ -109,12 +93,12 @@
 		$.getJSON("http://www.chihuahuas.iriscouch.com/handles/_all_docs?include_docs=true", function(data) {
 			var handles = [];
             $.each(data.rows, function(key, val) {
-			  handles.push("<li class='handles'>" + val.doc.handle + "</li>");
+			  handles.push("<li id='" + val.doc._id + "'>" + val.doc.handle + "</li>");
             });
 			
 			$("ul/>", {
 				"class": "listofhandles",
-				html: handles.join("")
+					html: handles.join("")
 			}).appendTo(".gethandles");
 			});
         };
@@ -197,48 +181,64 @@
 		
 	
 
-		$("#btnAddHandle").click(function () {
+		$('#btnAddHandle').click(function () {
 			var handleRegex = new RegExp("^@{1}[a-zA-Z0-9_]{1,15}$");
 			var handle = $("#inputtwitterhandle").val();
 			if (!handleRegex.test(handle)) {
 				alert("Please enter a valid twitter handle");
 				return;
 			}
-			var id = handle.substring(handle.indexOf("@") + 1);
 			$.ajax({
-				type: "POST",
-				url: "http://www.chihuahuas.iriscouch.com/handles",
-				dataType: "json",
-				data: '{ "_id" : "' + id + '", "handle": "' + handle + '" }',
-				contentType: "application/json",
-				processData: false,
-				success: function (data) {
-					alert("Successfully added " + handle);
-				},
-				error: function(){
-					alert("Cannot add twitter handle");
+              type: "POST",
+              url: "http://www.chihuahuas.iriscouch.com/handles",
+              dataType: "json",
+              data: '{ "_id" : "' + handle + '", "handle": "' + handle + '" }',
+              contentType: "application/json",
+              processData: false,
+              success: function (data) {
+                alert("Successfully added " + handle);
+              },
+              error: function(){
+                alert("Cannot add twitter handle");
+              }
+          });
+		});
+		
+		$('#show-handles').click(function () {
+			//get collapse content selector
+			var collapse_content_selector = $(this).attr('href');         
+
+			//make the collapse content to be shown or hide
+			var toggle_switch = $(this);
+
+			$(collapse_content_selector).toggle(function(){
+				if($(this).css('display')=='none'){
+					//change the button label to be 'Show'
+					toggle_switch.html('Show Handles');
+				}else{
+					//change the button label to be 'Hide'
+					toggle_switch.html('Hide Handles');
 				}
 			});
 		});
 		
-		$("#btnDeleteHandle").click(function () {
+		$('#btnDeleteHandle').click(function () {
 			var handle = $("#deletetwitterhandle").val();
 			var rev = "";
-			var id = handle.substring(handle.indexOf("@") + 1);
-			$.getJSON("http://www.chihuahuas.iriscouch.com/handles/" + id, function(data) {
+			$.getJSON("http://www.chihuahuas.iriscouch.com/handles/" + handle, function(data) {
 				$.each(data, function(key, val) {
 					rev = data._rev;
 				});
 				$.ajax({
 					type: "DELETE",
-					url: "http://www.chihuahuas.iriscouch.com/handles/" + id + "?rev=" + rev,
+					url: "http://www.chihuahuas.iriscouch.com/handles/" + handle + "?rev=" + rev,
 					dataType: "json",
 					contentType: "application/json",
 					success: function (data) {
 						alert("Successfully deleted " + handle);
 					},
 					error: function(){
-						alert("ERROR: cannot get twitter handle");
+						alert("Cannot find twitter handle");
 					}
 				});
 			});
