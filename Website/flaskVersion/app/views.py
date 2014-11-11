@@ -96,11 +96,11 @@ def add_source():
     id = request.args.get("id", id)
     source = request.args.get("url", source)
     manager = make_db_manager('news_source')
+    # Error checking here
     document = dict(_id=id, source=source)
     g.couch[id] = document
     g.couch.save(document)
     return jsonify(id=id, source=source, result="good")
-    
     
 def delete_source():
     pass
@@ -109,6 +109,11 @@ def add_keywords():
     pass
     
 def delete_keywords():
+    pass
+    
+def get_results():
+    '''Return the results of the crawl.
+    Possibly save it as a JSON file in /static/js/data1.json'''
     pass
     
 if __name__ == "__main__":
