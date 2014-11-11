@@ -149,10 +149,10 @@
                 alert("Successfully deleted " + source);
               },
               error: function(){
-                alert("ERROR: Cannot get keyword");
+                alert("ERROR: Cannot get Source URL");
               }
             });
-          });
+          }).error(function(){alert("ERROR: Source URL not in database");});
         });
 
         $("#btnAddKeyword").click(function () {
@@ -197,7 +197,7 @@
                 alert("ERROR: Cannot get keyword");
               }
             });
-          });
+          }).error(function(){alert("ERROR: Keyword not in database");});
         });
 
         $("#btnTableSources").click(function () {
@@ -254,5 +254,5 @@
 						alert("ERROR: cannot get twitter handle");
 					}
 				});
-			});
+			}).error(function(){alert("ERROR: twitter handle not in database");});
 		});
