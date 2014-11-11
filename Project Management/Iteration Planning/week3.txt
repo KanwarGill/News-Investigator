@@ -1,0 +1,39 @@
+BP stands for Business Priority
+DD stands for Developer Days
+
+BP1, then, means Business priority 1 for example.
+
+Iteration 3: Oct 17 - Oct 23
+===============================================================================
+Project Velocity from Iteration 2: 8
+
+User stories implemented in this iteration:
+
+User Story #9: As Alejandro (a researcher), I want to see all the hyperlinks to other news sources for a particular article, so that I can better understand the relationships.
+Acceptance criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a hyperlink will be shown. 
+Business priority: 1
+Developer days estimate: 5
+
+Tasks for this user story:
+1) Add the source/keyowrds information to Scrapy from CouchDB (Kanwar) [DD1] -- Marked done on Oct 28
+2) Grab results from scrapy (Samson) [DD1]
+3) Save the results to the database (Kanwar) [DD1] -- Done on Oct 28
+4) Look for the hyperlinks in the source using regex (Vinicius) [DD1]
+5.1) Show the results of scrapy on the website in a table (Vinicius) [DD1]
+5.2) Perform testing (Kenny) [DD 0.5]
+
+Total: 5.5
+
+User Story #10: As Alejandro (a researcher), I want to see all the quotes in a particular article, so that I can better understand the relationships.
+Acceptance criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a quote will be shown.
+Business priority: 2
+Developer days estimate: 5
+
+Tasks for this user story:
+1) Look for the quotes in the source using regex (Vinicius) [DD1]
+3) Perform testing (Kenny) [DD 0.5]
+
+Total: 1.5
+
+Project Velocity: 7
+
