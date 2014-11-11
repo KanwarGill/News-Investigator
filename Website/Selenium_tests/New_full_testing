@@ -8,10 +8,10 @@
 <body>
 <table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
 <tr><td><b>Test Suite</b></td></tr>
-<tr><td><a href="Selenium_basic_testing">Basic site walkthrough</a></td></tr>
-<tr><td><a href="test_full">Show Sources</a></td></tr>
-<tr><td><a href="1">Add a single source</a></td></tr>
-<tr><td><a href="Selenium_Testing">Add a single keyword</a></td></tr>
+<tr><td><a href="basic_site_walkthough">Basic site walkthrough</a></td></tr>
+<tr><td><a href="show_sources">Show Sources</a></td></tr>
+<tr><td><a href="add_single_source">Add a single source</a></td></tr>
+<tr><td><a href="add_single_keyword">Add a single keyword</a></td></tr>
 </tbody></table>
 </body>
 </html>
