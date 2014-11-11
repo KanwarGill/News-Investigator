@@ -1,0 +1,8 @@
+Steps to run the tests:
+
+1)Open the website in Firefox
+2)Open the Selenium IDE
+3)Change the path to your local website folder in the test case files (e.g. <td>/webapp/c01/index.html</td>)
+4)Load the file "New_full_testing" into the Selenium IDE under "Open Test Suite"
+6)Slow down the Selenium speed, otherwise it will faild the test for clicking too fast
+5)Run the the full test suite
