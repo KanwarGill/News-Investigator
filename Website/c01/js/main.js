@@ -1,3 +1,4 @@
+
       $("#btnAddSource").click(function () {
 	       var urlRegex = new RegExp("^w{3}\.[a-zA-Z0-9]{2,}\.[a-z]{2,3}$");
           var source = $("#inputsource").val();
@@ -15,14 +16,17 @@
               processData: false,
               success: function (data) {
                 alert("Successfully added " + source);
+                location.reload();
               },
               error: function(){
                 alert("Cannot add duplicate news source");
+                location.reload();
               }
           });
         });
 
       $('#show-sources').on('click', function () {
+
       //get collapse content selector
       var collapse_content_selector = $(this).attr('href');         
  
@@ -41,6 +45,7 @@
       });
 
       $('#show-keywords').on('click', function () {
+        
       //get collapse content selector
       var collapse_content_selector = $(this).attr('href');         
 
@@ -98,7 +103,26 @@ $("#btnDeleteSource").click(function() {
       id, function(data) {
           $.each(data, function(key, val) {
               rev = data._rev;
+<<<<<<< HEAD
+=======
+            });
+            $.ajax({
+              type: "DELETE",
+              url: "http://www.chihuahuas.iriscouch.com/news_source/" + id + "?rev=" + rev,
+              dataType: "json",
+              contentType: "application/json",
+              success: function (data) {
+                alert("Successfully deleted " + source);
+                location.reload();
+              },
+              error: function(){
+                alert("ERROR: Cannot get keyword");
+                location.reload();
+              }
+            });
+>>>>>>> table_testing
           });
+          
         });
 
         $("#btnAddKeyword").click(function () {
@@ -114,6 +138,7 @@ $("#btnDeleteSource").click(function() {
                   id + "?rev=" + rev,
               dataType: "json",
               contentType: "application/json",
+<<<<<<< HEAD
               success: function(data) {
                   alert(
                       "Successfully deleted " +
@@ -123,6 +148,16 @@ $("#btnDeleteSource").click(function() {
                   alert(
                       "ERROR: Cannot get keyword"
                   );
+=======
+              processData: false,
+              success: function (data) {
+                alert("Successfully added " + key);
+                location.reload();
+              },
+              error: function(){
+                alert("Cannot add duplicate keyword");
+                location.reload();
+>>>>>>> table_testing
               }
           });
       });
@@ -141,6 +176,7 @@ $("#btnDeleteSource").click(function() {
                   key + "?rev=" + rev,
               dataType: "json",
               contentType: "application/json",
+<<<<<<< HEAD
               success: function(data) {
                   alert(
                       "Successfully deleted " +
@@ -150,6 +186,15 @@ $("#btnDeleteSource").click(function() {
                   alert(
                       "ERROR: Cannot get keyword"
                   );
+=======
+              success: function (data) {
+                alert("Successfully deleted " + key);
+                location.reload();
+              },
+              error: function(){
+                alert("ERROR: Cannot get keyword");
+                location.reload();
+>>>>>>> table_testing
               }
           });
         });
@@ -161,3 +206,4 @@ $("#btnDeleteSource").click(function() {
         $("#btnReturnIndex").click(function () {
             location.href="index.html";
         });
+
