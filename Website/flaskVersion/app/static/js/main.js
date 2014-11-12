@@ -23,6 +23,7 @@ $("#btnAddSource").click(function() {
 });
 
 $('#show-sources').on('click', function() {
+    console.log("Hello");
     //get collapse content selector
     var collapse_content_selector = $(this).attr('href');
 

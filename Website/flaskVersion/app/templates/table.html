@@ -21,7 +21,9 @@
   </a>
 </div>
 -->
-<table id="results-table"></table>
+<div class="results-table-container">
+    <table id="results-table"></table>
+</div>
 <script>
     // Generate the results table using Bootstrap Table
     $(function () {
@@ -29,7 +31,7 @@
             method: 'get',
             url: '/get_results',
             cache: false,
-            height: 400,
+            height: 1000,
             striped: true,
             pagination: true,
             pageSize: 50,
