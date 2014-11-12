@@ -12,6 +12,8 @@
 <tr><td><a href="show_sources">Show Sources</a></td></tr>
 <tr><td><a href="add_single_source">Add a single source</a></td></tr>
 <tr><td><a href="add_single_keyword">Add a single keyword</a></td></tr>
+<tr><td><a href="delete_source">Delete source</a></td></tr>
+<tr><td><a href="delete_keyword">Delete keyword</a></td></tr>
 </tbody></table>
 </body>
 </html>
