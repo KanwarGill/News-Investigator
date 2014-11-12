@@ -156,5 +156,7 @@ def retrieve_results(query):
  
 if __name__ == "__main__":
     # Run the web app on localhost:5000
-    port = int(environ.get("PORT", 5000))
-    app.run(host='localhost', port=port, debug=True)
+    port = int(environ.get("PORT", 5235))
+    #app.run(host='mathlab.utsc.utoronto.ca', port=port, debug=True)
+    # Not fixing the host name makes it run a bit better on mathlab
+    app.run(port=port, debug=True)
