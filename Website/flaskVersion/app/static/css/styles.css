@@ -7,6 +7,10 @@
     margin-left: 5px;
 }
 
+.btn-success{
+    margin-left: 20px;
+}
+
 .customline{
     margin-left: 10px;
     float: left;
@@ -48,7 +52,6 @@
     height:40px;
     font-size:12pt;
 }
-}
 
 .getsources{
 	margin-top: 10px;
@@ -57,3 +60,8 @@
 .getkeywords{
 	margin-top: 10px;
 }
+
+.results-table-container{
+    margin-left: 20px;
+    margin-right: 20px;
+{

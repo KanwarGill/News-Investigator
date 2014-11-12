@@ -42,7 +42,7 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-    <div class="customline">
+    <div class="sources1">
         <h1>News Investigator</h1><br/>
         <input type="text" name="source" class="custominput" id="inputsource" pattern="www\.[a-zA-Z0-9]{3,}\.[a-z]{2,3}" placeholder="Example: www.aljazeera.com" size="50"/>
         <div class="btn btn-primary custombtn" href="#" id="btnAddSource">
@@ -52,10 +52,14 @@
         <div id="collapse1" style="display:none">
         <div class="getsources"></div>
         </div>
+	</div>
+	<div class="sources2">
         <input type="text" name="deletesource" class="custominput" id="deletesource" placeholder="Ex: www.aljazeera.com" size="30"/>
         <div class="btn btn-primary custombtn" href="#" id="btnDeleteSource">
           Delete Source
-        </div><br/><br/>
+        </div>
+	</div>
+	<div class="keywords1">
         <input type="text" name="keyword" class="custominput" id="inputkeyword" pattern="[a-zA-Z0-9]+" placeholder="Example: Israel" size="50"/>
         <div class="btn btn-primary custombtn" href="#" id="btnAddKeyword">
           Add Keyword
@@ -64,11 +68,29 @@
         <div id="collapse2" style="display:none">
         <div class="getkeywords"></div>
         </div>
+	</div>
+	<div class="keywords2">
         <input type="text" name="deletekeyword" class="custominput" id="deletekeyword" placeholder="Ex: Israel" size="30"/>
         <div class="btn btn-primary custombtn" href="#" id="btnDeleteKeyword">
           Delete Keyword
         </div>
-        <div></div><br>
+	</div>
+	<div class="handles1">
+		<input type="text" name="twitterhandle" class="custominput" id="inputtwitterhandle" pattern="^@[a-zA-Z0-9_]{1,15}$" placeholder="Example: @Bob" size="50"/>
+        <div class="btn btn-primary custombtn" href="#" id="btnAddHandle">
+          Add Twitter Handle
+        </div>
+        <button type="button" href="#collapse3" id="show-handles" class="btn btn-primary">Show Twitter Handles</button>
+        <div id="collapse3" style="display:none">
+        <div class="gethandles"></div>
+        </div>
+	</div>
+	<div class="handles2">
+        <input type="text" name="deletehandle" class="custominput" id="deletetwitterhandle" placeholder="Ex: @Bob" size="30"/>
+        <div class="btn btn-primary custombtn" href="#" id="btnDeleteHandle">
+          Delete Twitter Handle
+        </div>
+		<div></div><br>
         <div class="btn btn-success" id="btnTableSources"><span class="glyphicon glyphicon-align-justify"></span> View Sources Table</div>
     </div>
 
@@ -79,5 +101,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="js/bootstrap-table.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/test.js"></script>
   </body>
 </html>
