@@ -1,0 +1,21 @@
+CODE REVIEW
+--------------------------
+Code: team16-project/Website/c01/signup.html [master branch]
+Code Written By: Vinicius
+Commit: 718d249e0d22d85045a2be74ced1f9ae99982f83 [Nov 3, 2014]
+Inspection By: Kenny
+Inspection Date: November 13th
+--------------------------
+1) Correctness
+	- Generally looks good.
+	- file runs.
+	- file works/looks as expected when run.
+2) Coding style/guidelines
+	- naming of buttons and text fields makes sense.
+	- proper indentation of code.
+	- no unnecessary blank lines.
+3) Quality of documentation
+	- file is sufficiently commented.
+	- buttons and text fields uncommented however their intuitive naming makes up for it.
+4) Quality of testing
+	- ?Its a html file.
