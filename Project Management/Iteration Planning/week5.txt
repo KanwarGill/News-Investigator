@@ -6,8 +6,9 @@ US stands for User Story
 
 BP1, then, means Business priority 1 for example.
 
-Iteration 5: Oct 31 - Oct Nov 6
+Iteration 5: Oct 31 - Nov 6
 ===============================================================================
+
 Project Velocity from Iteration 4: TBD
 
 Tasks from Iteration 4:

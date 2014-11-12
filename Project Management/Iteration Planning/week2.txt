@@ -1,0 +1,42 @@
+Legend:
+
+BP stands for Business Priority
+DD stands for Developer Days
+
+BP1, then, means Business priority 1 for example.
+
+Iteration 2: Oct 10 - Oct 16
+===============================================================================
+
+Project Velocity: 6 + 2(previous iteration) = 8
+
+Tasks from previous iteration:
+1) Add action for the add source/get sources button so that it saves information in database (Kanwar) [PD2]
+2) Add action for the add keyword/get keywords button so that it saves information in database (Kanwar) [PD2]
+
+User Stories implemented in this iteration:
+
+User Story #8 (#8.1 and #8.2) [BP1 DD4]:
+As Alejandro (a researcher), I want to be able to see all the articles from a news source with the given keywords, so that I can better quantify my research.
+As Alex (a grad student), I want to be able to see all the articles from a news source with the given keywords, so that I can better quantify my research. 
+
+Tasks for this user story:
+1) Use the Scrapy library to get the information (link and title) from a website and store the results in a json file (Samson) [PD4]
+Total: PD4
+
+
+User Story #13 (#13.1 and #13.2) [BP1 DD2]: 
+As Alejandro (a researcher), I want to save the results of the web crawl to a database, so that I can access the data at a later date and provide more data for the librarian to extract. 
+As Alex (a grad student), I want to save the results of the web crawl to a database, so that I can access the data at a later date and provide more data for the librarian to extract.
+
+Tasks for this user story:
+1) Using that json file save it in the database in a new table (Kanwar) [PD1]
+2) Display the information in the front-end using CouchDB's HTTP API (Kenny) [PD1]
+Total: PD2
+
+User Story #7 [BP3 DD1]:
+As Alejandro (a researcher), I want to be able to delete the sources and keywords monitored by the program, so that I can exclude irrelevant news sources.
+
+Tasks for this user story:
+1) Add action for the delete keyword and delete source (Kanwar)[PD1] 
+Total: PD1

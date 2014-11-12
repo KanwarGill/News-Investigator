@@ -1,0 +1,10 @@
+Legend:
+
+BP stands for Business Priority
+DD stands for Developer Days
+US stands for User Story
+
+BP1, then, means Business priority 1 for example.
+
+Iteration 5: Nov 7 - Nov 13
+===============================================================================
