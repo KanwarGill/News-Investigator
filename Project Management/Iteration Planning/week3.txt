@@ -1,3 +1,5 @@
+Legend:
+
 BP stands for Business Priority
 DD stands for Developer Days
 
@@ -6,6 +8,9 @@ BP1, then, means Business priority 1 for example.
 Iteration 3: Oct 17 - Oct 23
 ===============================================================================
 Project Velocity from Iteration 2: 8
+
+Tasks from Iteration 2: TBD
+
 
 User stories implemented in this iteration:
 

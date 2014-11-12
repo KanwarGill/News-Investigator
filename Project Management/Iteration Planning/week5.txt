@@ -1,0 +1,38 @@
+Legend:
+
+BP stands for Business Priority
+DD stands for Developer Days
+US stands for User Story
+
+BP1, then, means Business priority 1 for example.
+
+Iteration 5: Oct 31 - Oct Nov 6
+===============================================================================
+Project Velocity from Iteration 4: TBD
+
+Tasks from Iteration 4:
+1) [US3] Create a signup page (Kenny) [DD 0.5]
+2) [US3] Save the information to the Database (Kenny) [DD1]
+3) [US4] Create a login page (Kenny) [DD 0.5]
+3) [US4] Ajax call to the database to retrieve the username  (Kenny) [DD 0.5] 
+4) [US4] Re-direct to main page after correct password (Kenny) [DD 0.5]
+5) [US4] Hide the passwords for login and signup page (Carlos) [DD1] -- moved to Iteration 6
+6) [US11] Create regex for mentions (Carlos) [DD3] -- moved to Iteration 6
+7) [US11] Include the regex for mentions in the crawler (Kanwar) [DD 0.5] -- moved to Iteration 6
+8) [US11] Show the mentions for each article in the table (Kanwar) [DD 0.5] -- moved to Iteration 6
+
+Total: 9
+
+User stories implemented in this iteration:
+
+User Story #14: As Alejandro (a researcher), I want to see the results of the web crawl in a table, so that I obtain an overall status/general report.
+ - user story can also pertain the grad student as well
+Acceptance criteria: After logging in, click display data button to display the contents of the database in table format.
+Business priority: 2
+Developer days estimate: 4
+
+Tasks for this user story:
+1) Implement a table in bootsrap (Vinicius) [DD1]
+2) Include the results from the crawl in the table (Samson) [DD3] -- moved to Iteration 6
+
+Total: 4 DD
