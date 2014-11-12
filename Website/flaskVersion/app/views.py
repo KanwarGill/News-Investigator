@@ -129,9 +129,9 @@ def get_results():
     q_results = retrieve_results(query)
     for row in q_results:
         # get all the hyperlinks
-        hyperlinks = re.findall(r'<a[^>]* href="([^"]*)"', row.value[source])
+        hyperlinks = re.findall(r'<a[^>]* href="([^"]*)"', row.value['source'])
         # get all the quotes
-        quotes = re.findall(r'"(?:[^"\\]|\\.)*"', row.value[source])
+        quotes = re.findall(r'"(?:[^"\\]|\\.)*"', row.value['source'])
         quotes_modified = []
         # modify the quotes to remove false positives
         for i in range(len(quotes)):
@@ -153,7 +153,7 @@ def get_results():
 def retrieve_results(query):
     '''Return the results of the query from the database.'''
     return g.couch.query(query)
-        
+ 
 if __name__ == "__main__":
     # Run the web app on localhost:5000
     port = int(environ.get("PORT", 5000))
