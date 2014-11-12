@@ -4,6 +4,7 @@ from flask import Flask, render_template, jsonify, request, g
 from flaskext.couchdb import CouchDBManager
 from os import path, environ
 
+import re
 import json
 import requests
 import settings
@@ -127,11 +128,24 @@ def get_results():
     # Query the database for the documents
     q_results = retrieve_results(query)
     for row in q_results:
-        # Grab only the title, link, and date
+        # get all the hyperlinks
+        hyperlinks = re.findall(r'<a[^>]* href="([^"]*)"', row.value[source])
+        # get all the quotes
+        quotes = re.findall(r'"(?:[^"\\]|\\.)*"', row.value[source])
+        quotes_modified = []
+        # modify the quotes to remove false positives
+        for i in range(len(quotes)):
+            if re.match(r'.*(=|_|<|>|http|internallink).*', quotes[i]):
+                continue
+            else:
+                quotes_modified.append(quotes[i])         
         datarow = {
             'title': row.value['title'],
             'link': row.value['link'],
-            'date': row.value['date']}
+            'date': row.value['date'],
+            'hyperlinks': hyperlinks,
+            'quotes': quotes_modified
+        }
         results.append(datarow)
     # Return the results as a JSON list
     return json.dumps(results)
