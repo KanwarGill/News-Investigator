@@ -1,0 +1,59 @@
+Legend:
+
+BP stands for Business Priority
+DD stands for Developer Days
+
+BP1, then, means Business priority 1 for example.
+
+Iteration 4: Oct 24 - Oct 30
+===============================================================================
+Project Velocity from Iteration 3: TBD
+
+Tasks from Iteration 3: TBD
+
+User stories implemented in this iteration:
+
+User Story #3: As Alejandro (a researcher), I want to be able to create an account using a form, so that I can access the program properly.
+Rectangular box containing the following info:
+    - Username and Password
+    - Link for signing up
+    - Link for "Forgot Password"
+Acceptance criteria: An account is created and can access the program properly.
+Business Priority: 3
+Developer Days estimate: 1
+
+Tasks for this user story:
+1) Create a signup page (Kenny) [DD 0.5] -- moved to Iteration 5
+2) Save the information to the Database (Kenny) [DD1] -- moved to Iteration 5
+
+Total: 1.5 DD
+
+User Story #4: As Alejandro (a researcher), I want to be able to log in and out of my account, so that I can access the program properly.
+    - Display an informational message if the username is not recognized
+    - Lock the account if the password is entered incorrectly five times
+Acceptance criteria: The user can log in into the program and access it properly.
+Business Priority: 3
+Developer Days estimate: 1
+
+Tasks for this user story:
+1) Create a login page (Kenny) [DD 0.5] -- moved to Iteration 5
+2) Ajax call to the database to retrieve the username  (Kenny) [DD 0.5] -- moved to Iteration 5
+3) Re-direct to main page after correct password (Kenny) [DD 0.5] -- moved to Iteration 5
+4) Hide the passwords for login and signup page (Carlos) [DD1] -- moved to Iteration 5
+
+Total: 2.5 DD
+
+User Story #11: As Alejandro (a researcher), I want to see all the mentions to other news sources for a particular article, so that I can better understand the relationships.
+Acceptance Criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a mention will be shown.
+Business priority: 2
+Developer days estimate: 5
+
+Tasks for this user story:
+1) Create regex for mentions (Carlos) [DD3] -- moved to Iteration 5
+2) Include the regex in the crawler (Kanwar) [DD 0.5] -- moved to Iteration 5
+3) Show the mentions for each article in the table (Kanwar) [DD 0.5] -- moved to Iteration 5
+
+Total: 4
+
+Project Velocity: 8
+
