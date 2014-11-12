@@ -7,7 +7,8 @@
     <title>News Investigator</title>
     
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-table.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="img/favicon.png" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -41,27 +42,34 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-    <div class="customLogin">
-        <h2>Login</h2><br/>
-        <input type="text" name="username" class="custominput" id="inputusername" placeholder="Username" size="30"/><br>
-        <input type="password" name="password" class="custominput" id="inputpassword" placeholder="Password" size="30"/><br>
-        <div class="btn btn-primary custombtn" href="#" id="btnLogin">
-          Login
-        </div>
-        <div class="btn btn-primary custombtn" href="#" id="btnForgotPassword">
-          Forgot my password
-        </div>
-        <div></div>
-        <div class="btn btn-primary custombtn" href="#" id="btnSignUp">
-          Don't have an account? Sign up!
-        </div>
+    <div class="container">
+        <h1>News Investigator</h1><br/>
+
+        <table data-toggle="table" data-url="js/data1.json" data-height="399" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1">
+          <thead>
+          <tr>
+              <th data-field="title" data-align="center">Title</th>
+              <th data-field="link" data-align="center">Link</th>
+              <th data-field="hyperlink" data-align="center">Hyperlink</th>
+              <th data-field="quote" data-align="center">Quotes</th>
+              <th data-field="mention" data-align="center">Mentions</th>
+          </tr>
+          </thead>
+      </table>
+      <div></div><br>
+      <div class="btn btn-primary custombtn" href="#" id="btnReturnIndex">
+          Back to main page
+      </div>
+
+
     </div>
 
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-table.js"></script>
     <script src="js/main.js"></script>
-	<script src="js/login.js"></script>
   </body>
 </html>
