@@ -5,6 +5,7 @@ from flaskext.couchdb import CouchDBManager
 from os import path, environ
 
 import json
+import requests
 import settings
 
 def make_celery(app):
@@ -123,14 +124,22 @@ def get_results():
     }
     '''
     results = []
-    for row in g.couch.query(query):
+    # Query the database for the documents
+    q_results = retrieve_results(query)
+    for row in q_results:
+        # Grab only the title, link, and date
         datarow = {
             'title': row.value['title'],
             'link': row.value['link'],
             'date': row.value['date']}
         results.append(datarow)
+    # Return the results as a JSON list
     return json.dumps(results)
     
+def retrieve_results(query):
+    '''Return the results of the query from the database.'''
+    return g.couch.query(query)
+        
 if __name__ == "__main__":
     # Run the web app on localhost:5000
     port = int(environ.get("PORT", 5000))
