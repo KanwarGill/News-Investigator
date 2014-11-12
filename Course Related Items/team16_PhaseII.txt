@@ -1,0 +1,175 @@
+Team 16
+Total, phase II: 85 / 100
+Phase 1, new total: 94 / 100
+
+Presentation: _5_ / 5
+  the report is well formatted, easy to read, and easy to navigate
+
+Quality of writing: _5_ / 5
+  language, grammar, clarity, professionalism
+
+    -Good. Gooooood.
+
+State of the Project: _5_ / 5
+
+  _2_ / 2: the description of the current state of the project is
+    clear and concise; all implemented features are mentioned; the
+    work done on design and planning is mentioned
+
+  _2_ / 2: the description of how the current state of the project
+    relates to the original plan is clear and concise; all changes
+    to the original plan well-explained
+
+  _1_ / 1: the team made good planning decisions on the way to the
+    current state of the project
+    
+    -excellent use of pre-written library Scrapy to save yourselves time. This is exactly what we want to see!
+
+Iteration plan:  _2_ / 5
+
+  _0_ / 2 : it is clear how the iteration plan was developed from
+     the original (or modified and submitted this phase) release plan
+     
+     -In your iteration plan, you said you completed User Story 7. I don't see this on your Trello.
+     -It seems that you're doing weekly iterations, and this Phase spanned two weeks. Yet, I only see one iteration plan. I would expect that you would have completed two iterations, so therefore you would have two iteration plans.
+
+  _1_ / 2 : appropriate re-estimation of costs
+     -What's the difference between developer and programmer days? Include an explanation
+  
+  _1_ / 1 : an estimation of project velocity produced for the
+     next iteration
+
+Scrum Board: _2_ / 5
+  
+  The team demonstrates good use of a scrum board (electronic
+  is fine, too).
+  
+  -I don't see a "scrum board" in the style that we prescribe. eg http://www.mountaingoatsoftware.com/agile/scrum/task-boards
+  -Some of the tasks seem to follow the style, but it's not consistent. eg. user stories 8 vs 13
+  -make sure to update the status of each task to reflect actual progress. eg. user story 13 doesn't seem to reflect your Iteration Plan.
+
+Burndown chart : _3_ / 5
+  
+  The team demonstrates good use of a burndown chart (electronic is
+  fine, too).
+
+    -Instead of one burndown chart for your overall project, I would have preferred to see a burndown chart specifically for this iteration. In the Scrum method, this is called the sprint burndown chart.
+    -If you're going to include a burndown chart for your overall project, make it on a per-iteration basis instead of on a per-task basis. In the Scrum method, this is called the release burndown chart.
+
+Repository: _6_ / 10
+
+  _2_ / 3: frequent, regular commits beginning on or before Oct 6
+  
+  -number of commits was disproportionately high on due date
+  -however, there was good regular use of the repo
+
+  _2_ / 3: EVERY MEMBER commits
+  
+  -Carlos made no commits after Oct 3
+
+  _2_ / 4: structure of the repo, good use of branching, quality 
+           of the log messages
+  
+  -repo is well-organized
+  -I would have preferred to see more branches, eg. one branch per new feature, or one branch per major feature group
+  -follow git commit message conventions for all your commits http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+
+CRC Model: _9_ / 10
+
+   _1_ / 2: the format of the CRC cards is correct
+   
+   -I would have preferred to see some sort of visual layout/formatting to give a better idea of the structure, relationships between classes.
+
+   _4_ / 4: the design is modular, follows OO design principles
+   
+   -Great! Good use of inheritance to avoid code duplication. Good collaborations between classes.
+
+   _4_ / 4: the CRC model is complete, it has enough detail to
+    enable walk-throughs of the main scenarios
+
+
+The Implementation: _38_ / 40
+
+  _10_ / 10: the implementation clearly follows the CRC Model
+
+    -given that you guys don't seem to have any code done for the parts that rely on your classes, I cannot deduct marks for this
+
+  _10_ / 10: it is clear how this implementation is going to be
+   extended into a fully featured application
+
+    -I couldn't find any of your crawler code in your repo as of Oct 16 10pm, even though you mentioned it during your interview EDIT: never mind; it's in the crawler branch
+    -Purely based on the contents of the repo, it seems that you guys aren't making quite enough progress. I would have expected more than add/delete from lists of websites and twitter accounts EDIT: never mind; with the crawler prototype, you guys were making good progress.
+
+  _10_ / 10: there is at least one major feature implemented (or
+   almost implemented)
+
+  _8_ / 10: mature, good quality code
+
+    -index.html seems quite long. Perhaps you should refactor some of the code into separate files.
+    -comments are good
+    -whitespace in index.html could have been better in order to make your code easier to read. Keep in mind, some poor library programmer bloke is going to have to learn your code.
+
+
+Interview : _10_ / 10
+    -You guys knew your stuff!
+
+Phase I redos:--------------------------------------------------------------------------------
+New Total: 94 / 100
+Overall: I was very impressed with your new redone stuff. Your new grade reflects your awesomeness.
+
+Personas:  _7_ / 7 (+3 change)
+
+    -good job, guys!
+
+User Stories:  _25_ / 26 (+8 change)
+
+  _2_ / 3: follow the format "As a _role_, I want _something_, so that
+              _benefit_."
+  -Some of your new user stories seem to contain duplicates, eg. 15.1 vs 15.2 seem to be word-for-word verbatim except for the role. This is one user story, not two; it should start with "as Alejandro (a researcher) or Alex (grad student), ..."
+  -you should only split up a user story into multiple sub-stories if the story itself contains many related tasks (ie. an epic).
+
+  _2_ / 2: the _role_ is a Persona described in the previous part.
+  
+  -Great!
+
+  _1_ / 1 : include an identifier
+
+  _6_ / 6 : all functionality described by the customer is included
+
+  _6_ / 6 : no extra functionality, only what's described by the
+          customer
+
+  _8_ / 8 : clear, self-contained, *testable*, all acceptance criteria
+         are clear
+         
+         -Good!
+
+
+System metaphor:  _8_ / 8 (+4 change)
+
+  _2_ / 2 : the metaphor is simple, easy to follow, clearly maps to
+            the software system under design    
+            
+            -I like the new metaphor!
+            
+  _2_ / 2 : the naming of components is clear and descriptive
+  
+  _2_ / 2 : suggests appropriate  key players/components
+  
+  _2_ / 2 : suggests appropriate interactions between key players/components
+
+
+Release plan:  _26_ / 29 (+8 change)
+
+  _8_ / 8 : structure: all releases, with dates, all user stories
+  -good!
+
+  _6_ / 6 : estimation of costs
+
+  _6_ / 6 : estimation of values
+  
+  _5_ / 5 : appropriate rankings/ordering (value and risk first)
+
+  _1_ / 4 : video follows the rules of the game
+  
+  -maybe it was the poor audio quality, but I didn't hear any devs giving time/cost estimates
