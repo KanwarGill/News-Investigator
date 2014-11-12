@@ -1,0 +1,23 @@
+CODE REVIEW
+--------------------------
+Code: team16-project/Crawler/webcrawl/piplines.py [master branch]
+Code Written By: Kanwar
+Commit: 6915c1f333f4f2262e95039b0fcbea6683872dea [Nov 1, 2014, 10:32 PM EDT]
+Inspection By: Samson
+Inspection Date: November 12th
+--------------------------
+1) Correctness
+    -When an item finishes crawl with the given spider, it enters this object to be further processed. using the function process_item.
+    -If the item matches any of the keywords from the database, it is included in the database, otherwise it is ignored.
+    -Generally looks correct
+2) Coding style/guidelines
+    -Many odd blank lines throughout the code
+    -Variable naming makes sense
+    -Import statements can be cleaned up
+    -Needs consistency between single quotes and double quotes
+3) Quality of documentation
+    -Code is well commented
+    -Can create a doc string for process_item(item, spider)
+    -A little bit messy, with a lot of print statements and commented out code
+4) Quality of testing
+    -Can create unit tests with database stubs (can possibly override the __init__ to manually set self.keywords)
