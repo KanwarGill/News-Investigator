@@ -1,0 +1,25 @@
+CODE REVIEW
+
+Code: team16-project/Crawler/webcrawl/piplines.py [master branch]
+Code Written By: Carlos
+Commit: 0cec2223247d65a0aaeb090d7754d28fb67a54bd [Oct 22, 2014]
+Inspection By: Vinicius
+Inspection Date: November 12th
+
+
+Files under review:
+Website/c01/js/main.js
+
+ Correctness:
+ - Code works fine, fixing an issue that we had with validation
+ - Prevents the user from input an incorrect source format or keyword
+
+ Coding Style/Coding Guidelines:
+ - Good. Code is well-formatted (Indent and spacing are ok)
+
+
+ Quality of Documentation:
+ - Not much commenting. Maybe could explain the regex
+
+ Quality of Testing:
+ - Tested on the website directly.
