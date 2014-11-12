@@ -1,0 +1,34 @@
+CODE REVIEW
+--------------------------
+Code: team16-project/Website/flaskVersion/app/views.py [master branch]
+Code Written By: Samson
+Commit: 9ce0be3ffcdca2f5eec1ad878cf08f33012ec169 [Nov 12, 2014, 1:11 AM EDT]
+Inspection By: Kanwar
+Inspection Date: November 12th
+--------------------------
+1) Correctness
+- Import statements at the top are essential
+- The configuration for the celery object looks correct
+- Initialization at the beginning is easily understood
+- The routes for each method makes sense. For example, the route for starting the crawl is @app.route(‘/crawl’)
+
+
+2) Coding style/guidelines
+- The celery task add isn’t necessary
+- code follows good camel case method names
+- Variable names are easy to understand in the given method. For example, 
+- Some methods like delete_source (line 109) don’t contain the body. Perhaps these can be removed.
+- Unusual space on line 101 in add_source()
+- Some @app.route contain double quotes while others contain single quotes. For example, line 51 vs. line 56
+
+
+3) Quality of documentation
+- The docstring for each method is inside rather than outside
+For example, docstring for index_page on line 52 should be on line 51
+- The code is documented with comments in some lines only. For example, get_results() contains good comments vs. add_source() which contains only one on line 103.
+- The methods which just contain pass in the body don’t have a docstring
+
+
+4) Quality of testing
+- The code is testable since each method does a different task which facilitates unit tests
+- The method test_page tests for addition of two numbers. It’s good for demonstration purposes but don’t think it’s good to include it in the production code. 
