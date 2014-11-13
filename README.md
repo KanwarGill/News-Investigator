@@ -12,10 +12,9 @@ _All items are located under the master branch._
 - the state of the project
 - the iteration plans
 
-**Burndown Chart**: See link provided in the report or https://www.burndownfortrello.com/share/iq8ugmsnxt
+**Burndown Chart**: The Burndown charts are located in the excel file located in `Project Management/Iteration Planning/Burndown_Charts.xslx`
 
-Please note that for the purposes of burndown chart we denoted 1 Developer Day as 8 hours of work.
-Please note that to avoid problems accessing the chart you should log into Trello on another tab first.
+Please note that the excel file contains six worksheets each of which contains the burndown chart for that week. The ideal burndown is shown with the blue line and the actual burndown is shown with the red line.
 
 **Release Plan & Task Board**: These are contained in our team trello account. The access to this account has already been given to you.
 
