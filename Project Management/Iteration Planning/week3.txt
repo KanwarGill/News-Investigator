@@ -3,6 +3,7 @@ Legend:
 BP stands for Business Priority
 DD stands for Developer Days
 US stands for User Story
+User Story that has same content but with different personas is written like this User Story (#[first persona] and #[second persona])
 
 BP1, then, means Business priority 1 for example.
 
@@ -12,38 +13,40 @@ Iteration 3: Oct 17 - Oct 23
 Project Velocity from Iteration 2: 2
 
 Tasks from Iteration 2:
-1) [US8] Grab the title and link from the URL using Scrapy (Samson) [DD2]
-2) [US8] Add the sources and keywords to Scrapy from the database (Samson) [DD2] -- moved to iteration 4
-3) [US13] Save the information to the database using Scrapy pipelines (Kanwar) [DD2] -- moved to iteration 4
+8.1) [US8] Grab the title and link from the URL using Scrapy (Samson) [DD2]
+8.2) [US8] Add the sources and keywords to Scrapy from the database (Samson) [DD2] -- moved to iteration 4
+13.1) [US13] Save the information to the database using Scrapy pipelines (Kanwar) [DD2] -- moved to iteration 4
 
 Total: 6 DD
 
 User stories implemented in this iteration:
 
-User Story #9: [BP1 DD5] 
+User Story #9 (#9.1 and #9.2): [BP1 DD5] 
 As Alejandro (a researcher), I want to see all the hyperlinks to other news sources for a particular article, so that I can better understand the relationships.
+As Alex (a grad student), I want to see all the hyperlinks to other news sources for a particular article, so that I can better understand the relationships.
 Acceptance criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a hyperlink will be shown. 
 
 Tasks for this user story:
-1) Grab results from scrapy (Samson) [DD1]
-2) Save the results to the database (Kanwar) [DD1] -- moved to iteration 4
-3) Create the regex for hyperlinks (Vinicius) [DD 0.5]
-4) Perform regex in the backend code (Kanwar) [DD 0.5] -- moved to iteration 4
-5) Create a table in the frontend (Vinicius) [DD1] -- moved to iteration 4
-6) Show the results of scrapy in the table (Kanwar) [DD 0.5] -- moved to iteration 4
+9.1) Grab results from scrapy (Samson) [DD1]
+9.2) Save the results to the database (Kanwar) [DD1] -- moved to iteration 4
+9.3) Create the regex for hyperlinks (Vinicius) [DD 0.5]
+9.4) Perform regex in the backend code (Kanwar) [DD 0.5] -- moved to iteration 4
+9.5) Create a table in the frontend (Vinicius) [DD1] -- moved to iteration 4
+9.6) Show the results of scrapy in the table (Kanwar) [DD 0.5] -- moved to iteration 4
 
-Total: 4.5
+Total: 4.5 DD
 
-User Story #10: [BP2 DD5]
+User Story #10 (#10.1 and #10.2): [BP2 DD5]
 As Alejandro (a researcher), I want to see all the quotes in a particular article, so that I can better understand the relationships.
+As Alex (a grad student), I want to see all the quotes in a particular article, so that I can better understand the relationships.
 Acceptance criteria: Upon clicking on an article in the table, a list of specified Israeli-English sources that appeared from the article through a quote will be shown.
 
 Tasks for this user story:
-1) Create the regex for quotes (Vinicius) [DD 0.5]
-2) Perform regex in the backend code (Kanwar) [DD 0.5] -- moved to iteration 4
-3) Show the results of scrapy in the table (Kanwar) [DD 0.5] -- moved to iteration 4
+10.1) Create the regex for quotes (Vinicius) [DD 0.5]
+10.2) Perform regex in the backend code (Kanwar) [DD 0.5] -- moved to iteration 4
+10.3) Show the results of scrapy in the table (Kanwar) [DD 0.5] -- moved to iteration 4
 
-Total: 1.5
+Total: 1.5 DD
 
 Project Velocity at the beginning (from previous iteration): 2 DD
 Project Velocity at the end: 4 DD
