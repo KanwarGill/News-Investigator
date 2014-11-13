@@ -8,3 +8,58 @@ BP1, then, means Business priority 1 for example.
 
 Iteration 5: Nov 7 - Nov 13
 ===============================================================================
+
+Project Velocity from Iteration 5: 3
+
+Tasks from Iteration 5:
+1) [US9] Perform regex in the backend code (Kanwar) [DD 0.5]
+2) [US9] Show the results of scrapy in the table (Kanwar) [DD 0.5]
+3) [US10] Perform regex in the backend code (Kanwar) [DD 0.5]
+4) [US10] Show the results of scrapy in the table (Kanwar) [DD 0.5]
+5) [US4] Hide the passwords for login and signup page (Carlos) [DD1]
+6) [US11] Include the regex for mentions in the backend (Kanwar) [DD 0.5] -- moved to Iteration 7
+7) [US11] Show the mentions for each article in the table (Kanwar) [DD 0.5] -- moved to Iteration 7
+8) [US14] Include the results from the backend in the table (Samson) [DD3]
+
+Total: 7 DD
+
+User stories implemented in this iteration:
+
+User Story #12 [BP1 DD4]
+As Andrew (a librarian), I want to be able to export the data to best practice formats, so that I can ensure compatibility and archive the data for future use.
+Acceptance criteria: After logging in, click on the export button to save the results of the most recent search (the librarian can specify a time interval as well). The application will prompt the librarian to save the data to the computer.
+
+Tasks for this user story:
+TBD
+
+User Story #20 [BP1 DD1]
+20.1) As Alejandro (a researcher), I want to add a list of Twitter handles to monitor, so that I can accommodate the expanding needs of my research.
+20.2) As Alex (a grad student), I want to add a list of Twitter handles to monitor, so that I can accommodate the expanding needs of my research.
+Acceptance criteria: A list of Twitter handles is created, and is readable
+
+Tasks for this user story:
+TBD
+    
+User Story #21 [BP1 DD2]
+21.1) As Alejandro (a researcher), I want to see the number of tweets by people on a topics with certain keywords, so that I can see which topic is the most famous.
+    - timeline for x-axis
+    - number of tweets on y-axis
+21.2) As Alex (a grad student), I want to see the number of tweets by people on a topics with certain keywords, so that I can see which topic is the most famous.
+    - timeline for x-axis
+    - number of tweets on y-axis
+
+Tasks for this user story:
+TBD
+
+User Story #22 [BP1 DD1]
+As Alejandro (a researcher), I want to delete Twitter handles from the list, so that I can accommodate the expanding needs of my research.
+Acceptance critera: The Twitter handle specified by the user is removed from the monitor list and will
+no longer be monitored by the program
+Business priority: 1
+Developer days estimate: 1
+
+Tasks for this user story:
+TBD
+
+Project Velocity at the beginning: 7 DD
+Project Velocity at the end: TBD
