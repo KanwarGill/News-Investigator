@@ -37,3 +37,11 @@ _For simplicity, please following these instruction while on mathlab._
 - Add/Delete/Show/Hide keywords
 - Show results
 - Start web crawl
+
+Unit Test Instructions:
+-----------------------
+Unit tests are done from the `flask` branch.
+
+1. On terminal, install the Python library `mock`. The easiest way this can be done is `pip install mock`.
+2. Change directory to `Website/flaskVersion/app`
+3. Run the tests using `python tests.py`
