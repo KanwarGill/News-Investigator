@@ -38,6 +38,15 @@ _For simplicity, please following these instruction while on mathlab._
 - Show results
 - Start web crawl
 
+Code Reviews
+-----------------------
+All the code reviews are located in `Project Management/Code Review`. The reviews follow the format mentioned in the handout.
+- Kanwar looked at Samson's backend code
+- Samson looked at Kanwar's code for pipeline for the database
+- Carlos looked Kenny's code for the login page and Twitter handles
+- Kenny looked at Vinicius' code for index.html and main.js files
+- Vinicius looked at Carlos' code for encrypting the password on signup and login pages
+
 Unit Test Instructions:
 -----------------------
 Unit tests are done from the `flask` branch.
