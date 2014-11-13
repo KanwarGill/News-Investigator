@@ -3,6 +3,7 @@ Legend:
 BP stands for Business Priority
 DD stands for Developer Days
 US stands for User Story
+User Story that has same content but with different personas is written like this User Story (#[first persona] and #[second persona])s
 
 BP1, then, means Business priority 1 for example.
 
@@ -12,20 +13,20 @@ Iteration 5: Oct 31 - Nov 6
 Project Velocity from Iteration 4: 5
 
 Tasks from Iteration 4:
-1) [US9] Perform regex in the backend code (Kanwar) [DD 0.5] -- moved to iteration 6
-2) [US9] Create a table in the frontend (Vinicius) [DD1]
-3) [US9] Show the results of scrapy in the table (Kanwar) [DD 0.5] -- moved to iteration 6
-4) [US10] Perform regex in the backend code (Kanwar) [DD 0.5] -- moved to iteration 6
-5) [US10] Show the results of scrapy in the table (Kanwar) [DD 0.5] -- moved to iteration 6
-6) [US3] Create a signup page (Kenny) [DD 0.5]
-7) [US3] Save the information to the Database (Kenny) [DD1]
-8) [US4] Create a login page (Kenny) [DD 0.5]
-9) [US4] Ajax call to the database to retrieve the username  (Kenny) [DD 0.5] 
-10) [US4] Re-direct to main page after correct password (Kenny) [DD 0.5]
-11) [US4] Hide the passwords for login and signup page (Carlos) [DD1] -- moved to Iteration 6
-12) [US11] Create regex for mentions (Carlos) [DD3] -- moved to Iteration 6
-13) [US11] Include the regex for mentions in the backend (Kanwar) [DD 0.5] -- moved to Iteration 6
-14) [US11] Show the mentions for each article in the table (Kanwar) [DD 0.5] -- moved to Iteration 6
+9.4) [US9] Perform regex in the backend code (Kanwar) [DD 0.5] -- moved to iteration 6
+9.5) [US9] Create a table in the frontend (Vinicius) [DD1]
+9.6) [US9] Show the results of scrapy in the table (Kanwar) [DD 0.5] -- moved to iteration 6
+10.2) [US10] Perform regex in the backend code (Kanwar) [DD 0.5] -- moved to iteration 6
+10.3) [US10] Show the results of scrapy in the table (Kanwar) [DD 0.5] -- moved to iteration 6
+3.1) [US3] Create a signup page (Kenny) [DD 0.5]
+3.2) [US3] Save the information to the Database (Kenny) [DD1]
+4.1) [US4] Create a login page (Kenny) [DD 0.5]
+4.2) [US4] Ajax call to the database to retrieve the username  (Kenny) [DD 0.5] 
+4.3) [US4] Re-direct to main page after correct password (Kenny) [DD 0.5]
+4.4) [US4] Hide the passwords for login and signup page (Carlos) [DD1] -- moved to Iteration 6
+11.1) [US11] Create regex for mentions (Carlos) [DD3] -- moved to Iteration 6
+11.2) [US11] Include the regex for mentions in the backend (Kanwar) [DD 0.5] -- moved to Iteration 6
+11.3) [US11] Show the mentions for each article in the table (Kanwar) [DD 0.5] -- moved to Iteration 6
 
 Total: 12 DD
 
@@ -37,8 +38,8 @@ As Alejandro (a researcher), I want to see the results of the web crawl in a tab
 Acceptance criteria: After logging in, click display data button to display the contents of the database in table format.
 
 Tasks for this user story:
-1) Implement a table in bootsrap (Vinicius) [DD1]
-2) Include the results from the backend in the table (Samson) [DD3] -- moved to Iteration 6
+14.1) Implement a table in bootsrap (Vinicius) [DD1]
+14.2) Include the results from the backend in the table (Samson) [DD3] -- moved to Iteration 6
 
 Project Velocity at the beginning: 5 DD
 Project Velocity at the end: 3 DD
