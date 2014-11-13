@@ -38,7 +38,10 @@ User Story #20 [BP1 DD1]
 Acceptance criteria: A list of Twitter handles is created, and is readable
 
 Tasks for this user story:
-TBD
+1) Add relevant textfield and buttons to index.html (Kenny) [DD 0.25]
+3) regex to accept valid twitter handles only. (Kenny) [DD 0.25]
+2) AJAX calls to database to store and retrieve twitter handles. (Kenny) [DD 0.5]
+3) create drop down list to display handles. (Kenny) [DD 0.25]
     
 User Story #21 [BP1 DD2]
 21.1) As Alejandro (a researcher), I want to see the number of tweets by people on a topics with certain keywords, so that I can see which topic is the most famous.
@@ -59,7 +62,8 @@ Business priority: 1
 Developer days estimate: 1
 
 Tasks for this user story:
-TBD
+1) Add relevant textfield and button to index.html [DD 0.25]
+2) AJAX call to database to delete specified twitter handle. [DD 0.5]
 
 Project Velocity at the beginning: 7 DD
 Project Velocity at the end: TBD
