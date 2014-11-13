@@ -10,8 +10,7 @@ _All items are located under the master branch._
 **Contents of Report**: The report contains 
 
 - the state of the project
-- the iteration plan
-- [ADD MORE]
+- the iteration plans
 
 **Burndown Chart**: See link provided in the report or https://www.burndownfortrello.com/share/iq8ugmsnxt
 
@@ -20,7 +19,7 @@ Please note that to avoid problems accessing the chart you should log into Trell
 
 **Release Plan & Task Board**: These are contained in our team trello account. The access to this account has already been given to you.
 
-**Code Inspection Video**: Course Related Items/[ENTER LOCATION HERE]
+**Code Inspection Video**: Video location at `Project Management/Code Review/Code_Review.mov`
 
 Build and Run Instructions:
 ---------------------------
