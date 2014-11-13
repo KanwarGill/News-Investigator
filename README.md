@@ -18,8 +18,6 @@ Please note that the excel file contains six worksheets each of which contains t
 
 **Release Plan & Task Board**: These are contained in our team trello account. The access to this account has already been given to you.
 
-**Code Inspection Video**: Video location at `Project Management/Code Review/Code_Review.mov`
-
 Build and Run Instructions:
 ---------------------------
 _For simplicity, please following these instruction while on mathlab._
@@ -46,6 +44,8 @@ All the code reviews are located in `Project Management/Code Review`. The review
 - Carlos looked Kenny's code for the login page and Twitter handles
 - Kenny looked at Vinicius' code for index.html and main.js files
 - Vinicius looked at Carlos' code for encrypting the password on signup and login pages
+
+**Code Inspection Video**: Video location at `Project Management/Code Review/Code_Review.mov`
 
 Unit Test Instructions:
 -----------------------
