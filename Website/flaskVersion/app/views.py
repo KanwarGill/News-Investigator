@@ -9,16 +9,18 @@ import json
 import requests
 import settings
 
+'''Return a celery object, given the app'''
 def make_celery(app):
-    '''Return a celery object, given the app'''
     celery = Celery(app.import_name, broker=app.config['CELERY_BROKER_URL'])
     celery.conf.update(app.config)
     TaskBase = celery.Task
+
     class ContextTask(TaskBase):
         abstract = True
         def __call__(self, *args, **kwargs):
             with app.app_context():
                 return TaskBase.__call__(self, *args, **kwargs)
+
     celery.Task = ContextTask
     return celery
 
@@ -36,10 +38,8 @@ manager.setup(app)
 '''
 Celery tasks
 '''
-@task(name="tasks.add")
-def add(x, y):
-    return x + y
-    
+
+'''Add the crawl task into the task queue.'''
 @task(name='tasks.start_crawl')
 def start_crawl():
     return webcrawl()
@@ -47,56 +47,41 @@ def start_crawl():
 '''
 Web pages
 '''
+
+'''Return the index/home page.'''
 @app.route('/')
 @app.route('/index')
 def index_page():
-    '''Return the index/home page.'''
-    return render_template("index.html", title='Home')
+    return render_template('index.html', title='Home')
 
-@app.route("/test")
-def test_page(x=16, y=16):
-    '''Create a test celery task and return the task id.'''
-    x = int(request.args.get("x", x))
-    y = int(request.args.get("y", y))
-    res = add.apply_async((x, y))
-    context = {"id": res.task_id, "x": x, "y": y}
-    result = "add((x){}, (y){})".format(context['x'], context['y'])
-    goto = "{}".format(context['id'])
-    return jsonify(result=result, goto=goto)
-
-@app.route("/test/result/<task_id>")
-def test_result_page(task_id):
-    '''Show the result of the celery task, given the task id.'''
-    retval = add.AsyncResult(task_id).get(timeout=1.0)
-    return repr(retval)
-    
+'''Return the crawl page.'''    
 @app.route('/crawl')
 def crawl_page():
-    '''Return the crawl page.'''
-    return render_template("crawl.html", title='Crawl')
+    return render_template('crawl.html', title='Crawl')
 
+'''Return the table results page.'''
 @app.route('/table')
 def view_table_page():
-    '''Return the table results page.'''
-    return render_template("table.html", title='Crawl Results')
+    return render_template('table.html', title='Crawl Results')
 
 '''
 GET/POST methods
 ''' 
+
+'''Start the web crawl task. Return the task id of the task.'''
 @app.route('/crawling', methods=['POST'])
 def crawling_task():
-    '''Start the web crawl task. Return the task id of the task.'''
     res = start_crawl.apply_async()
     context = {"id": res.task_id}
-    result = "start_crawl()"
-    goto = "{}".format(context['id'])
+    result = 'start_crawl()'
+    goto = '{}'.format(context['id'])
     return jsonify(result=result, goto=goto)
 
 @app.route('/add_source', methods=['POST'])
 def add_source():
     '''TODO: Does not work at the moment, need to reconfigure database'''
     id = request.args.get("id", id)
-    source = request.args.get("url", source)
+    source = request.args.get('url', source)
     app.config.update(
         COUCHDB_DATABASE = 'news_source')
     manager.setup(app)
@@ -104,7 +89,7 @@ def add_source():
     document = dict(_id=id, source=source)
     g.couch[id] = document
     g.couch.save(document)
-    return jsonify(id=id, source=source, result="good")
+    return jsonify(id=id, source=source, result='good')
     
 def delete_source():
     pass
@@ -115,9 +100,9 @@ def add_keywords():
 def delete_keywords():
     pass
 
+'''Return the results of the crawl in a JSON object.'''
 @app.route('/get_results', methods=['GET'])
 def get_results():
-    '''Return the results of the crawl in a JSON object.'''
     query = '''function(doc) {
         if (doc.id) {
             emit(doc.id, doc)
@@ -149,14 +134,13 @@ def get_results():
         results.append(datarow)
     # Return the results as a JSON list
     return json.dumps(results)
-    
+
+'''Return the results of the query from the database.'''    
 def retrieve_results(query):
-    '''Return the results of the query from the database.'''
     return g.couch.query(query)
  
 if __name__ == "__main__":
     # Run the web app on localhost:5000
     port = int(environ.get("PORT", 5235))
-    #app.run(host='mathlab.utsc.utoronto.ca', port=port, debug=True)
     # Not fixing the host name makes it run a bit better on mathlab
     app.run(port=port, debug=True)
