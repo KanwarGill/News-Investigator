@@ -1,0 +1,21 @@
+CODE REVIEW
+--------------------------
+Code: team16-project/Website/c01/js/login.js [loginAction branch]
+Code Written By: Kenny
+Commit: 80f9b47daeefe68fccccef39eca0835f2e7cf891 [Nov 6, 2014, 11:00 AM EDT]
+Inspection By: Carlos
+Inspection Date: November 12th
+--------------------------
+1) Correctness
+	Code accurately checks for login credentials
+	Fixed previous bug where all attempts succeeded due to single equal sign
+	Correctly takes user to application on success and notify and stop progression on fail
+2) Coding style/guidelines
+	Coding style properly followed. Proper naming convention and appropriate variable names
+	present
+	Properly indented and spacing between parameters
+3) Quality of documentation
+	Poor documentation, no inline comments to explain clearly the function
+4) Quality of testing
+	Tested on main site accurately, function also given to test basic actions to database involving
+	user information.
