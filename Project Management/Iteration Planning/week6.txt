@@ -66,8 +66,6 @@ User Story #22 [BP1 DD1]
 As Alejandro (a researcher), I want to delete Twitter handles from the list, so that I can accommodate the expanding needs of my research.
 Acceptance critera: The Twitter handle specified by the user is removed from the monitor list and will
 no longer be monitored by the program
-Business priority: 1
-Developer days estimate: 1
 
 Tasks for this user story:
 22.1) Add relevant textfield and button to index.html (Kenny) [DD 0.25]

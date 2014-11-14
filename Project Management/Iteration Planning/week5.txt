@@ -41,5 +41,45 @@ Tasks for this user story:
 14.1) Implement a table in bootsrap (Vinicius) [DD1]
 14.2) Include the results from the backend in the table (Samson) [DD3] -- moved to Iteration 6
 
+Total: 4 DD
+
+User Story #15 (#15.1 and #15.2): [BP3 DD3] 
+As Alejandro (a researcher), I want to filter the results of the table, so that I can be more efficient in my analysis/research on the data.
+As Alex (a grad student), I want to filter the results of the table, so that I can be more efficient in my analysis/research on the data.
+    - filter by news source [drop down]
+    - filter by keywords    [drop down]
+Acceptance criteria: While looking through the data table, type in keyword/news source in textbox and click filter button to show only relevant data.
+
+Tasks for this user story:
+15.1) Create a table using bootstrap with the feature to filter the rows (Vinicius) [DD1]
+
+Total: 1 DD
+
+User Story #16 (#16.1 and #16.2): [BP3 DD3]
+As Alejandro (a researcher), I want to search the results of the table, so that I can be more efficient in my analysis/research on the data.
+As Alex (a grad student), I want to search the results of the table, so that I can be more efficient in my analysis/research on the data.
+    - search by article name
+    - search by keywords
+    - search by author
+Acceptance criteria: While looking through the data table, type in keywords/article name/author and sort by the relevance of the data.
+
+Tasks for this user story:
+16.1) Create a table using bootstrap with the feature to search the rows (Vinicius) [DD1]
+
+Total: 1 DD
+
+User Story #17 (#17.1 and #17.2): [BP3 DD3]
+As Alejandro (a researcher), I want to sort the results of the table, so that I can be more efficient in my analysis/research on the data.
+As Alex (a grad student), I want to sort the results of the table, so that I can be more efficient in my analysis/research on the data.
+    - sort by number of times it references articles from monitored sources
+    - sort by number of times it is being referenced
+    - sort by date article created
+Acceptance criteria: While looking through the data table, select a sort option from a box of radio buttons and sort the table by that method.
+
+Tasks for this user story:
+17.1) Create a table using bootstrap with the feature to sort the rows (Vinicius) [DD1]
+
+Total: 1 DD
+
 Project Velocity at the beginning: 5 DD
-Project Velocity at the end: 3 DD
+Project Velocity at the end: 6 DD
