@@ -54,3 +54,14 @@ Unit tests are done from the `flask` branch.
 1. On terminal, install the Python library `mock`. The easiest way this can be done is `pip install mock`.
 2. Change directory to `Website/flaskVersion/app`
 3. Run the tests using `python tests.py`
+
+Automation Tests Instructions:
+------------------------------
+Automation tests with Selenium IDE are done from the `testing` branch.
+
+1. Open the website in Firefox.
+2. Open the Selenium IDE (You may have to install this plugin if you don't have it).
+3. In the test case files, change the path to your local website folder in the test case files (e.g. <td>/webapp/c01/index.html</td> -> <td>file:///Users/TA/Documents/c01_project/Website/c01/index.html</td>)
+4. Load the file "New_full_testing" into the Selenium IDE under "Open Test Suite"
+5. Slow down the Selenium testing speed, otherwise it will faild the test for clicking too fast
+6. Run the the full test suite
