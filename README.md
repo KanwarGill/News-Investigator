@@ -58,6 +58,7 @@ Unit tests are done from the `flask` branch.
 Automation Tests Instructions:
 ------------------------------
 Automation tests with Selenium IDE are done from the `testing` branch.
+Note: They only work in the Firefox browser because it has support for the Selenium IDE.
 
 1. Open the website in Firefox.
 2. Open the Selenium IDE (You may have to install this plugin if you don't have it).
