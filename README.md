@@ -27,7 +27,7 @@ _For simplicity, please following these instructions while on mathlab._
 3. In the first terminal run the server using `python views.py`
 4. In the second terminal run the task processing queue using `celery -A views.celery worker`
 5. In the third terminal run firefox (or a browser of your choice). Make sure the browser is running from mathlab.
-6. In the browser go to the spcified address `localhost:5000`. The website will be running.
+6. In the browser go to the specified address `localhost:5000`. The website will be running.
 
 **Current Functionality**:
   
