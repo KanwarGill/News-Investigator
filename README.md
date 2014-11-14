@@ -20,7 +20,7 @@ Please note that the excel file contains six worksheets each of which contains t
 
 Build and Run Instructions:
 ---------------------------
-_For simplicity, please following these instruction while on mathlab._
+_For simplicity, please following these instructions while on mathlab._
 
 1. Clone the repo from the master branch
 2. Open 3 terminals and change their directories to `Website/flaskVersion/app`
@@ -64,5 +64,5 @@ Note: They only work in the Firefox browser because it has support for the Selen
 2. Open the Selenium IDE (You may have to install this plugin if you don't have it).
 3. In the test case files, change the path to your local website folder in the test case files (e.g. <td>/webapp/c01/index.html</td> -> <td>file:///Users/TA/Documents/c01_project/Website/c01/index.html</td>)
 4. Load the file "New_full_testing" into the Selenium IDE under "Open Test Suite"
-5. Slow down the Selenium testing speed, otherwise it will faild the test for clicking too fast
+5. Slow down the Selenium testing speed, otherwise the tests will fail for clicking too fast
 6. Run the the full test suite
