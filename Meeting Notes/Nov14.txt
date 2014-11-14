@@ -1,0 +1,16 @@
+Meeting minutes
+Nov 14
+12 - 1pm
+===========================================================================
+
+Points of discussion:
+- Change the database layout to just one table with the type attribute 
+- Vinicius to look into whether Bootstrap can export data in XMl format
+- Samson will clean up the database
+- Kenny and Kanwar to work with Twitter API for user story
+- Carlos to look into the line graph
+- We need a spider to parse all the articles in the RSS feeds
+
+- Everyone refer to week7.txt for the tasks we discussed
+
+- Please work with the flask branch when finishing your tasks
