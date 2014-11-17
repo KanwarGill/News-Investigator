@@ -3,6 +3,7 @@ from crawl import webcrawl
 from flask import Flask, render_template, jsonify, request, g
 from flaskext.couchdb import CouchDBManager
 from os import path, environ
+from database import NewsInvestigatorDatabase
 
 import re
 import json
@@ -32,8 +33,9 @@ app.config.from_object(settings)
 celery = make_celery(app)
 
 # Setup database
-manager = CouchDBManager()
-manager.setup(app)
+#manager = CouchDBManager()
+#manager.setup(app)
+db = NewsInvestigatorDatabase(app)
 
 '''
 Celery tasks
@@ -103,15 +105,9 @@ def delete_keywords():
 '''Return the results of the crawl in a JSON object.'''
 @app.route('/get_results', methods=['GET'])
 def get_results():
-    query = '''function(doc) {
-        if (doc.id) {
-            emit(doc.id, doc)
-        }
-    }
-    '''
     results = []
     # Query the database for the documents
-    q_results = retrieve_results(query)
+    q_results = db.get_view('byDocType/byResults')
     for row in q_results:
         # get all the hyperlinks
         hyperlinks = re.findall(r'<a[^>]* href="([^"]*)"', row.value['source'])
@@ -135,9 +131,6 @@ def get_results():
     # Return the results as a JSON list
     return json.dumps(results)
 
-'''Return the results of the query from the database.'''    
-def retrieve_results(query):
-    return g.couch.query(query)
  
 if __name__ == "__main__":
     # Run the web app on localhost:5000

@@ -1,6 +1,6 @@
-from mock import patch
+from mock import patch, MagicMock
 from testing.test_stubs import *
-from views import app
+from views import app, db
 
 import json
 import requests
@@ -11,7 +11,7 @@ class GetResultsTestCase(unittest.TestCase):
         self.app = app.test_client()
         self.maxDiff = None
     
-    @patch('views.retrieve_results')
+    @patch('views.NewsInvestigatorDatabase.get_view')
     def test_get_results_simple(self, mock_db):
         # Use the stub instead of an actual query to the database
         mock_db.side_effect = db_stub_simple
@@ -30,7 +30,7 @@ class GetResultsTestCase(unittest.TestCase):
         self.assertItemsEqual(result[0]['quotes'], expected[0]['quotes'])
         self.assertItemsEqual(result[0]['hyperlinks'], expected[0]['hyperlinks'])
         
-    @patch('views.retrieve_results')
+    @patch('views.NewsInvestigatorDatabase.get_view')
     def test_get_results_one_hyperlink(self, mock_db):
         # Use the stub instead of an actual query to the database
         mock_db.side_effect = db_stub_hyperlink
@@ -49,7 +49,7 @@ class GetResultsTestCase(unittest.TestCase):
         self.assertItemsEqual(result[0]['quotes'], expected[0]['quotes'])
         self.assertItemsEqual(result[0]['hyperlinks'], expected[0]['hyperlinks'])
 
-    @patch('views.retrieve_results')
+    @patch('views.NewsInvestigatorDatabase.get_view')
     def test_get_results_many_hyperlinks(self, mock_db):
         # Use the stub instead of an actual query to the database
         mock_db.side_effect = db_stub_hyperlinks
@@ -68,7 +68,7 @@ class GetResultsTestCase(unittest.TestCase):
         self.assertItemsEqual(result[0]['quotes'], expected[0]['quotes'])
         self.assertItemsEqual(result[0]['hyperlinks'], expected[0]['hyperlinks'])
         
-    @patch('views.retrieve_results')
+    @patch('views.NewsInvestigatorDatabase.get_view')
     def test_get_results_one_quote(self, mock_db):
         # Use the stub instead of an actual query to the database
         mock_db.side_effect = db_stub_quote
@@ -87,7 +87,7 @@ class GetResultsTestCase(unittest.TestCase):
         self.assertItemsEqual(result[0]['quotes'], expected[0]['quotes'])
         self.assertItemsEqual(result[0]['hyperlinks'], expected[0]['hyperlinks'])
         
-    @patch('views.retrieve_results')
+    @patch('views.NewsInvestigatorDatabase.get_view')
     def test_get_results_many_quotes(self, mock_db):
         # Use the stub instead of an actual query to the database
         mock_db.side_effect = db_stub_quotes
