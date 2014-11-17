@@ -4,7 +4,7 @@
         <h1>News Investigator</h1>
         <br/>
         
-        <div class="sources-container">
+        <div class="sources-container1">
             <input type="text" name="source" class="custominput" id="inputsource" pattern="www\.[a-zA-Z0-9]{3,}\.[a-z]{2,3}" placeholder="Example: www.aljazeera.com" size="50"/>
             <div class="btn btn-primary custombtn" href="#" id="btnAddSource">
               Add Source
@@ -14,16 +14,18 @@
             <div id="collapse1" style="display:none">
                 <div class="getsources"></div>
             </div>
-
-            <input type="text" name="deletesource" class="custominput" id="deletesource" placeholder="Ex: www.aljazeera.com" size="30"/>
+        </div>
+		
+		<div class="sources-container2">
+			<input type="text" name="deletesource" class="custominput" id="deletesource" placeholder="Ex: www.aljazeera.com" size="30"/>
             <div class="btn btn-primary custombtn" href="#" id="btnDeleteSource">
               Delete Source
             </div>
-        </div>
+		</div>
         
         <br/>
         
-        <div class="keywords-container">
+        <div class="keywords-container1">
         <input type="text" name="keyword" class="custominput" id="inputkeyword" pattern="[a-zA-Z0-9]+" placeholder="Example: Israel" size="50"/>
         <div class="btn btn-primary custombtn" href="#" id="btnAddKeyword">
           Add Keyword
@@ -32,11 +34,31 @@
             <div id="collapse2" style="display:none">
             <div class="getkeywords"></div>
             </div>
-            <input type="text" name="deletekeyword" class="custominput" id="deletekeyword" placeholder="Ex: Israel" size="30"/>
+        </div>
+		
+		<div class="keywords-container2">
+			<input type="text" name="deletekeyword" class="custominput" id="deletekeyword" placeholder="Ex: Israel" size="30"/>
             <div class="btn btn-primary custombtn" href="#" id="btnDeleteKeyword">
               Delete Keyword
             </div>
-        </div>
+		</div>
+		
+		<div class="handles-container1">
+			<input type="text" name="twitterhandle" class="custominput" id="inputtwitterhandle" pattern="^@[a-zA-Z0-9_]{1,15}$" placeholder="Example: @Bob" size="50"/>
+			<div class="btn btn-primary custombtn" href="#" id="btnAddHandle">
+				Add Twitter Handle
+			</div>
+			<button type="button" href="#collapse3" id="show-handles" class="btn btn-primary">Show Twitter Handles</button>
+			<div id="collapse3" style="display:none">
+			<div class="gethandles"></div>
+			</div>
+		</div>
+		<div class="handles-container2">
+			<input type="text" name="deletehandle" class="custominput" id="deletetwitterhandle" placeholder="Ex: @Bob" size="30"/>
+			<div class="btn btn-primary custombtn" href="#" id="btnDeleteHandle">
+				Delete Twitter Handle
+			</div>
+		</div>
         
         <br/>
         
