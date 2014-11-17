@@ -15,9 +15,11 @@
               processData: false,
               success: function (data) {
                 alert("Successfully added " + source);
+                location.reload();
               },
               error: function(){
                 alert("Cannot add duplicate news source");
+                location.reload();
               }
           });
         });
@@ -147,9 +149,11 @@
               contentType: "application/json",
               success: function (data) {
                 alert("Successfully deleted " + source);
+                location.reload();
               },
               error: function(){
                 alert("ERROR: Cannot get Source URL");
+                location.reload();
               }
             });
           }).error(function(){alert("ERROR: Source URL not in database");});
@@ -171,9 +175,11 @@
               processData: false,
               success: function (data) {
                 alert("Successfully added " + key);
+                location.reload();
               },
               error: function(){
                 alert("Cannot add duplicate keyword");
+                location.reload();
               }
           });
         });
@@ -192,9 +198,11 @@
               contentType: "application/json",
               success: function (data) {
                 alert("Successfully deleted " + key);
+                location.reload();
               },
               error: function(){
                 alert("ERROR: Cannot get keyword");
+                location.reload();
               }
             });
           }).error(function(){alert("ERROR: Keyword not in database");});
@@ -207,7 +215,14 @@
         $("#btnReturnIndex").click(function () {
             location.href="index.html";
         });
-    
+
+        $("#btnExportTableXML").click(function () {
+            $('#SourcesTable').tableExport({type:'xml',escape:'false'});
+        });
+
+        $("#btnExportTablePDF").click(function () {
+            $('#SourcesTable').tableExport({type:'pdf',escape:'false'});
+        });
   
 
     $("#btnAddHandle").click(function () {
@@ -227,9 +242,11 @@
         processData: false,
         success: function (data) {
           alert("Successfully added " + handle);
+          location.reload();
         },
         error: function(){
           alert("Cannot add twitter handle");
+          location.reload();
         }
       });
     });
@@ -249,9 +266,11 @@
           contentType: "application/json",
           success: function (data) {
             alert("Successfully deleted " + handle);
+            location.reload();
           },
           error: function(){
             alert("ERROR: cannot get twitter handle");
+            location.reload();
           }
         });
       }).error(function(){alert("ERROR: twitter handle not in database");});
