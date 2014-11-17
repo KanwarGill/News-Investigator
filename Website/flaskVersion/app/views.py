@@ -10,8 +10,9 @@ import json
 import requests
 import settings
 
-'''Return a celery object, given the app'''
+
 def make_celery(app):
+    '''Return a celery object, given the app'''
     celery = Celery(app.import_name, broker=app.config['CELERY_BROKER_URL'])
     celery.conf.update(app.config)
     TaskBase = celery.Task
@@ -41,69 +42,89 @@ db = NewsInvestigatorDatabase(app)
 Celery tasks
 '''
 
-'''Add the crawl task into the task queue.'''
 @task(name='tasks.start_crawl')
 def start_crawl():
+    '''Add the crawl task into the task queue.'''
     return webcrawl()
 
 '''
 Web pages
 '''
 
-'''Return the index/home page.'''
 @app.route('/')
 @app.route('/index')
 def index_page():
+    '''Return the index/home page.'''
     return render_template('index.html', title='Home')
 
-'''Return the crawl page.'''    
 @app.route('/crawl')
 def crawl_page():
+    '''Return the crawl page.'''    
     return render_template('crawl.html', title='Crawl')
 
-'''Return the table results page.'''
 @app.route('/table')
 def view_table_page():
+    '''Return the table results page.'''
     return render_template('table.html', title='Crawl Results')
 
 '''
 GET/POST methods
 ''' 
 
-'''Start the web crawl task. Return the task id of the task.'''
 @app.route('/crawling', methods=['POST'])
 def crawling_task():
+    '''Start the web crawl task. Return the task id of the task.'''
     res = start_crawl.apply_async()
     context = {"id": res.task_id}
     result = 'start_crawl()'
-    goto = '{}'.format(context['id'])
-    return jsonify(result=result, goto=goto)
+    return jsonify(status='started')
 
 @app.route('/add_source', methods=['POST'])
 def add_source():
+    '''Add a news source to the database. Requires the id and url.'''
     id = request.form['id']
     url = request.form['url']
     document = dict(_id=id, url=url)
     db.save_news_source(id, document)
-    return jsonify(id=id, source=source, result='good')
-    
-def delete_source():
-    pass
+    return jsonify(id=id, url=url, status='good')
 
-@app.route('/add_keywords', methods=['POST'])
-def add_keywords():
+@app.route('/get_sources', methods=['GET'])
+def get_sources():
+    '''Return the list of news sources from the database.'''
+    results = []
+    for row in db.get_view('byDocType/byNewsSource'):
+        results.append(row)
+    return jsonify(data=results)
+
+@app.route('/add_keyword', methods=['POST'])
+def add_keyword():
+    '''Add a keyword to the database. Requires the id and keyword.'''
     id = request.form['id']
     keyword = request.form['keyword']
     document = dict(_id=id, keyword=keyword)
     db.save_keyword(id, document)
-    return jsonify(id=id, keyword=keyword, result='good')
-    
-def delete_keywords():
-    pass
+    return jsonify(id=id, keyword=keyword, status='good')
 
-'''Return the results of the crawl in a JSON object.'''
+@app.route('/get_keywords', methods=['GET'])
+def get_keywords():
+    '''Return the list of keywords from the database.'''
+    results = []
+    for row in db.get_view('byDocType/byKeyword'):
+        results.append(row)
+    return jsonify(data=results)
+
+@app.route('/delete_source', methods=['POST'])    
+@app.route('/delete_keyword', methods=['POST'])
+def delete_doc():
+    '''Delete a document, given the id.'''
+    id = request.form['id']
+    db.delete_document(id)
+    return jsonify(status='good')
+
+
 @app.route('/get_results', methods=['GET'])
 def get_results():
+    '''Return the results of the crawl in a JSON object.'''
     results = []
     # Query the database for the documents
     q_results = db.get_view('byDocType/byResults')
@@ -133,6 +154,6 @@ def get_results():
  
 if __name__ == "__main__":
     # Run the web app on localhost:5000
-    port = int(environ.get("PORT", 5235))
+    port = int(environ.get("PORT", 5000))
     # Not fixing the host name makes it run a bit better on mathlab
     app.run(port=port, debug=True)

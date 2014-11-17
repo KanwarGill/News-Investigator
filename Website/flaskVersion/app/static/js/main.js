@@ -6,6 +6,7 @@ $("#btnAddSource").click(function() {
         return;
     }
     var id = source.substring(source.indexOf(".") + 1, source.lastIndexOf("."));
+
     $.post($SCRIPT_ROOT + '/add_source', {
         id: id,
         url: source
@@ -59,67 +60,52 @@ $('#show-keywords').on('click', function() {
 
 window.onload = function() {
     $(".getsources").empty();
-    $.getJSON(
-        "http://www.chihuahuas.iriscouch.com/news_source/_all_docs?include_docs=true",
-        function(data) {
-            var sources = [];
-            $.each(data.rows, function(key, val) {
-                sources.push("<li id='" + val.doc._id +
-                    "'>" + val.doc.url + "</li>");
-            });
+    
+    $.get($SCRIPT_ROOT + '/get_sources').done(function(result){
+        console.log(result.data);
+        var sources = [];
+        $.each(result.data, function(key, val) {
+            console.log(val.id);
+            console.log(val.key);
+            sources.push("<li id='" + val.id + "'>" + val.key + "</li>");
+        });            
 
-            $("<ul/>", {
-                "class": "listofsources",
-                html: sources.join("")
-            }).appendTo(".getsources");
-        });
+        $("<ul/>", {
+            "class": "listofsources",
+            html: sources.join("")
+        }).appendTo(".getsources");
 
-    $(".getkeywords").empty();
-    // Display the current keywords form the DB
-    $.getJSON(
-        "http://www.chihuahuas.iriscouch.com/keywords/_all_docs?include_docs=true",
-        function(data) {
-            var keywords = [];
-            $.each(data.rows, function(key, val) {
-                // console.log(val.doc);
-                keywords.push("<li class='keywords'>" +
-                    val.doc.keyword + "</li>");
-            });
+    });
 
-            $("<ul/>", {
-                "class": "listofkeywords",
-                html: keywords.join("")
-            }).appendTo(".getkeywords");
-        });
+    $.get($SCRIPT_ROOT + '/get_keywords').done(function(result){
+        console.log(result.data);
+        var keywords = [];
+        $.each(result.data, function(key, val) {
+            keywords.push("<li class='keywords'>" + val.key + "</li>");
+        });            
+
+        $("<ul/>", {
+            "class": "listofkeywords",
+            html: keywords.join("")
+        }).appendTo(".getkeywords");
+
+    });
 };
 
 $("#btnDeleteSource").click(function() {
     var source = $("#deletesource").val();
-    var id = source.substring(source.indexOf(".") + 1, source.lastIndexOf(
-        "."));
-    var rev = "";
-    $.getJSON("http://www.chihuahuas.iriscouch.com/news_source/" +
-        id, function(data) {
-            $.each(data, function(key, val) {
-                rev = data._rev;
-            });
-            $.ajax({
-                type: "DELETE",
-                url: "http://www.chihuahuas.iriscouch.com/news_source/" +
-                    id + "?rev=" + rev,
-                dataType: "json",
-                contentType: "application/json",
-                success: function(data) {
-                    alert("Successfully deleted " +
-                        source);
-                },
-                error: function(xhr, status, error) {
-                    alert(
-                        "ERROR: Cannot get keyword"
-                    );
-                }
-            });
-        });
+    var id = source.substring(source.indexOf(".") + 1, 
+        source.lastIndexOf("."));
+        
+    $.post($SCRIPT_ROOT + '/delete_source', {
+        id: 'news_source_' + id
+    }).done(function(result) {
+        console.log(result)
+        alert("Successfully deleted " + source);
+    }).fail(function(xhr, status, error) {
+        console.log(error)
+        alert("News source not found.");
+    });
 });
 
 $("#btnAddKeyword").click(function() {
@@ -130,7 +116,7 @@ $("#btnAddKeyword").click(function() {
         return;
     }
 
-    $.post($SCRIPT_ROOT + '/add_keywords', {
+    $.post($SCRIPT_ROOT + '/add_keyword', {
         id: key,
         keyword: key
     }).done(function(result) {
@@ -144,29 +130,15 @@ $("#btnAddKeyword").click(function() {
 
 $("#btnDeleteKeyword").click(function() {
     var key = $("#deletekeyword").val();
-    var rev = "";
-    $.getJSON("http://www.chihuahuas.iriscouch.com/keywords/" +
-        key, function(data) {
-            $.each(data, function(key, val) {
-                rev = data._rev;
-            });
-            $.ajax({
-                type: "DELETE",
-                url: "http://www.chihuahuas.iriscouch.com/keywords/" +
-                    key + "?rev=" + rev,
-                dataType: "json",
-                contentType: "application/json",
-                success: function(data) {
-                    alert("Successfully deleted " +
-                        key);
-                },
-                error: function(xhr, status, error) {
-                    alert(
-                        "ERROR: Cannot get keyword"
-                    );
-                }
-            });
-        });
+    $.post($SCRIPT_ROOT + '/delete_source', {
+        id: 'keyword_' + key
+    }).done(function(result) {
+        console.log(result)
+        alert("Successfully deleted " + key);
+    }).fail(function(xhr, status, error) {
+        console.log(error)
+        alert("Keyword not found.");
+    });
 });
 
 $("#btnTableSources").click(function() {
