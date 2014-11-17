@@ -28,7 +28,6 @@
       </button>
       <ul class="dropdown-menu" role="menu">
         <li><a id="btnExportTableXML" href="#">As XML</a></li>
-        <li><a id="btnExportTablePDF" href="#">As PDF</a></li>
       </ul>
     </div>
     <a href="/index">
@@ -36,9 +35,13 @@
           Back to main page
       </div>
     </a>
+
     <table id="results-table"></table>
 </div>
 <script>
+    function graphFormatter(value){
+      return "<button type=\"button\" href=\"#\" id=\"graph\" class=\"btn btn-primary\">Show Graph</button>";
+    }
     // Generate the results table using Bootstrap Table
     $(function () {
         $('#results-table').bootstrapTable({
@@ -83,8 +86,18 @@
                 title: 'Quotes',
                 align: 'center',
                 valign: 'middle'
+            },  {
+                field: 'graph',
+                title: 'Graph',
+                align: 'center',
+                valign: 'middle',
+                formatter: 'graphFormatter'
             }]
         });
+        $("#btnExportTableXML").click(function () {
+            $('#results-table').tableExport({type:'xml',escape:'false'});
+        });
     });
+
 </script>
 {% endblock %}
