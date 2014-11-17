@@ -50,8 +50,8 @@ class CouchDBPipeline(object):
             print "Match found: ", m.group(), "in source ", source
             # create a dictionary with the name, title, link, and the source 
             # from the spider
-            data = dict([('id', spider.name), ('title', item["title"][0]), 
-                         ('link', item["link"][0]), 
+            data = dict([('id', 'results_' + spider.name), ('title', item["title"][0]), 
+                         ('link', item["link"][0]), ('doc_type', 'results'), 
                          ('source', source), ('date', item["date"][0])])
     
             self.db.save(data)

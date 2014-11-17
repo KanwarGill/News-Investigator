@@ -18,7 +18,7 @@ ITEM_PIPELINES = {
 }
 
 COUCHDB_SERVER = 'http://chihuahuas.iriscouch.com:5984/'
-COUCHDB_DB = 'results'
+COUCHDB_DB = 'news_investigator'
 NEWSSOURCE = 'news_source'
 KEYWORDS = 'keywords'
 
