@@ -38,7 +38,7 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>id=abc</td>
+	<td>css=li.sources</td>
 	<td>www.abc.com</td>
 </tr>
 </tbody></table>
