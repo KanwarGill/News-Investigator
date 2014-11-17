@@ -21,15 +21,15 @@
   </a>
 </div>
 -->
-<div class="results-table-container">
-    <table id="results-table"></table>
+<div class="twitter-table-container">
+    <table id="twitter-table"></table>
 </div>
 <script>
     // Generate the results table using Bootstrap Table
     $(function () {
-        $('#results-table').bootstrapTable({
+        $('#twitter-table').bootstrapTable({
             method: 'get',
-            url: '/get_results',
+            url: '/get_tweets',
             cache: false,
             height: 1000,
             striped: true,
@@ -42,33 +42,17 @@
             minimumCountColumns: 2,
             clickToSelect: true,
             columns: [{
-                field: 'title',
-                title: 'Article Title',
-                align: 'left',
+                field: 'keyword',
+                title: 'Keyword',
+                align: 'middle',
                 valign: 'left',
                 sortable: true
             }, {
-                field: 'link',
-                title: 'Article Link',
-                align: 'left',
+                field: 'tweets',
+                title: 'No. of tweets',
+                align: 'middle',
                 valign: 'left',
                 sortable: true
-            }, {
-                field: 'date',
-                title: 'Article Date',
-                align: 'center',
-                valign: 'middle',
-                sortable: true
-            }, {
-                field: 'hyperlinks',
-                title: 'Hyperlinks',
-                align: 'center',
-                valign: 'middle'
-            }, {
-                field: 'quotes',
-                title: 'Quotes',
-                align: 'center',
-                valign: 'middle'
             }]
         });
     });
