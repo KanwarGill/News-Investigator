@@ -6,19 +6,15 @@ $("#btnAddSource").click(function() {
         return;
     }
     var id = source.substring(source.indexOf(".") + 1, source.lastIndexOf("."));
-    $.ajax({
-        type: "POST",
-        url: "http://www.chihuahuas.iriscouch.com/news_source",
-        dataType: "json",
-        data: '{ "_id" : "' + id + '", "url": "' + source + '" }',
-        contentType: "application/json",
-        processData: false,
-        success: function(data) {
-            alert("Successfully added " + source);
-        },
-        error: function() {
-            alert("Cannot add duplicate news source");
-        }
+    $.post($SCRIPT_ROOT + '/add_source', {
+        id: id,
+        url: source
+    }).done(function(result) {
+        console.log(result)
+        alert("Successfully added " + source);
+    }).fail(function(xhr, status, error) {
+        console.log(error)
+        alert("Cannot add duplicate news source");
     });
 });
 
@@ -117,7 +113,7 @@ $("#btnDeleteSource").click(function() {
                     alert("Successfully deleted " +
                         source);
                 },
-                error: function() {
+                error: function(xhr, status, error) {
                     alert(
                         "ERROR: Cannot get keyword"
                     );
@@ -133,20 +129,16 @@ $("#btnAddKeyword").click(function() {
         alert("Please enter an alphanumeric keyword");
         return;
     }
-    $.ajax({
-        type: "POST",
-        url: "http://www.chihuahuas.iriscouch.com/keywords/",
-        dataType: "json",
-        data: '{ "_id" : "' + key + '", "keyword" : "' +
-            key + '" }',
-        contentType: "application/json",
-        processData: false,
-        success: function(data) {
-            alert("Successfully added " + key);
-        },
-        error: function() {
-            alert("Cannot add duplicate keyword");
-        }
+
+    $.post($SCRIPT_ROOT + '/add_keywords', {
+        id: key,
+        keyword: key
+    }).done(function(result) {
+        console.log(result)
+        alert("Successfully added " + key);
+    }).fail(function(xhr, status, error) {
+        console.log(xhr.responseText + ': ' + error)
+        alert("Cannot add duplicate keyword");
     });
 });
 
@@ -168,7 +160,7 @@ $("#btnDeleteKeyword").click(function() {
                     alert("Successfully deleted " +
                         key);
                 },
-                error: function() {
+                error: function(xhr, status, error) {
                     alert(
                         "ERROR: Cannot get keyword"
                     );

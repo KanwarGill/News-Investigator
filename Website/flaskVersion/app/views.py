@@ -81,23 +81,22 @@ def crawling_task():
 
 @app.route('/add_source', methods=['POST'])
 def add_source():
-    '''TODO: Does not work at the moment, need to reconfigure database'''
-    id = request.args.get("id", id)
-    source = request.args.get('url', source)
-    app.config.update(
-        COUCHDB_DATABASE = 'news_source')
-    manager.setup(app)
-    # Error checking here
-    document = dict(_id=id, source=source)
-    g.couch[id] = document
-    g.couch.save(document)
+    id = request.form['id']
+    url = request.form['url']
+    document = dict(_id=id, url=url)
+    db.save_news_source(id, document)
     return jsonify(id=id, source=source, result='good')
     
 def delete_source():
     pass
-    
+
+@app.route('/add_keywords', methods=['POST'])
 def add_keywords():
-    pass
+    id = request.form['id']
+    keyword = request.form['keyword']
+    document = dict(_id=id, keyword=keyword)
+    db.save_keyword(id, document)
+    return jsonify(id=id, keyword=keyword, result='good')
     
 def delete_keywords():
     pass
