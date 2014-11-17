@@ -19,78 +19,59 @@ $("#btnAddSource").click(function() {
     });
 });
 
-$('#show-sources').on('click', function() {
-    console.log("Hello");
-    //get collapse content selector
-    var collapse_content_selector = $(this).attr('href');
+      $('#show-sources').on('click', function () {
+      //get collapse content selector
+      var collapse_content_selector = $(this).attr('href');         
+ 
+      //make the collapse content to be shown or hide
+      var toggle_switch = $(this);
 
-    //make the collapse content to be shown or hide
-    var toggle_switch = $(this);
+        $(collapse_content_selector).toggle(function(){
+          if($(this).css('display')=='none'){
+          //change the button label to be 'Show'
+		toggle_switch.html('Show Sources');
+          }else{
+          //change the button label to be 'Hide'
+      toggle_switch.html('Hide Sources');
+          }
+        });
+      });
 
-    $(collapse_content_selector).toggle(function() {
-        if ($(this).css('display') == 'none') {
-            //change the button label to be 'Show'
-            toggle_switch.html('Show Sources');
-        }
-        else {
-            //change the button label to be 'Hide'
-            toggle_switch.html('Hide Sources');
-        }
-    });
-});
+      $('#show-keywords').on('click', function () {
+      //get collapse content selector
+      var collapse_content_selector = $(this).attr('href');         
 
-$('#show-keywords').on('click', function() {
-    //get collapse content selector
-    var collapse_content_selector = $(this).attr('href');
+      //make the collapse content to be shown or hide
+      var toggle_switch = $(this);
 
-    //make the collapse content to be shown or hide
-    var toggle_switch = $(this);
-
-    $(collapse_content_selector).toggle(function() {
-        if ($(this).css('display') == 'none') {
-            //change the button label to be 'Show'
-            toggle_switch.html('Show Keywords');
-        }
-        else {
-            //change the button label to be 'Hide'
-            toggle_switch.html('Hide Keywords');
-        }
-    });
-});
-
-window.onload = function() {
-    $(".getsources").empty();
+        $(collapse_content_selector).toggle(function(){
+          if($(this).css('display')=='none'){
+          //change the button label to be 'Show'
+          toggle_switch.html('Show Keywords');
+          }else{
+          //change the button label to be 'Hide'
+          toggle_switch.html('Hide Keywords');
+          }
+        });
+      });
     
-    $.get($SCRIPT_ROOT + '/get_sources').done(function(result){
-        console.log(result.data);
-        var sources = [];
-        $.each(result.data, function(key, val) {
-            console.log(val.id);
-            console.log(val.key);
-            sources.push("<li id='" + val.id + "'>" + val.key + "</li>");
-        });            
+    $('#show-handles').click(function () {
+      //get collapse content selector
+      var collapse_content_selector = $(this).attr('href');         
 
-        $("<ul/>", {
-            "class": "listofsources",
-            html: sources.join("")
-        }).appendTo(".getsources");
+      //make the collapse content to be shown or hide
+      var toggle_switch = $(this);
 
+      $(collapse_content_selector).toggle(function(){
+        if($(this).css('display')=='none'){
+          //change the button label to be 'Show'
+          toggle_switch.html('Show Handles');
+        }else{
+          //change the button label to be 'Hide'
+          toggle_switch.html('Hide Handles');
+        }
+      });
     });
-
-    $.get($SCRIPT_ROOT + '/get_keywords').done(function(result){
-        console.log(result.data);
-        var keywords = [];
-        $.each(result.data, function(key, val) {
-            keywords.push("<li class='keywords'>" + val.key + "</li>");
-        });            
-
-        $("<ul/>", {
-            "class": "listofkeywords",
-            html: keywords.join("")
-        }).appendTo(".getkeywords");
-
-    });
-};
 
 $("#btnDeleteSource").click(function() {
     var source = $("#deletesource").val();
@@ -107,6 +88,63 @@ $("#btnDeleteSource").click(function() {
         alert("News source not found.");
     });
 });
+
+    function getSources(){
+      $(".getsources").empty();
+    
+      $.get($SCRIPT_ROOT + '/get_sources').done(function(result){
+          console.log(result.data);
+          var sources = [];
+          $.each(result.data, function(key, val) {
+              sources.push("<li class='sources' id='" + val.id + "'>" + val.key + "</li>");
+          });            
+
+          $("<ul/>", {
+              "class": "listofsources",
+              html: sources.join("")
+          }).appendTo(".getsources");
+      });
+    };
+    
+    function getKeywords(){
+      $(".getkeywords").empty();
+        // Display the current keywords form the DB
+          $.get($SCRIPT_ROOT + '/get_keywords').done(function(result){
+        console.log(result.data);
+        var keywords = [];
+        $.each(result.data, function(key, val) {
+            keywords.push("<li class='keywords'>" + val.key + "</li>");
+        });            
+
+        $("<ul/>", {
+            "class": "listofkeywords",
+            html: keywords.join("")
+        }).appendTo(".getkeywords");
+
+    });
+    };
+    
+    function getHandles(){
+      $(".gethandles").empty();
+      $.getJSON("http://www.chihuahuas.iriscouch.com/handles/_all_docs?include_docs=true", function(data) {
+        var handles = [];
+        $.each(data.rows, function(key, val) {
+          handles.push("<li class='handles'>" + val.doc.handle + "</li>");
+        });
+        
+        $("<ul/>", {
+          "class": "listofhandles",
+          html: handles.join("")
+        }).appendTo(".gethandles");
+      });
+    };
+    
+    window.onload = function() {
+      getSources();
+      getKeywords();
+      getHandles();
+    };
+
 
 $("#btnAddKeyword").click(function() {
     var key = $("#inputkeyword").val();
@@ -130,6 +168,7 @@ $("#btnAddKeyword").click(function() {
 
 $("#btnDeleteKeyword").click(function() {
     var key = $("#deletekeyword").val();
+
     $.post($SCRIPT_ROOT + '/delete_source', {
         id: 'keyword_' + key
     }).done(function(result) {
@@ -140,6 +179,55 @@ $("#btnDeleteKeyword").click(function() {
         alert("Keyword not found.");
     });
 });
+
+    $("#btnAddHandle").click(function () {
+      var handleRegex = new RegExp("^@{1}[a-zA-Z0-9_]{1,15}$");
+      var handle = $("#inputtwitterhandle").val();
+      if (!handleRegex.test(handle)) {
+        alert("Please enter a valid twitter handle");
+        return;
+      }
+      var id = handle.substring(handle.indexOf("@") + 1);
+      $.ajax({
+        type: "POST",
+        url: "http://www.chihuahuas.iriscouch.com/handles",
+        dataType: "json",
+        data: '{ "_id" : "' + id + '", "handle": "' + handle + '" }',
+        contentType: "application/json",
+        processData: false,
+        success: function (data) {
+          alert("Successfully added " + handle);
+		  getHandles();
+        },
+        error: function(){
+          alert("Cannot add twitter handle");
+        }
+      });
+    });
+    
+    $("#btnDeleteHandle").click(function () {
+      var handle = $("#deletetwitterhandle").val();
+      var rev = "";
+      var id = handle.substring(handle.indexOf("@") + 1);
+      $.getJSON("http://www.chihuahuas.iriscouch.com/handles/" + id, function(data) {
+        $.each(data, function(key, val) {
+          rev = data._rev;
+        });
+        $.ajax({
+          type: "DELETE",
+          url: "http://www.chihuahuas.iriscouch.com/handles/" + id + "?rev=" + rev,
+          dataType: "json",
+          contentType: "application/json",
+          success: function (data) {
+            alert("Successfully deleted " + handle);
+			getHandles();
+          },
+          error: function(){
+            alert("ERROR: cannot get twitter handle");
+          }
+        });
+      }).error(function(){alert("ERROR: twitter handle not in database");});
+    });
 
 $("#btnTableSources").click(function() {
     location.href = "table.html";
