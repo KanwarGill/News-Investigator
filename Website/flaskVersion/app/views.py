@@ -67,6 +67,11 @@ def view_table_page():
     '''Return the table results page.'''
     return render_template('table.html', title='Crawl Results')
 
+@app.route('/twitter_table')
+def view_twitter_table():
+    '''Return the twitter table results page.'''
+    return render_template('twitter_table.html', title='Twitter Results')
+
 '''
 GET/POST methods
 ''' 
@@ -149,6 +154,17 @@ def get_results():
         }
         results.append(datarow)
     # Return the results as a JSON list
+    return json.dumps(results)
+
+@app.route('/get_tweets', methods=['GET'])
+def get_tweets():
+    results = []
+    keywords = db.get_view('byDocType/byKeyword')
+    for row in keywords:
+        datarow = {
+            'keyword': row.value['keyword']
+        }
+        results.append(datarow)
     return json.dumps(results)
 
  

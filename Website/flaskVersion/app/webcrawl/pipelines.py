@@ -25,23 +25,18 @@ class CouchDBPipeline(object):
             # add the keywords to the list
             self.keywords.append(document.items()[2][1])
         print self.keywords
-
+        
+    
+    '''Process each crawled object and save it to the news_investigator database'''
     def process_item(self, item, spider):
 
         # join the keywords from the list with or to facilitate regex
         keywords = "|".join(self.keywords)
-        print "Keywords: ", keywords
-        
-        print "Title: ", item["title"]
         
         # join the strings in the source to create one giant string
+        # and change the encoding to ascii
         source = " ".join(item["source"])
-        source = source.encode('ascii', 'ignore')
-        #try:
-            #spurce = source.decode(parsed_feed.encoding).encode('ascii', 'xmlcharrefreplace')
-        #except UnicodeDecodeError:
-            #print "UnicodeDecodeError"
-        print "Source: ", source
+        source = source.encode("ascii", "ignore")
         
         # parse the source to to see if it contains the keyword
         pattern = re.compile(keywords)
@@ -50,13 +45,13 @@ class CouchDBPipeline(object):
             print "Match found: ", m.group(), "in source ", source
             # create a dictionary with the name, title, link, and the source 
             # from the spider
-            data = dict([('id', 'results_' + spider.name), ('title', item["title"][0]), 
-                         ('link', item["link"][0]), ('doc_type', 'results'), 
-                         ('source', source), ('date', item["date"][0])])
+            data = dict([("id", "results_" + spider.name), ("title", item["title"][0]), 
+                         ("link", item["link"][0]), ("doc_type", "results"), 
+                         ("source", source), ("date", item["date"][0])])
     
             self.db.save(data)
             log.msg("Item wrote to CouchDB database %s/%s" %
-                        (settings['COUCHDB_SERVER'], settings['COUCHDB_DB']),
+                        (settings["COUCHDB_SERVER"], settings["COUCHDB_DB"]),
                         level=log.DEBUG, spider=spider)             
         else:
             print "No Match"

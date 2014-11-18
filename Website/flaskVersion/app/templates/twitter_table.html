@@ -21,35 +21,29 @@
   </a>
 </div>
 -->
-<div class="results-table-container">
+<div class="twitter-table-container">
     <div class="btn-group">
       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
         Export Table Data <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu">
         <li><a id="btnExportTableXML" href="#">As XML</a></li>
+        <li><a id="btnExportTablePDF" href="#">As PDF</a></li>
       </ul>
-    </div>
-    <div class="btn btn-primary custombtn" href="#" id="btnArticlesGraph">
-          View Articles Graph
     </div>
     <a href="/index">
       <div class="btn btn-primary custombtn" id="btnReturnIndex">
           Back to main page
       </div>
     </a>
-
-    <table id="results-table"></table>
+    <table id="twitter-table"></table>
 </div>
 <script>
-    function graphFormatter(value){
-      return "<button type=\"button\" href=\"#\" id=\"graph\" class=\"btn btn-primary\">Show Graph</button>";
-    }
     // Generate the results table using Bootstrap Table
     $(function () {
-        $('#results-table').bootstrapTable({
+        $('#twitter-table').bootstrapTable({
             method: 'get',
-            url: '/get_results',
+            url: '/get_tweets',
             cache: false,
             height: 1000,
             striped: true,
@@ -62,45 +56,19 @@
             minimumCountColumns: 2,
             clickToSelect: true,
             columns: [{
-                field: 'title',
-                title: 'Article Title',
-                align: 'left',
+                field: 'keyword',
+                title: 'Keyword',
+                align: 'middle',
                 valign: 'left',
                 sortable: true
             }, {
-                field: 'link',
-                title: 'Article Link',
-                align: 'left',
+                field: 'tweets',
+                title: 'No. of tweets',
+                align: 'middle',
                 valign: 'left',
                 sortable: true
-            }, {
-                field: 'date',
-                title: 'Article Date',
-                align: 'center',
-                valign: 'middle',
-                sortable: true
-            }, {
-                field: 'hyperlinks',
-                title: 'Hyperlinks',
-                align: 'center',
-                valign: 'middle'
-            }, {
-                field: 'quotes',
-                title: 'Quotes',
-                align: 'center',
-                valign: 'middle'
-            },  {
-                field: 'graph',
-                title: 'Graph',
-                align: 'center',
-                valign: 'middle',
-                formatter: 'graphFormatter'
             }]
         });
-        $("#btnExportTableXML").click(function () {
-            $('#results-table').tableExport({type:'xml',escape:'false'});
-        });
     });
-
 </script>
 {% endblock %}
