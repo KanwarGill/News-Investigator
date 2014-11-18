@@ -1,0 +1,30 @@
+CODE REVIEW
+
+Code: Implemented get/delete keywords/sources. Refactored/commented code. [flask branch]
+Code Written By: Samson
+Commit: 338d909db95dacc8657969a948fb6c28473184e2 [NOV 16, 2014]
+Inspection By: Vinicius
+Inspection Date: November 17th
+
+
+Files under review:
+	  Website/flaskVersion/app/database.py
+	  Website/flaskVersion/app/static/js/main.js
+	  Website/flaskVersion/app/views.py 
+
+ Correctness:
+ - Code works fine, implementing get/delete actions in our backend.
+ - Stores/removes data from database flawlessly.
+
+ Coding Style/Coding Guidelines:
+ - Good. Followed guidelines except that has many console.log() to check function returns in main.js.
+ - console.log() with no apparent usage left behind in main.js at line 65.
+
+
+ Quality of Documentation:
+ - Well commented on the python files. All functions have a reasonable comment.
+ - main.js is not commented. Could have documented what changed.
+
+ Quality of Testing:
+ - Same unit tests used from previous code. Team already agreed to add more tests.
+ - Does not test features as Delete and Add single source/keyword.
