@@ -1,0 +1,49 @@
+Legend:
+
+BP stands for Business Priority
+DD stands for Developer Days
+US stands for User Story
+User Story that has same content but with different personas is written like this User Story (#[first persona] and #[second persona])
+
+BP1, then, means Business priority 1 for example.
+
+Iteration 5: Nov 14 - Nov 20
+===============================================================================
+
+Project Velocity from Iteration 6: 8
+
+Tasks from Iteration 6:
+11.1) [US11] Create regex for mentions (Carlos) [DD3] -- abandoned
+11.2) [US11] Include the regex for mentions in the backend (Kanwar) [DD 0.5] -- abandoned
+11.3) [US11] Show the mentions for each article in the table (Kanwar) [DD 0.5] -- abandoned
+12.1) [US12] Save the data from the table (Samson) [DD1]
+12.2) [US12] Change the data to XML format (Kanwar) [DD2] 
+12.3) [US12] Implement a button to save data in XML format (Vinicius) [DD1]
+21.1) [US21] Use Twitter API to see the tweets for the people containing the keywords (Kenny) [DD1]
+21.2) [US21] Setup the table for twitter (Vinicius) [DD 0.25]
+21.3) [US21] Show the matching tweets in the front end in a table (Kanwar) [DD1] 
+
+User stories implemented in this iteration:
+
+User Story #18 (#18.1 and #18.2): [BP2 DD3]
+As Alejandro (a researcher), I want to view each article being referenced over time in a line graph, so that I am more efficient in my analysis of the data.
+As Alex (a grad student), I want to view each article being referenced over time in a line graph, so that I am more efficient in my analysis of the data.
+    - article on y-axis
+    - time on x-axis
+
+Tasks for this user story:
+18.1) Grab the data from the backend (Samson) [DD 0.5]
+18.2) Push that data into the library being used for graphs (Carlos) [DD 1.5]
+18.3) Change the name of the article to a hyperlink/or add a button column on each row in the table for easy viewing of the graph (Vinicius) [DD 0.75]
+18.4) Include a button at the end of the table to view all articles in a bar graph (Vinicius) [DD 0.25]
+
+Total: 
+
+Other tasks:
+1) Change the database to include all tables in one table which has a doc type ID (Samson) [DD1]
+2) Extend the scrapy spider to include all the RSS feeds (Samson and Kanwar)
+3) Unit tests for backend
+4) Selenium testing for frontend
+
+Project Velocity at the beginning: 8 DD
+Project Velocity at the end: 

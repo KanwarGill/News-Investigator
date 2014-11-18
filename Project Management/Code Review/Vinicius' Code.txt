@@ -1,0 +1,24 @@
+CODE REVIEW
+--------------------------
+Code: team16-project/Website/c01/main.js [master branch]
+Code Written By: Vinicius
+Commit: e1aba9390e48c90a18ebdd2b58aabdd6ed29f3d8 [Nov 8, 2014]
+Inspection By: Kenny
+Inspection Date: November 13th
+--------------------------
+1) Correctness
+	- code generally looks good when I was testing it.
+	- all the relevant data from the relevant databases were placed in the proper lists.
+	- there was one minor oversight in which the list values would not be refreshed until the page was refreshed.
+	  In other words if keywords or sources were added/deleted it would not be reflected in the lists until a refresh.
+2) Coding style/guidelines
+	- naming of variables makes sense.
+	- variables use proper pothole naming conventions.
+	- proper indentation of code.
+	- no unnecessary blank lines.
+3) Quality of documentation
+	- code is well commented. I was able quickly understand how the code generally worked.
+	- more commenting in certain areas would have been appreciated.
+4) Quality of testing
+	- Selenium tests checks the functionality of the main index.html to which main.js is linked.
+	- tests cover previously implemented functions along with the new collapsible lists.

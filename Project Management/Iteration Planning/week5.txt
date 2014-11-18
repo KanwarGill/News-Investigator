@@ -3,36 +3,83 @@ Legend:
 BP stands for Business Priority
 DD stands for Developer Days
 US stands for User Story
+User Story that has same content but with different personas is written like this User Story (#[first persona] and #[second persona])s
 
 BP1, then, means Business priority 1 for example.
 
-Iteration 5: Oct 31 - Oct Nov 6
+Iteration 5: Oct 31 - Nov 6
 ===============================================================================
-Project Velocity from Iteration 4: TBD
+
+Project Velocity from Iteration 4: 5
 
 Tasks from Iteration 4:
-1) [US3] Create a signup page (Kenny) [DD 0.5]
-2) [US3] Save the information to the Database (Kenny) [DD1]
-3) [US4] Create a login page (Kenny) [DD 0.5]
-3) [US4] Ajax call to the database to retrieve the username  (Kenny) [DD 0.5] 
-4) [US4] Re-direct to main page after correct password (Kenny) [DD 0.5]
-5) [US4] Hide the passwords for login and signup page (Carlos) [DD1] -- moved to Iteration 6
-6) [US11] Create regex for mentions (Carlos) [DD3] -- moved to Iteration 6
-7) [US11] Include the regex for mentions in the crawler (Kanwar) [DD 0.5] -- moved to Iteration 6
-8) [US11] Show the mentions for each article in the table (Kanwar) [DD 0.5] -- moved to Iteration 6
+9.4) [US9] Perform regex in the backend code (Kanwar) [DD 0.5] -- moved to iteration 6
+9.5) [US9] Create a table in the frontend (Vinicius) [DD1]
+9.6) [US9] Show the results of scrapy in the table (Kanwar) [DD 0.5] -- moved to iteration 6
+10.2) [US10] Perform regex in the backend code (Kanwar) [DD 0.5] -- moved to iteration 6
+10.3) [US10] Show the results of scrapy in the table (Kanwar) [DD 0.5] -- moved to iteration 6
+3.1) [US3] Create a signup page (Kenny) [DD 0.5]
+3.2) [US3] Save the information to the Database (Kenny) [DD1]
+4.1) [US4] Create a login page (Kenny) [DD 0.5]
+4.2) [US4] Ajax call to the database to retrieve the username  (Kenny) [DD 0.5] 
+4.3) [US4] Re-direct to main page after correct password (Kenny) [DD 0.5]
+4.4) [US4] Hide the passwords for login and signup page (Carlos) [DD1] -- moved to Iteration 6
+11.1) [US11] Create regex for mentions (Carlos) [DD3] -- moved to Iteration 6
+11.2) [US11] Include the regex for mentions in the backend (Kanwar) [DD 0.5] -- moved to Iteration 6
+11.3) [US11] Show the mentions for each article in the table (Kanwar) [DD 0.5] -- moved to Iteration 6
 
-Total: 9
+Total: 12 DD
 
 User stories implemented in this iteration:
 
-User Story #14: As Alejandro (a researcher), I want to see the results of the web crawl in a table, so that I obtain an overall status/general report.
+User Story #14: [BP2 DD4]
+As Alejandro (a researcher), I want to see the results of the web crawl in a table, so that I obtain an overall status/general report.
  - user story can also pertain the grad student as well
 Acceptance criteria: After logging in, click display data button to display the contents of the database in table format.
-Business priority: 2
-Developer days estimate: 4
 
 Tasks for this user story:
-1) Implement a table in bootsrap (Vinicius) [DD1]
-2) Include the results from the crawl in the table (Samson) [DD3] -- moved to Iteration 6
+14.1) Implement a table in bootsrap (Vinicius) [DD1]
+14.2) Include the results from the backend in the table (Samson) [DD3] -- moved to Iteration 6
 
 Total: 4 DD
+
+User Story #15 (#15.1 and #15.2): [BP3 DD3] 
+As Alejandro (a researcher), I want to filter the results of the table, so that I can be more efficient in my analysis/research on the data.
+As Alex (a grad student), I want to filter the results of the table, so that I can be more efficient in my analysis/research on the data.
+    - filter by news source [drop down]
+    - filter by keywords    [drop down]
+Acceptance criteria: While looking through the data table, type in keyword/news source in textbox and click filter button to show only relevant data.
+
+Tasks for this user story:
+15.1) Create a table using bootstrap with the feature to filter the rows (Vinicius) [DD1]
+
+Total: 1 DD
+
+User Story #16 (#16.1 and #16.2): [BP3 DD3]
+As Alejandro (a researcher), I want to search the results of the table, so that I can be more efficient in my analysis/research on the data.
+As Alex (a grad student), I want to search the results of the table, so that I can be more efficient in my analysis/research on the data.
+    - search by article name
+    - search by keywords
+    - search by author
+Acceptance criteria: While looking through the data table, type in keywords/article name/author and sort by the relevance of the data.
+
+Tasks for this user story:
+16.1) Create a table using bootstrap with the feature to search the rows (Vinicius) [DD1]
+
+Total: 1 DD
+
+User Story #17 (#17.1 and #17.2): [BP3 DD3]
+As Alejandro (a researcher), I want to sort the results of the table, so that I can be more efficient in my analysis/research on the data.
+As Alex (a grad student), I want to sort the results of the table, so that I can be more efficient in my analysis/research on the data.
+    - sort by number of times it references articles from monitored sources
+    - sort by number of times it is being referenced
+    - sort by date article created
+Acceptance criteria: While looking through the data table, select a sort option from a box of radio buttons and sort the table by that method.
+
+Tasks for this user story:
+17.1) Create a table using bootstrap with the feature to sort the rows (Vinicius) [DD1]
+
+Total: 1 DD
+
+Project Velocity at the beginning: 5 DD
+Project Velocity at the end: 6 DD

@@ -1,0 +1,38 @@
+Legend:
+
+BP stands for Business priority
+DD stands for Developer Days
+User Story that has same content but with different personas is written like this User Story (#[first persona] and #[second persona])
+
+BP1, then, means Business priority 1 for example.
+
+Iteration 1: Oct 3 - Oct 9
+===============================================================================
+
+User stories implemented in this iteration:
+
+User Story #5 (#5.1 and #5.2) [BP1 DD3]: 
+As Alejandro (a researcher), I want to be able to add sources to the program, so that I can increase and accommodate the new sources needed for my research.
+As Alex (a grad student), I want to be able to add sources to the program, so that I can increase and accommodate the new sources needed for my research.
+
+Tasks for this user story:
+5.1) Setup the webpage (Vinicius) [DD 0.5]
+5.2) Use bootstrap to create the front-end with the add sources button (Vinicius) [DD 0.5]
+5.3) Set up the database with the news_source table (Kanwar) [DD 0.5]
+5.4) Determine the schema for the database (Kanwar) [DD1]
+5.5) Add action for the add source/get sources button so that it saves information in database (Kanwar) [DD 0.5] -- moved to iteration 2
+
+Total: 3 DD
+
+User Story #6 (#6.1 and #6.2) [BP1 DD2]:
+As Alejandro (a researcher), I want to be able to specify the list of keywords that I want to monitor in the list of given news sources, so that I can get the information on the relationships between these news sources needed to complete my research. 
+As Alex (a grad student), I want to be able to specify the list of keywords that I want to monitor in the list of given news sources, so that I can get the information on the relationships between these news sources needed to complete my research.
+
+Tasks for this user story:
+6.1) Use bootstrap to create the front-end with the add keywords button (Vinicius) [DD1]
+6.2) Set up the database with the keywords table (Kanwar) [DD 0.5]
+6.3) Add action for the add keyword/get keywords button so that it saves information in database (Kanwar) [DD 0.5] -- moved to iteration 2
+
+Total: 2 DD
+
+Project Velocity at the end: 4 DD
