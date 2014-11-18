@@ -1,11 +1,11 @@
 from twisted.internet import reactor
 from scrapy.crawler import Crawler
 from scrapy import log, signals
-from webcrawl.spiders.aljazeera_spider2 import AlJazzera2Spider
+from webcrawl.spiders.article_spider import ArticleSpider
 from scrapy.utils.project import get_project_settings
 
 def webcrawl():
-    spider = AlJazzera2Spider()
+    spider = ArticleSpider()
     settings = get_project_settings()
     crawler = Crawler(settings)
     crawler.signals.connect(reactor.stop, signal=signals.spider_closed)

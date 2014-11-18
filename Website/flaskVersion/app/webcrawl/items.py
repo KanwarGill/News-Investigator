@@ -7,7 +7,7 @@
 
 import scrapy
     
-class AlJazeeraItem(scrapy.Item):
+class ArticleItem(scrapy.Item):
     title = scrapy.Field()
     link = scrapy.Field()
     source = scrapy.Field()
