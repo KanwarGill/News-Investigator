@@ -159,10 +159,10 @@ def get_results():
 @app.route('/get_tweets', methods=['GET'])
 def get_tweets():
     results = []
-    keywords = db.get_view('byDocType/byKeyword')
+    keywords = db.get_view('byDocType/byHandle')
     for row in keywords:
         datarow = {
-            'keyword': row.value['keyword']
+            'handle': row.value['handle']
         }
         results.append(datarow)
     return json.dumps(results)
