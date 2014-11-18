@@ -17,19 +17,17 @@ class CouchDBPipeline(object):
         # chihuahuas.iriscouch.com
         couch = couchdb.Server(settings['COUCHDB_SERVER'])
         self.db = couch[settings['COUCHDB_DB']]
-        self.keyword_db = couch[settings['KEYWORDS']]
         self.keywords = []
         # Grab all keywords from the keywords database
-        for row in self.keyword_db.view('_all_docs'):
-            document = self.keyword_db.get(row.id)
+        for row in self.db.view('byDocType/byKeyword'):
             # add the keywords to the list
-            self.keywords.append(document.items()[2][1])
+            self.keywords.append(row.key)
         print self.keywords
         
     
-    '''Process each crawled object and save it to the news_investigator database'''
     def process_item(self, item, spider):
-
+        '''Process each crawled object and save it to the news_investigator database'''
+    
         # join the keywords from the list with or to facilitate regex
         keywords = "|".join(self.keywords)
         

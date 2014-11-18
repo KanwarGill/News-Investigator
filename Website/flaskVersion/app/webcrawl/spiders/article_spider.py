@@ -11,7 +11,7 @@ class ArticleSpider(CrawlSpider):
     # List of the start URLs
     start_urls = []
     # List of the allowed domains
-    allowed_domains = []
+    #allowed_domains = []
     
     # Access CouchDB database
     couch = couchdb.Server('http://chihuahuas.iriscouch.com:5984/')
@@ -29,12 +29,14 @@ class ArticleSpider(CrawlSpider):
                 n2 = new.split('.')
                 # remove the rss item
                 n2.pop(0)
-                # insert the www item
-                n2.insert(0, 'www')
-                # add the new url to the allowed domains
-                allowed_domains.append(".".join(n2))
+                # add the new urls to the allowed domains
+                #allowed_domains.append("http://www." + ".".join(n2))
+                #allowed_domains.append("www." + ".".join(n2))
         else:
-            allowed_domains.append(parsed.path)
+            #allowed_domains.append("http://" + parsed.path)
+            #allowed_domains.append(parsed.path)
+            continue
+        #print allowed_domains
     
     name = "article"
     
@@ -57,9 +59,7 @@ class ArticleSpider(CrawlSpider):
         # The articles in Al Jazeera is under the td tag,
         # Detailed Summary class
         # item ["source"] = hxs.select('//td[@class="DetailedSummary"]/p').extract()
-        item ["source"] = hxs.select('p').extract()
-        
-        # Extract hyperlinks, extract quotes, extract mentions here
+        item ["source"] = hxs.select('//p').extract()
         
         return item
 
