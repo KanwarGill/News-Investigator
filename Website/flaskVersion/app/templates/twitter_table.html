@@ -68,14 +68,16 @@
                 title: 'No. of tweets',
                 align: 'middle',
                 valign: 'left',
+				width: '100',
                 sortable: true
             }, {
 				field: 'tweets text',
 				title: 'Tweets',
 				align: 'middle',
 				valign: 'left',
+				width: '1000',
 				sortable: true,
-				scrollable: true
+				formatter: 'tweetsTextFormatter'
 			}]
         });
         $("#btnExportTableXML").click(function () {

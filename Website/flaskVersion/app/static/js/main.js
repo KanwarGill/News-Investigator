@@ -12,6 +12,7 @@ $("#btnAddSource").click(function() {
         url: source
     }).done(function(result) {
         console.log(result)
+		getSources();
         alert("Successfully added " + source);
     }).fail(function(xhr, status, error) {
         console.log(error)
@@ -82,6 +83,7 @@ $("#btnDeleteSource").click(function() {
         id: 'news_source_' + id
     }).done(function(result) {
         console.log(result)
+		getSources();
         alert("Successfully deleted " + source);
     }).fail(function(xhr, status, error) {
         console.log(error)
@@ -160,6 +162,7 @@ $("#btnAddKeyword").click(function() {
         keyword: key
     }).done(function(result) {
         console.log(result)
+		getKeywords();
         alert("Successfully added " + key);
     }).fail(function(xhr, status, error) {
         console.log(xhr.responseText + ': ' + error)
@@ -174,6 +177,7 @@ $("#btnDeleteKeyword").click(function() {
         id: 'keyword_' + key
     }).done(function(result) {
         console.log(result)
+		getKeywords();
         alert("Successfully deleted " + key);
     }).fail(function(xhr, status, error) {
         console.log(error)
@@ -194,6 +198,7 @@ $("#btnDeleteKeyword").click(function() {
         handle: handle
       }).done(function(result) {
           console.log(result)
+		  getHandles();
           alert("Successfully added " + id);
       }).fail(function(xhr, status, error) {
           console.log(error)
@@ -225,6 +230,7 @@ $("#btnDeleteKeyword").click(function() {
         id: 'handle_' + id
         }).done(function(result) {
             console.log(result)
+			getHandles();
             alert("Successfully deleted " + key);
         }).fail(function(xhr, status, error) {
             console.log(error)
