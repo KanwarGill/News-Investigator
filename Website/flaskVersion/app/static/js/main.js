@@ -126,10 +126,11 @@ $("#btnDeleteSource").click(function() {
     
     function getHandles(){
       $(".gethandles").empty();
-      $.getJSON("http://www.chihuahuas.iriscouch.com/handles/_all_docs?include_docs=true", function(data) {
+      $.get($SCRIPT_ROOT + '/get_handles').done(function(result) {
+        console.log(result.data);
         var handles = [];
-        $.each(data.rows, function(key, val) {
-          handles.push("<li class='handles'>" + val.doc.handle + "</li>");
+        $.each(result.data, function(key, val) {
+          handles.push("<li class='handles'>" + val.key + "</li>");
         });
         
         $("<ul/>", {
