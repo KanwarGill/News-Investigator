@@ -69,7 +69,14 @@
                 align: 'middle',
                 valign: 'left',
                 sortable: true
-            }]
+            }, {
+				field: 'tweets text',
+				title: 'Tweets',
+				align: 'middle',
+				valign: 'left',
+				sortable: true,
+				scrollable: true
+			}]
         });
         $("#btnExportTableXML").click(function () {
             $('#twitter-table').tableExport({type:'xml',escape:'false'});

@@ -192,6 +192,7 @@ def get_tweets():
     num_of_tweets = 0
     handles_list = []
     keywords = []
+    tweets = []
     for keyword in db.get_view('byDocType/byKeyword'):
         keywords.append(keyword.value['keyword'])
     
@@ -202,6 +203,7 @@ def get_tweets():
     # loop over the keywords
     for keyword in keywords:
         num_of_tweets = 0
+        tweets = []
         for handle in handles_list:
             # get the tweets for the current handle and loop over them to 
             # see if it contains the keyword
@@ -210,9 +212,11 @@ def get_tweets():
                 # if the tweet contains the keyword increment the number
                 if re.match(keyword, tweet.text):
                     num_of_tweets += 1
+                    tweets.append(tweet.text)
         datarow = {
             'keyword': keyword,
-            'tweets': num_of_tweets
+            'tweets': num_of_tweets,
+			'tweets text': tweets
         }
         results.append(datarow)
     
