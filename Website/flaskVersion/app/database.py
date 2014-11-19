@@ -44,6 +44,12 @@ class NewsInvestigatorDatabase(object):
         '''
         self._save_document('keyword_' + id, document, 'keyword')
         
+    def save_handle(self, id, document):
+        '''
+        Save a handle to the database.
+        '''
+        self._save_document('handle_' + id, document, 'handle')
+        
     def delete_document(self, id):
         '''
         Delete a document, given the id.

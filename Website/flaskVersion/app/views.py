@@ -5,6 +5,7 @@ from flaskext.couchdb import CouchDBManager
 from os import path, environ
 from database import NewsInvestigatorDatabase
 
+import tweepy
 import re
 import json
 import requests
@@ -118,8 +119,26 @@ def get_keywords():
         results.append(row)
     return jsonify(data=results)
 
+@app.route('/add_handle', methods=['POST'])
+def add_handle():
+    '''Add a handle to the database. Requires the id and the handle name.'''
+    id = request.form['id']
+    handle = request.form['handle']
+    document = dict(_id=id, handle=handle)
+    db.save_handle(id, document)
+    return jsonify(id=id, handle=handle, status='good')
+
+@app.route('/get_handles', methods=['GET'])
+def get_handles():
+    '''Return the list of handles from the database.'''
+    results = []
+    for row in db.get_view('byDocType/byHandle'):
+        results.append(row)
+    return jsonify(data=results)
+
 @app.route('/delete_source', methods=['POST'])    
 @app.route('/delete_keyword', methods=['POST'])
+@app.route('/delete_handle', methods=['POST'])
 def delete_doc():
     '''Delete a document, given the id.'''
     id = request.form['id']
@@ -158,13 +177,52 @@ def get_results():
 
 @app.route('/get_tweets', methods=['GET'])
 def get_tweets():
+    
+    # results list which will go in the twitter table
     results = []
-    keywords = db.get_view('byDocType/byHandle')
-    for row in keywords:
+    
+    # authentication for Twitter API
+    auth = tweepy.OAuthHandler('PNIJuzLXezWr3xrxScEbA68l3', 
+                        'Li7Z5ZOvIu4o50G0n2wEmv5Nj0JmsCvSjR7OUx4CMompnIqGjH')
+    auth.set_access_token('64169290-OZeLtehY0eSBkj12ebWZlYP8KtzlJtxLF5DEM7Jb8', 
+                          'WbgHw8xyDJ77ZqWKDjs9B2rzEKzAuHcBFrO04xB9bgNqo')
+    
+    api = tweepy.API(auth)    
+
+    num_of_tweets = 0
+    handles_list = []
+    keywords = []
+    for keyword in db.get_view('byDocType/byKeyword'):
+        keywords.append(keyword.value['keyword'])
+    
+    # create the handles list
+    for handle in db.get_view('byDocType/byHandle'):
+        handles_list.append(handle.value['handle'])
+                       
+    # loop over the keywords
+    for keyword in keywords:
+        num_of_tweets = 0
+        for handle in handles_list:
+            # get the tweets for the current handle and loop over them to 
+            # see if it contains the keyword
+            user_tweets = api.user_timeline(handle)
+            for tweet in user_tweets:
+                # if the tweet contains the keyword increment the number
+                if re.match(keyword, tweet.text):
+                    num_of_tweets += 1
         datarow = {
-            'handle': row.value['handle']
+            'keyword': keyword,
+            'tweets': num_of_tweets
         }
         results.append(datarow)
+    
+    #keywords = db.get_view('byDocType/byHandle')
+    #for row in keywords:
+        ##print "Line 199" + row
+        #datarow = {
+            #'handle': row.value['handle']
+        #}
+        #results.append(datarow)
     return json.dumps(results)
 
  

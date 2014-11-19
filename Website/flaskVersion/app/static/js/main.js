@@ -188,7 +188,17 @@ $("#btnDeleteKeyword").click(function() {
         return;
       }
       var id = handle.substring(handle.indexOf("@") + 1);
-      $.ajax({
+      $.post($SCRIPT_ROOT + '/add_handle', {
+        id: id,
+        handle: handle
+      }).done(function(result) {
+          console.log(result)
+          alert("Successfully added " + id);
+      }).fail(function(xhr, status, error) {
+          console.log(error)
+          alert("Cannot add duplicate handle");
+      });
+      /*$.ajax({
         type: "POST",
         url: "http://www.chihuahuas.iriscouch.com/handles",
         dataType: "json",
@@ -202,14 +212,24 @@ $("#btnDeleteKeyword").click(function() {
         error: function(){
           alert("Cannot add twitter handle");
         }
-      });
+      });*/
     });
     
     $("#btnDeleteHandle").click(function () {
       var handle = $("#deletetwitterhandle").val();
       var rev = "";
       var id = handle.substring(handle.indexOf("@") + 1);
-      $.getJSON("http://www.chihuahuas.iriscouch.com/handles/" + id, function(data) {
+
+      $.post($SCRIPT_ROOT + '/delete_source', {
+        id: 'handle_' + id
+        }).done(function(result) {
+            console.log(result)
+            alert("Successfully deleted " + key);
+        }).fail(function(xhr, status, error) {
+            console.log(error)
+            alert("Handle not found.");
+        });
+      /*$.getJSON("http://www.chihuahuas.iriscouch.com/handles/" + id, function(data) {
         $.each(data, function(key, val) {
           rev = data._rev;
         });
@@ -226,7 +246,7 @@ $("#btnDeleteKeyword").click(function() {
             alert("ERROR: cannot get twitter handle");
           }
         });
-      }).error(function(){alert("ERROR: twitter handle not in database");});
+      }).error(function(){alert("ERROR: twitter handle not in database");});*/
     });
 
 $("#btnTableSources").click(function() {

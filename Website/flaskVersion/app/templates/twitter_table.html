@@ -28,8 +28,10 @@
       </button>
       <ul class="dropdown-menu" role="menu">
         <li><a id="btnExportTableXML" href="#">As XML</a></li>
-        <li><a id="btnExportTablePDF" href="#">As PDF</a></li>
       </ul>
+    </div>
+    <div class="btn btn-primary custombtn" href="#" id="btnTweetsGraph">
+          View Tweets Graph
     </div>
     <a href="/index">
       <div class="btn btn-primary custombtn" id="btnReturnIndex">
@@ -68,6 +70,9 @@
                 valign: 'left',
                 sortable: true
             }]
+        });
+        $("#btnExportTableXML").click(function () {
+            $('#twitter-table').tableExport({type:'xml',escape:'false'});
         });
     });
 </script>
