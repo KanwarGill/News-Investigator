@@ -212,7 +212,7 @@ def get_tweets():
                 # if the tweet contains the keyword increment the number
                 if re.match(keyword, tweet.text):
                     num_of_tweets += 1
-                    tweets.append(tweet.text)
+                    tweets.append(tweet.text + ' [' + handle + ']\n')
         datarow = {
             'keyword': keyword,
             'tweets': num_of_tweets,

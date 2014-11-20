@@ -256,6 +256,10 @@ $("#btnDeleteKeyword").click(function() {
       }).error(function(){alert("ERROR: twitter handle not in database");});*/
     });
 
+/* $("#btnTweetsGraph").click(function() {
+    
+}); */
+
 $("#btnTableSources").click(function() {
     location.href = "table.html";
 });
