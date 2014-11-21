@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/webapp/c01/index.html</td>
+	<td>http://localhost:5000/index</td>
 	<td></td>
 </tr>
 <tr>
