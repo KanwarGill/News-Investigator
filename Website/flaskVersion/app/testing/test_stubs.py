@@ -28,3 +28,15 @@ def db_stub_quotes(*args, **kwargs):
     value = {"_id":"44a","_rev":"1-a57a","date":"Tue, 11 Nov 2014 20:38:11 GMT","source":"<p>Iraqi soldiers battling the Islamic State of Iraq and the Levant (ISIL) have \"recaptured\" the heart of the town of Beiji, home to the country's largest oil refinery, according to state television and a \"military official\".</p>","link":"http://www.aljazeera.com/news/middleeast/2014/11/iraqi-forces-close-beiji.html","id":"al2","title":"Iraqi forces close in on major oil refinery"}
     response = [FakeViewResults("1234", "al2", value)]
     return response
+
+def db_stub_false_quotes(*args, **kwargs):
+    '''Stub that contains false quotes, e.g. HTML attributes.'''
+    value = {"_id":"44a","_rev":"1-a57a","date":"Tue, 11 Nov 2014 20:38:11 GMT","source":"<p class=\"article\">Iraqi soldiers battling the Islamic State of Iraq and the Levant (ISIL) have recaptured the heart of the town of Beiji, home to the country's largest oil <b style=\"margin-top:10px;\">refinery</b>, according to state television and a military official.</p>","link":"http://www.aljazeera.com/news/middleeast/2014/11/iraqi-forces-close-beiji.html","id":"al2","title":"Iraqi forces close in on major oil refinery"}
+    response = [FakeViewResults("1234", "al2", value)]
+    return response
+
+def db_stub_mix_quotes(*args, **kwargs):
+    '''Stub that contains valid and invalid quotes.'''
+    value = {"_id":"44a","_rev":"1-a57a","date":"Tue, 11 Nov 2014 20:38:11 GMT","source":"<p class=\"article\">Iraqi soldiers battling the Islamic State of Iraq and the Levant (ISIL) have recaptured the heart of the town of Beiji, home to the country's largest oil <b style=\"margin-top:10px;\">refinery</b>, according to \"state television\" and a military official.</p>","link":"http://www.aljazeera.com/news/middleeast/2014/11/iraqi-forces-close-beiji.html","id":"al2","title":"Iraqi forces close in on major oil refinery"}
+    response = [FakeViewResults("1234", "al2", value)]
+    return response

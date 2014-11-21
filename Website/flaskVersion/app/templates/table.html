@@ -45,6 +45,11 @@
     function graphFormatter(value){
       return "<button type=\"button\" href=\"#\" id=\"graph\" class=\"btn btn-primary\">Show Graph</button>";
     }
+
+    function linkFormatter(value) {
+        return "<a href='" + value + "'>Link to Article</a>";
+    }
+
     // Generate the results table using Bootstrap Table
     $(function () {
         $('#results-table').bootstrapTable({
@@ -64,15 +69,16 @@
             columns: [{
                 field: 'title',
                 title: 'Article Title',
-                align: 'left',
-                valign: 'left',
+                align: 'center',
+                valign: 'middle',
                 sortable: true
             }, {
                 field: 'link',
                 title: 'Article Link',
-                align: 'left',
-                valign: 'left',
-                sortable: true
+                align: 'center',
+                valign: 'middle',
+                sortable: true,
+                formatter: 'linkFormatter'
             }, {
                 field: 'date',
                 title: 'Article Date',
