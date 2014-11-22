@@ -1,9 +1,9 @@
 from celery import Celery, task
 from crawl import webcrawl
+from database import NewsInvestigatorDatabase
 from flask import Flask, render_template, jsonify, request, g
 from flaskext.couchdb import CouchDBManager
 from os import path, environ
-from database import NewsInvestigatorDatabase
 
 import tweepy
 import re
@@ -35,8 +35,6 @@ app.config.from_object(settings)
 celery = make_celery(app)
 
 # Setup database
-#manager = CouchDBManager()
-#manager.setup(app)
 db = NewsInvestigatorDatabase(app)
 
 '''
