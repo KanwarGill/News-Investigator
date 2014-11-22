@@ -24,29 +24,16 @@ $('#show-sources').on('click', function () {
     //get collapse content selector
     var collapse_content_selector = $(this).attr('href');         
 
-<<<<<<< HEAD
-        $(collapse_content_selector).toggle(function(){
-          if($(this).css('display')=='none'){
-          //change the button label to be 'Show'
-    toggle_switch.html('Show Sources');
-          }else{
-          //change the button label to be 'Hide'
-      toggle_switch.html('Hide Sources');
-          }
-        });
-      });
-=======
     //make the collapse content to be shown or hide
     var toggle_switch = $(this);
->>>>>>> 74532a92576c1a5a1bbcdf564f9e0562887cd9dc
 
     $(collapse_content_selector).toggle(function(){
       if($(this).css('display')=='none'){
       //change the button label to be 'Show'
-    toggle_switch.html('Show Sources');
+      toggle_switch.html('Show Sources');
       }else{
       //change the button label to be 'Hide'
-    toggle_switch.html('Hide Sources');
+      toggle_switch.html('Hide Sources');
       }
     });
 });
