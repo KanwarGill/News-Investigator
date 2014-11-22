@@ -12,7 +12,7 @@ $("#btnAddSource").click(function() {
         url: source
     }).done(function(result) {
         console.log(result)
-		getSources();
+    getSources();
         alert("Successfully added " + source);
     }).fail(function(xhr, status, error) {
         console.log(error)
@@ -30,7 +30,7 @@ $("#btnAddSource").click(function() {
         $(collapse_content_selector).toggle(function(){
           if($(this).css('display')=='none'){
           //change the button label to be 'Show'
-		toggle_switch.html('Show Sources');
+    toggle_switch.html('Show Sources');
           }else{
           //change the button label to be 'Hide'
       toggle_switch.html('Hide Sources');
@@ -83,7 +83,7 @@ $("#btnDeleteSource").click(function() {
         id: 'news_source_' + id
     }).done(function(result) {
         console.log(result)
-		getSources();
+    getSources();
         alert("Successfully deleted " + source);
     }).fail(function(xhr, status, error) {
         console.log(error)
@@ -162,7 +162,7 @@ $("#btnAddKeyword").click(function() {
         keyword: key
     }).done(function(result) {
         console.log(result)
-		getKeywords();
+    getKeywords();
         alert("Successfully added " + key);
     }).fail(function(xhr, status, error) {
         console.log(xhr.responseText + ': ' + error)
@@ -177,7 +177,7 @@ $("#btnDeleteKeyword").click(function() {
         id: 'keyword_' + key
     }).done(function(result) {
         console.log(result)
-		getKeywords();
+    getKeywords();
         alert("Successfully deleted " + key);
     }).fail(function(xhr, status, error) {
         console.log(error)
@@ -197,11 +197,11 @@ $("#btnDeleteKeyword").click(function() {
         id: id,
         handle: handle
       }).done(function(result) {
-          console.log(result)
-		  getHandles();
+          console.log(result);
+      getHandles();
           alert("Successfully added " + id);
       }).fail(function(xhr, status, error) {
-          console.log(error)
+          console.log(error);
           alert("Cannot add duplicate handle");
       });
       /*$.ajax({
@@ -213,7 +213,7 @@ $("#btnDeleteKeyword").click(function() {
         processData: false,
         success: function (data) {
           alert("Successfully added " + handle);
-		  getHandles();
+      getHandles();
         },
         error: function(){
           alert("Cannot add twitter handle");
@@ -226,14 +226,14 @@ $("#btnDeleteKeyword").click(function() {
       var rev = "";
       var id = handle.substring(handle.indexOf("@") + 1);
 
-      $.post($SCRIPT_ROOT + '/delete_source', {
+      $.post($SCRIPT_ROOT + '/delete_handle', {
         id: 'handle_' + id
         }).done(function(result) {
-            console.log(result)
-			getHandles();
-            alert("Successfully deleted " + key);
+            console.log(result);
+            getHandles();
+            alert("Successfully deleted " + id);
         }).fail(function(xhr, status, error) {
-            console.log(error)
+            console.log(error);
             alert("Handle not found.");
         });
       /*$.getJSON("http://www.chihuahuas.iriscouch.com/handles/" + id, function(data) {
@@ -247,7 +247,7 @@ $("#btnDeleteKeyword").click(function() {
           contentType: "application/json",
           success: function (data) {
             alert("Successfully deleted " + handle);
-			getHandles();
+      getHandles();
           },
           error: function(){
             alert("ERROR: cannot get twitter handle");
