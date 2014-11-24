@@ -204,6 +204,7 @@ def get_tweets():
     for keyword in keywords:
         num_of_tweets = 0
         tweets = []
+        
         # get tweets
         for tweet in db.get_view('byDocType/byTweet'):
             if (keyword in tweet.value['tweet']):
