@@ -53,33 +53,28 @@ Web pages
 @app.route('/')
 @app.route('/login')
 def login():
-'''Return the login page.'''
-return render_template('login.html', title='Login Page')
+    '''Return the login page.'''
+    return render_template('login.html', title='Login Page')
 
 @app.route('/index')
 def index_page():
-'''Return the index/home page.'''
-return render_template('index.html', title='Home')
+    '''Return the index/home page.'''
+    return render_template('index.html', title='Home')
+
 @app.route('/crawl')
 def crawl_page():
-'''Return the crawl page.'''
-return render_template('crawl.html', title='Crawl')
+    '''Return the crawl page.'''
+    return render_template('crawl.html', title='Crawl')
+    
 @app.route('/table')
 def view_table_page():
-'''Return the table results page.'''
-return render_template('table.html', title='Crawl Results')
+    '''Return the table results page.'''
+    return render_template('table.html', title='Crawl Results')
+
 @app.route('/twitter_table')
 def view_twitter_table():
-'''Return the twitter table results page.'''
-return render_template('twitter_table.html', title='Twitter Results')
-@app.route('/signup')
-def signup():
-'''Return the sign up page.'''
-return render_template('signup.html', title='Sign Up Page')
-@app.route('/forgotpassword')
-def forgotpassword():
-'''Return the password recovery page.'''
-return render_template('forgotpassword.html', title='Forgot Password')
+    '''Return the twitter table results page.'''
+    return render_template('twitter_table.html', title='Twitter Results')
 
 @app.route('/signup')
 def signup():
