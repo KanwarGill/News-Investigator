@@ -1,5 +1,5 @@
 $("#btnAddSource").click(function() {
-    var urlRegex = /^((https?|ftp):\/\/)?(\-\.)?([^\s\/?\.#-]+\.?)+(\/[^\s]*)?$/m;
+    var urlRegex = /^https?:\/\/(\-\.)?([^\s\/?\.#-]+\.?)+(\/[^\s]*)?$/m;
     var source = $("#inputsource").val();
     if (!urlRegex.test(source)) {
         alert("Please enter a valid url");
