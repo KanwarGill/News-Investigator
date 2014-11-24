@@ -14,6 +14,7 @@ class ArticleItem(scrapy.Item):
     hyperlinks = scrapy.Field()
     date = scrapy.Field()
     text = scrapy.Field()
+    html = scrapy.Field()
     
 class NewYorkTimesItem(scrapy.Item):
     title = scrapy.Field()

@@ -152,9 +152,9 @@ def get_results():
     q_results = db.get_view('byDocType/byResults')
     for row in q_results:
         # get all the hyperlinks
-        hyperlinks = re.findall(r'<a[^>]* href="([^"]*)"', row.value['source'])
+        hyperlinks = re.findall(r'<[Aa][^>]* href="([^"]*)"', row.value['html'])
         # get all the quotes
-        quotes = re.findall(r'"(?:[^"\\]|\\.)*"', row.value['source'])
+        quotes = re.findall(r'"(?:[^"\\]|\\.)*"', row.value['text'])
         quotes_modified = []
         # modify the quotes to remove false positives
         for i in range(len(quotes)):
@@ -163,6 +163,7 @@ def get_results():
             else:
                 quotes_modified.append(quotes[i])         
         datarow = {
+            'date_crawled': row.value['date_crawled'],
             'title': row.value['title'],
             'link': row.value['link'],
             'date': row.value['date'],

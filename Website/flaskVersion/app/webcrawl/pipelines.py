@@ -45,7 +45,9 @@ class CouchDBPipeline(object):
             # from the spider
             data = dict([("id", "results_" + spider.name), ("title", item["title"][0]), 
                          ("link", item["link"][0]), ("doc_type", "results"), 
-                         ("source", source), ("date", item["date"][0])])
+                         ("source", source), ("date", item["date"][0]),
+                         ("text", item["text"]), ("html", item["html"]),
+                         ("date_crawled", datetime.datetime.today().isoformat())])
     
             self.db.save(data)
             log.msg("Item wrote to CouchDB database %s/%s" %
