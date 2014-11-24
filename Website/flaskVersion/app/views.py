@@ -84,7 +84,7 @@ def crawling_task():
     context = {"id": res.task_id}
     result = 'start_crawl()'
     return jsonify(status='started')
-
+    
 @app.route('/add_source', methods=['POST'])
 def add_source():
     '''Add a news source to the database. Requires the id and url.'''
@@ -199,20 +199,35 @@ def get_tweets():
     # create the handles list
     for handle in db.get_view('byDocType/byHandle'):
         handles_list.append(handle.value['handle'])
-                       
+        
     # loop over the keywords
     for keyword in keywords:
         num_of_tweets = 0
         tweets = []
+        # get tweets
+        for tweet in db.get_view('byDocType/byTweet'):
+            if (keyword in tweet.value['tweet']):
+                tweets.append(tweet.value['tweet'])
+                num_of_tweets += 1
         for handle in handles_list:
             # get the tweets for the current handle and loop over them to 
             # see if it contains the keyword
-            user_tweets = api.user_timeline(handle)
-            for tweet in user_tweets:
-                # if the tweet contains the keyword increment the number
-                if re.match(keyword, tweet.text):
-                    num_of_tweets += 1
-                    tweets.append(tweet.text + ' [' + handle + ']\n')
+            try : 
+                user_tweets = api.user_timeline(handle)
+                for tweet in user_tweets:
+                    #temp = str(tweet.text + ' [' + handle + ']\n')
+                    if re.match(keyword, tweet.text) and not ((tweet.text + ' [' + handle + ']\n') in tweets):
+                        # if the tweet contains the keyword increment the number
+                        num_of_tweets += 1
+                        tweets.append(tweet.text + ' [' + handle + ']\n')
+                        #create id for this tweet
+                        tweet_id = keyword + str(num_of_tweets)
+                        #save the new tweet to the database
+                        #add_tweet(tweet_id, str(tweet.text + ' [' + handle + ']'))
+                        document = dict(_id=tweet_id, tweet=tweet.text + ' [' + handle + ']')
+                        db.save_tweet(tweet_id, document)
+            except :
+                pass
         datarow = {
             'keyword': keyword,
             'tweets': num_of_tweets,

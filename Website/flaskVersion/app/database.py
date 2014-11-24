@@ -50,6 +50,12 @@ class NewsInvestigatorDatabase(object):
         '''
         self._save_document('handle_' + id, document, 'handle')
         
+    def save_tweet(self, id, document):
+        '''
+        Save a tweet to the database.
+        '''
+        self._save_document('tweet_' + id, document, 'tweet')
+        
     def delete_document(self, id):
         '''
         Delete a document, given the id.
