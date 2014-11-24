@@ -1,10 +1,12 @@
-from scrapy.contrib.spiders import CrawlSpider
-from scrapy.selector import HtmlXPathSelector
 from ..items import ArticleItem
+from boilerpipe.extract import Extractor
+from scrapy.contrib.spiders import CrawlSpider
 from scrapy.http import Request
+from scrapy.selector import HtmlXPathSelector
+from urlparse import urlparse
+
 import couchdb
 import re
-from urlparse import urlparse
 
 class ArticleSpider(CrawlSpider):
     
@@ -49,6 +51,10 @@ class ArticleSpider(CrawlSpider):
             item ["date"] = article.xpath("pubDate/text()").extract()
             
             link = item["link"][0]
+            
+            extractor = Extractor(extractor='ArticleExtractor', 
+                    url=link)
+            item ["text"] = extractor.getText()
             # Grab the source of the page by making another Request
             yield Request(link,callback = self.parse_link, meta = dict(item = item))
                 
