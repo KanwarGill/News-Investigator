@@ -51,6 +51,11 @@ Web pages
 '''
 
 @app.route('/')
+@app.route('/login')
+def login():
+    '''Return the login page.'''
+    return render_template('login.html', title='Login Page')
+
 @app.route('/index')
 def index_page():
     '''Return the index/home page.'''
@@ -70,6 +75,16 @@ def view_table_page():
 def view_twitter_table():
     '''Return the twitter table results page.'''
     return render_template('twitter_table.html', title='Twitter Results')
+
+@app.route('/signup')
+def signup():
+    '''Return the sign up page.'''
+    return render_template('signup.html', title='Sign Up Page')
+
+@app.route('/forgotpassword')
+def forgotpassword():
+    '''Return the password recovery page.'''
+    return render_template('forgotpassword.html', title='Forgot Password')
 
 '''
 GET/POST methods
