@@ -12,7 +12,7 @@ $("#btnAddSource").click(function() {
         url: source
     }).done(function(result) {
         console.log(result)
-		getSources();
+    getSources();
         alert("Successfully added " + source);
     }).fail(function(xhr, status, error) {
         console.log(error)
@@ -20,50 +20,50 @@ $("#btnAddSource").click(function() {
     });
 });
 
-      $('#show-sources').on('click', function () {
-      //get collapse content selector
-      var collapse_content_selector = $(this).attr('href');         
- 
-      //make the collapse content to be shown or hide
-      var toggle_switch = $(this);
+$('#show-sources').on('click', function () {
+    //get collapse content selector
+    var collapse_content_selector = $(this).attr('href');         
 
-        $(collapse_content_selector).toggle(function(){
-          if($(this).css('display')=='none'){
-          //change the button label to be 'Show'
-		toggle_switch.html('Show Sources');
-          }else{
-          //change the button label to be 'Hide'
+    //make the collapse content to be shown or hide
+    var toggle_switch = $(this);
+
+    $(collapse_content_selector).toggle(function(){
+      if($(this).css('display')=='none'){
+      //change the button label to be 'Show'
+      toggle_switch.html('Show Sources');
+      }else{
+      //change the button label to be 'Hide'
       toggle_switch.html('Hide Sources');
-          }
-        });
-      });
+      }
+    });
+});
 
-      $('#show-keywords').on('click', function () {
-      //get collapse content selector
-      var collapse_content_selector = $(this).attr('href');         
+$('#show-keywords').on('click', function () {
+    //get collapse content selector
+    var collapse_content_selector = $(this).attr('href');         
 
-      //make the collapse content to be shown or hide
-      var toggle_switch = $(this);
+    //make the collapse content to be shown or hide
+    var toggle_switch = $(this);
 
-        $(collapse_content_selector).toggle(function(){
-          if($(this).css('display')=='none'){
-          //change the button label to be 'Show'
-          toggle_switch.html('Show Keywords');
-          }else{
-          //change the button label to be 'Hide'
-          toggle_switch.html('Hide Keywords');
-          }
-        });
-      });
-    
-    $('#show-handles').click(function () {
-      //get collapse content selector
-      var collapse_content_selector = $(this).attr('href');         
+    $(collapse_content_selector).toggle(function(){
+      if($(this).css('display')=='none'){
+      //change the button label to be 'Show'
+      toggle_switch.html('Show Keywords');
+      }else{
+      //change the button label to be 'Hide'
+      toggle_switch.html('Hide Keywords');
+      }
+    });
+});
 
-      //make the collapse content to be shown or hide
-      var toggle_switch = $(this);
+$('#show-handles').click(function () {
+    //get collapse content selector
+    var collapse_content_selector = $(this).attr('href');         
 
-      $(collapse_content_selector).toggle(function(){
+    //make the collapse content to be shown or hide
+    var toggle_switch = $(this);
+
+    $(collapse_content_selector).toggle(function(){
         if($(this).css('display')=='none'){
           //change the button label to be 'Show'
           toggle_switch.html('Show Handles');
@@ -71,8 +71,8 @@ $("#btnAddSource").click(function() {
           //change the button label to be 'Hide'
           toggle_switch.html('Hide Handles');
         }
-      });
     });
+});
 
 $("#btnDeleteSource").click(function() {
     var source = $("#deletesource").val();
@@ -83,7 +83,7 @@ $("#btnDeleteSource").click(function() {
         id: 'news_source_' + id
     }).done(function(result) {
         console.log(result)
-		getSources();
+    getSources();
         alert("Successfully deleted " + source);
     }).fail(function(xhr, status, error) {
         console.log(error)
@@ -91,62 +91,62 @@ $("#btnDeleteSource").click(function() {
     });
 });
 
-    function getSources(){
-      $(".getsources").empty();
-    
-      $.get($SCRIPT_ROOT + '/get_sources').done(function(result){
-          console.log(result.data);
-          var sources = [];
-          $.each(result.data, function(key, val) {
-              sources.push("<li class='sources' id='" + val.id + "'>" + val.key + "</li>");
-          });            
+function getSources(){
+  $(".getsources").empty();
 
-          $("<ul/>", {
-              "class": "listofsources",
-              html: sources.join("")
-          }).appendTo(".getsources");
-      });
-    };
-    
-    function getKeywords(){
-      $(".getkeywords").empty();
-        // Display the current keywords form the DB
-          $.get($SCRIPT_ROOT + '/get_keywords').done(function(result){
-        console.log(result.data);
-        var keywords = [];
-        $.each(result.data, function(key, val) {
-            keywords.push("<li class='keywords'>" + val.key + "</li>");
-        });            
+  $.get($SCRIPT_ROOT + '/get_sources').done(function(result){
+      console.log(result.data);
+      var sources = [];
+      $.each(result.data, function(key, val) {
+          sources.push("<li class='sources' id='" + val.id + "'>" + val.key + "</li>");
+      });            
 
-        $("<ul/>", {
-            "class": "listofkeywords",
-            html: keywords.join("")
-        }).appendTo(".getkeywords");
+      $("<ul/>", {
+          "class": "listofsources",
+          html: sources.join("")
+      }).appendTo(".getsources");
+  });
+};
 
+function getKeywords(){
+  $(".getkeywords").empty();
+    // Display the current keywords form the DB
+      $.get($SCRIPT_ROOT + '/get_keywords').done(function(result){
+    console.log(result.data);
+    var keywords = [];
+    $.each(result.data, function(key, val) {
+        keywords.push("<li class='keywords'>" + val.key + "</li>");
+    });            
+
+    $("<ul/>", {
+        "class": "listofkeywords",
+        html: keywords.join("")
+    }).appendTo(".getkeywords");
+
+});
+};
+
+function getHandles(){
+  $(".gethandles").empty();
+  $.get($SCRIPT_ROOT + '/get_handles').done(function(result) {
+    console.log(result.data);
+    var handles = [];
+    $.each(result.data, function(key, val) {
+      handles.push("<li class='handles'>" + val.key + "</li>");
     });
-    };
     
-    function getHandles(){
-      $(".gethandles").empty();
-      $.get($SCRIPT_ROOT + '/get_handles').done(function(result) {
-        console.log(result.data);
-        var handles = [];
-        $.each(result.data, function(key, val) {
-          handles.push("<li class='handles'>" + val.key + "</li>");
-        });
-        
-        $("<ul/>", {
-          "class": "listofhandles",
-          html: handles.join("")
-        }).appendTo(".gethandles");
-      });
-    };
-    
-    window.onload = function() {
-      getSources();
-      getKeywords();
-      getHandles();
-    };
+    $("<ul/>", {
+      "class": "listofhandles",
+      html: handles.join("")
+    }).appendTo(".gethandles");
+  });
+};
+
+window.onload = function() {
+  getSources();
+  getKeywords();
+  getHandles();
+};
 
 
 $("#btnAddKeyword").click(function() {
@@ -162,7 +162,7 @@ $("#btnAddKeyword").click(function() {
         keyword: key
     }).done(function(result) {
         console.log(result)
-		getKeywords();
+    getKeywords();
         alert("Successfully added " + key);
     }).fail(function(xhr, status, error) {
         console.log(xhr.responseText + ': ' + error)
@@ -177,7 +177,7 @@ $("#btnDeleteKeyword").click(function() {
         id: 'keyword_' + key
     }).done(function(result) {
         console.log(result)
-		getKeywords();
+    getKeywords();
         alert("Successfully deleted " + key);
     }).fail(function(xhr, status, error) {
         console.log(error)
@@ -197,11 +197,11 @@ $("#btnDeleteKeyword").click(function() {
         id: id,
         handle: handle
       }).done(function(result) {
-          console.log(result)
-		  getHandles();
+          console.log(result);
+      getHandles();
           alert("Successfully added " + id);
       }).fail(function(xhr, status, error) {
-          console.log(error)
+          console.log(error);
           alert("Cannot add duplicate handle");
       });
       /*$.ajax({
@@ -213,7 +213,7 @@ $("#btnDeleteKeyword").click(function() {
         processData: false,
         success: function (data) {
           alert("Successfully added " + handle);
-		  getHandles();
+      getHandles();
         },
         error: function(){
           alert("Cannot add twitter handle");
@@ -226,14 +226,14 @@ $("#btnDeleteKeyword").click(function() {
       var rev = "";
       var id = handle.substring(handle.indexOf("@") + 1);
 
-      $.post($SCRIPT_ROOT + '/delete_source', {
+      $.post($SCRIPT_ROOT + '/delete_handle', {
         id: 'handle_' + id
         }).done(function(result) {
-            console.log(result)
-			getHandles();
-            alert("Successfully deleted " + key);
+            console.log(result);
+            getHandles();
+            alert("Successfully deleted " + id);
         }).fail(function(xhr, status, error) {
-            console.log(error)
+            console.log(error);
             alert("Handle not found.");
         });
       /*$.getJSON("http://www.chihuahuas.iriscouch.com/handles/" + id, function(data) {
@@ -247,7 +247,7 @@ $("#btnDeleteKeyword").click(function() {
           contentType: "application/json",
           success: function (data) {
             alert("Successfully deleted " + handle);
-			getHandles();
+      getHandles();
           },
           error: function(){
             alert("ERROR: cannot get twitter handle");

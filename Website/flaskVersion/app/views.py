@@ -1,9 +1,9 @@
 from celery import Celery, task
 from crawl import webcrawl
+from database import NewsInvestigatorDatabase
 from flask import Flask, render_template, jsonify, request, g
 from flaskext.couchdb import CouchDBManager
 from os import path, environ
-from database import NewsInvestigatorDatabase
 
 import tweepy
 import re
@@ -35,8 +35,6 @@ app.config.from_object(settings)
 celery = make_celery(app)
 
 # Setup database
-#manager = CouchDBManager()
-#manager.setup(app)
 db = NewsInvestigatorDatabase(app)
 
 '''
@@ -57,6 +55,7 @@ Web pages
 def login():
 '''Return the login page.'''
 return render_template('login.html', title='Login Page')
+
 @app.route('/index')
 def index_page():
 '''Return the index/home page.'''
@@ -81,6 +80,16 @@ return render_template('signup.html', title='Sign Up Page')
 def forgotpassword():
 '''Return the password recovery page.'''
 return render_template('forgotpassword.html', title='Forgot Password')
+
+@app.route('/signup')
+def signup():
+    '''Return the sign up page.'''
+    return render_template('signup.html', title='Sign Up Page')
+
+@app.route('/forgotpassword')
+def forgotpassword():
+    '''Return the password recovery page.'''
+    return render_template('forgotpassword.html', title='Forgot Password')
 
 '''
 GET/POST methods

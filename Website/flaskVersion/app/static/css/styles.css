@@ -53,6 +53,21 @@
     font-size:12pt;
 }
 
+.loginbtn{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.customcancel{
+    margin-left: 255px;
+    margin-top: 3px;
+}
+
+.custompasswordbtn{
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
 .getsources{
 	margin-top: 10px;
 }

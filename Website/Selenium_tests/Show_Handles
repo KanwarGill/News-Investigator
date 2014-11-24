@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost/" />
-<title>Basic site walkthrough</title>
+<title>Show_Handles</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Basic site walkthrough</td></tr>
+<tr><td rowspan="1" colspan="3">Show_Handles</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -18,34 +18,20 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=show-sources</td>
+	<td>id=show-handles</td>
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>id=show-sources</td>
-	<td></td>
+	<td>assertText</td>
+	<td>css=ul.listofhandles</td>
+	<td>@AlJazeera@CNN@nytimes@TorontoStar</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=show-keywords</td>
+	<td>id=show-handles</td>
 	<td></td>
 </tr>
-<tr>
-	<td>click</td>
-	<td>id=show-keywords</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=btnTableSources</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=btnReturnIndex</td>
-	<td></td>
-</tr>
+
 </tbody></table>
 </body>
 </html>
