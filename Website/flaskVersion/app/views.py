@@ -217,7 +217,7 @@ def get_tweets():
                 user_tweets = api.user_timeline(handle)
                 for tweet in user_tweets:
                     #temp = str(tweet.text + ' [' + handle + ']\n')
-                    if re.match(keyword, tweet.text) and not ((tweet.text + ' [' + handle + ']\n') in tweets):
+                    if re.match(keyword, tweet.text) and not((tweet.text + ' [' + handle + ']') in tweets):
                         # if the tweet contains the keyword increment the number
                         num_of_tweets += 1
                         tweets.append(tweet.text + ' [' + handle + ']\n')
