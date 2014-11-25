@@ -13,18 +13,26 @@ Files under review:
 	  Website/flaskVersion/app/views.py 
 
  Correctness:
- - Code works fine, implementing get/delete actions in our backend.
+ - Retrieve and delete actions are now implemented on the backend.
+ - The frontend makes call to those functions in the python files.
+ - Code works, saving/retrieving data from the database.
  - Stores/removes data from database flawlessly.
 
  Coding Style/Coding Guidelines:
  - Good. Followed guidelines except that has many console.log() to check function returns in main.js.
+ - variables names and comments are well placed.
+ - indentation and line spacing are correct.
  - console.log() with no apparent usage left behind in main.js at line 65.
 
 
  Quality of Documentation:
- - Well commented on the python files. All functions have a reasonable comment.
- - main.js is not commented. Could have documented what changed.
+ - Well commented on the python files (database.py and views.py). 
+ - All python functions have a reasonable comment.
+ - main.js is not commented. Could have documented what changed in functionality.
+ 
 
  Quality of Testing:
- - Same unit tests used from previous code. Team already agreed to add more tests.
+ - No tests added for this piece of code. 
+ - Same unit tests used from previous code. 
+ - Team already agreed to add more tests.
  - Does not test features as Delete and Add single source/keyword.
