@@ -1,11 +1,11 @@
 from celery import Celery, task
 from crawl import webcrawl
+from twitter_crawl import twitter_crawl
 from database import NewsInvestigatorDatabase
 from flask import Flask, render_template, jsonify, request, g
 from flaskext.couchdb import CouchDBManager
 from os import path, environ
 
-import tweepy
 import re
 import json
 import requests
@@ -46,6 +46,11 @@ def start_crawl():
     '''Add the crawl task into the task queue.'''
     return webcrawl()
 
+@task(name='tasks.start_twitter_crawl')
+def start_twitter_crawl():
+    '''Add the crawl task into the task queue.'''
+    return twitter_crawl()
+
 '''
 Web pages
 '''
@@ -65,6 +70,11 @@ def index_page():
 def crawl_page():
     '''Return the crawl page.'''
     return render_template('crawl.html', title='Crawl')
+
+@app.route('/twitter_crawl')
+def twitter_crawl_page():
+    '''Return the twitter crawl page.'''
+    return render_template('twitter_crawl.html', title='Twitter Crawl')
     
 @app.route('/table')
 def view_table_page():
@@ -96,6 +106,12 @@ def crawling_task():
     res = start_crawl.apply_async()
     context = {"id": res.task_id}
     result = 'start_crawl()'
+    return jsonify(status='started')
+
+@app.route('/twitter_crawling', methods=['POST'])
+def twitter_task():
+    '''Start the twitter crawl task. Return the task id of the task.'''
+    result = twitter_crawl()
     return jsonify(status='started')
     
 @app.route('/add_source', methods=['POST'])
@@ -190,72 +206,42 @@ def get_results():
 
 @app.route('/get_tweets', methods=['GET'])
 def get_tweets():
+    '''Return the tweets of the twitter crawl in a JSON object'''
     
     # results list which will go in the twitter table
     results = []
-    
-    # authentication for Twitter API
-    auth = tweepy.OAuthHandler('PNIJuzLXezWr3xrxScEbA68l3', 
-                        'Li7Z5ZOvIu4o50G0n2wEmv5Nj0JmsCvSjR7OUx4CMompnIqGjH')
-    auth.set_access_token('64169290-OZeLtehY0eSBkj12ebWZlYP8KtzlJtxLF5DEM7Jb8', 
-                          'WbgHw8xyDJ77ZqWKDjs9B2rzEKzAuHcBFrO04xB9bgNqo')
-    
-    api = tweepy.API(auth)    
-
-    num_of_tweets = 0
-    handles_list = []
+    # list of keywords
     keywords = []
+    # list of tweets
     tweets = []
+    
+    # add the keywords from the database in a list
     for keyword in db.get_view('byDocType/byKeyword'):
         keywords.append(keyword.value['keyword'])
-    
-    # create the handles list
-    for handle in db.get_view('byDocType/byHandle'):
-        handles_list.append(handle.value['handle'])
-        
-    # loop over the keywords
+	
+    # loop over the keyowrds
     for keyword in keywords:
-        num_of_tweets = 0
-        tweets = []
-        
-        # get tweets
-        for tweet in db.get_view('byDocType/byTweet'):
-            if (keyword in tweet.value['tweet']):
-                tweets.append(tweet.value['tweet'])
-                num_of_tweets += 1
-        for handle in handles_list:
-            # get the tweets for the current handle and loop over them to 
-            # see if it contains the keyword
-            try : 
-                user_tweets = api.user_timeline(handle)
-                for tweet in user_tweets:
-                    #temp = str(tweet.text + ' [' + handle + ']\n')
-                    if re.match(keyword, tweet.text) and not((tweet.text + ' [' + handle + ']') in tweets):
-                        # if the tweet contains the keyword increment the number
-                        num_of_tweets += 1
-                        tweets.append(tweet.text + ' [' + handle + ']\n')
-                        #create id for this tweet
-                        tweet_id = keyword + str(num_of_tweets)
-                        #save the new tweet to the database
-                        #add_tweet(tweet_id, str(tweet.text + ' [' + handle + ']'))
-                        document = dict(_id=tweet_id, tweet=tweet.text + ' [' + handle + ']')
-                        db.save_tweet(tweet_id, document)
-            except :
-                pass
+	# flush the number of tweets and tweets for each keyword
+	num_of_tweets = 0
+	tweets = []
+	try:
+	    # get the tweets from the database
+	    for tweet in db.get_view('byDocType/byTweet'):
+		# if the keyword is part of the tweet, then append it to tweets
+		# and increment the number
+		for t in tweet.value['tweet']:
+		    if (keyword in t):
+			tweets.append(t)
+			num_of_tweets += 1	
+	except:
+	    print "No documents of type tweet"
         datarow = {
-            'keyword': keyword,
-            'tweets': num_of_tweets,
-			'tweets text': tweets
+	    'keyword': keyword,
+	    'tweets': num_of_tweets,
+	    'tweets text': tweets
         }
         results.append(datarow)
-    
-    #keywords = db.get_view('byDocType/byHandle')
-    #for row in keywords:
-        ##print "Line 199" + row
-        #datarow = {
-            #'handle': row.value['handle']
-        #}
-        #results.append(datarow)
+	
     return json.dumps(results)
 
  
