@@ -22,14 +22,20 @@ class CouchDBPipeline(object):
         for row in self.db.view('byDocType/byKeyword'):
             # add the keywords to the list
             self.keywords.append(row.key)
-        print self.keywords
+        # join the keywords from the list with or to facilitate regex
+        self.keywords_regex = "|".join(self.keywords)
         
     
     def process_item(self, item, spider):
         '''Process each crawled object and save it to the news_investigator database'''
     
-        # join the keywords from the list with or to facilitate regex
-        keywords = "|".join(self.keywords)
+        if spider.name in ['feed']:
+            return self.process_feed_item(item, spider)
+        elif spider.name in ['article']:
+            return self.process_article_item(item, spider)
+        
+    def process_feed_item(self, item, spider):
+        '''Process each crawled object and save it to the news_investigator database'''
         
         # join the strings in the source to create one giant string
         # and change the encoding to ascii
@@ -37,17 +43,40 @@ class CouchDBPipeline(object):
         source = source.encode("ascii", "ignore")
         
         # parse the source to to see if it contains the keyword
-        pattern = re.compile(keywords)
+        pattern = re.compile(self.keywords_regex)
         m = pattern.search(source)
         if (m):
-            print "Match found: ", m.group(), "in source ", source
+            #print "Match found: ", m.group(), "in source ", source
             # create a dictionary with the name, title, link, and the source 
             # from the spider
             data = dict([("id", "results_" + spider.name), ("title", item["title"][0]), 
                          ("link", item["link"][0]), ("doc_type", "results"), 
                          ("source", source), ("date", item["date"][0]),
                          ("text", item["text"]), ("html", item["html"]),
-                         ("date_crawled", datetime.datetime.today().isoformat())])
+                         ("date_crawled", datetime.datetime.today().isoformat(' '))])
+    
+            self.db.save(data)
+            log.msg("Item wrote to CouchDB database %s/%s" %
+                        (settings["COUCHDB_SERVER"], settings["COUCHDB_DB"]),
+                        level=log.DEBUG, spider=spider)             
+        else:
+            print "No Match"
+       
+        return item
+        
+    def process_article_item(self, item, spider):
+        # parse the source to to see if it contains the keyword
+        pattern = re.compile(self.keywords_regex)
+        m = pattern.search(item["text"])
+        if (m):
+            #print "Match found: ", m.group(), "in source ", source
+            # create a dictionary with the name, title, link, and the source 
+            # from the spider
+            data = dict([("id", "results_" + spider.name), ("title", item["title"][0]), 
+                         ("link", item["link"]), ("doc_type", "results"), 
+                         ("source", "--"), ("date", "-"),
+                         ("text", item["text"]), ("html", item["html"]),
+                         ("date_crawled", datetime.datetime.today().isoformat(' '))])
     
             self.db.save(data)
             log.msg("Item wrote to CouchDB database %s/%s" %
