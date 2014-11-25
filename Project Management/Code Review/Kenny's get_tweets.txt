@@ -1,0 +1,27 @@
+CODE REVIEW
+-----------------------------
+Code: team16-project/Website/flaskVersion/app/views.py [flask] and team16-project/Website/flaskVersion/app/database.py [flask]
+Code Written/Modified By: Kenny
+Commit: 8851401046da7d86ce3f33e0873014f4da9aa44a [Nov 24, 2014]
+Inspection By: Kanwar
+Inspection Date: November 25th
+-----------------------------
+1) Correctness
+	- get_tweets() loops over the list of keywords
+	- for each keyword it loops over the list of handles and checks the tweets using tweepy library
+	- if the tweet contains the keyword, then number of tweets for that keyword in incremented and the tweet is saved in the database
+	- saving is done through the save_tweet method defined in database.py
+	- store the information in the datarow object which is passed to the twitter_table handle
+2) Coding style/guidelines
+	- variable names makes sense.
+	- indentation and line spacing looks good.
+	- consistent use of single quotes.
+	- the except clause should log information rather than a pass
+	- There are some lines of code that are commented out like line 226. These should be removed
+	- lines 252 to 258 should be removed 
+3) Quality of documentation
+	- The code is documented appropriately. However, more comments should be added. For example, for the try and except blocks.
+	- get_tweets() is missing a docstring
+4) Quality of testing
+	- No unit tests exist for get_tweets() in tests.py
+	- The code can be easily tested based on the boundary cases. For example, keyword that doesn't exist in any of the handles vs. keyword that exists in at least one of the handles.
