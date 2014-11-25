@@ -1,0 +1,61 @@
+Legend:
+
+BP stands for Business Priority
+DD stands for Developer Days
+US stands for User Story
+User Story that has same content but with different personas is written like this User Story (#[first persona] and #[second persona])
+
+BP1, then, means Business priority 1 for example.
+
+Iteration 8: Nov 21 - Nov 28
+===============================================================================
+
+Project Velocity from Iteration 6: 12.75
+
+Tasks from Iteration 7:
+21.1) [US21] Use Twitter API to see the tweets for the people containing the keywords (Kenny) [DD1]
+18.2) Push that data into the library being used for graphs (Carlos) [DD 1.5] 
+
+
+User stories implemented in this iteration:
+
+User Story #23 [BP1 DD1]
+As Robert (a librarian programmer), I want to have well documented code, so that I can easily extend and maintain the current system.
+Acceptance critera: The source code of the project follows good software engineering practices and it's easy to understand.
+
+Tasks for this user story:
+23.1) Ensure all the code is well documented (All) [DD2]
+
+Total: 2 DD
+
+User Story #2 [BP4 DD2]
+As Alex (a grad student), I want to request a list of sources to monitor, so that I can expand the number of sources monitored by my research.
+    - Only a researcher can approve the request
+    - The researcher will get a notification of the request in real-time
+Acceptance criteria: A list of sources to monitor is created and is readable.
+
+Tasks for this user story:
+2.1) Have a different landing page for the grad student (Vinicius) [DD 0.5]
+2.2) Include a request button beside the news sources field (Kanwar) [DD 0.5]
+2.3) Include a notification for the researcher so that he can approve the request (Samson) [DD1]
+
+Total: 2 DD
+
+User Story #19 (#19.1 and #19.2) [BP1 DD3]
+As Alejandro (a researcher), I want to see how sources are being referenced in a directed graph, where the nodes are the articles, and the edge representing an article referencing another article, so that I can analyze the data and understand how sources are being referenced.
+Acceptance criteria: A directed graph is displayed, with every article having an outward edge to any
+articles it references.
+
+Tasks for this user story:
+19.1) Use the data from the article tables to feed into charting tool (Carlos) [DD1]
+19.2) Create the directed graph using that data (Carlos) [DD1]
+
+Total: 2 DD
+
+Other tasks:
+1) Unit tests for backend (Samson and Kanwar) [DD2]
+2) Selenium testing for frontend (Vinicius and Kanwar) [DD2]
+3) Graphs for twitter (Kanwar and Kenny) [DD2]
+
+Project Velocity at the beginning: 12.75 DD
+Project Velocity at the end: 

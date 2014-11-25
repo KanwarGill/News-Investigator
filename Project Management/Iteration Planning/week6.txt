@@ -7,7 +7,7 @@ User Story that has same content but with different personas is written like thi
 
 BP1, then, means Business priority 1 for example.
 
-Iteration 5: Nov 7 - Nov 13
+Iteration 6: Nov 7 - Nov 13
 ===============================================================================
 
 Project Velocity from Iteration 5: 3
