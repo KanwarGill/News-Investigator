@@ -3,31 +3,8 @@
     <div class="customline">
         <h1>News Investigator</h1>
         <br/>
-        
-        
-		
-		<div class="handles-container1">
-			<input type="text" name="twitterhandle" class="custominput" id="inputtwitterhandle" pattern="^@[a-zA-Z0-9_]{1,15}$" placeholder="Example: @Bob" size="50"/>
-			<div class="btn btn-primary custombtn" href="#" id="btnAddHandle">
-				Add Twitter Handle
-			</div>
-            <br />
-			<button type="button" href="#collapse3" id="show-handles" class="btn btn-primary">Show Twitter Handles</button>
-			<div id="collapse3" style="display:none">
-                <div class="gethandles"></div>
-			</div>
-		</div>
-		<div class="handles-container2">
-			<input type="text" name="deletehandle" class="custominput" id="deletetwitterhandle" placeholder="Ex: @Bob" size="30"/>
-			<div class="btn btn-primary custombtn" href="#" id="btnDeleteHandle">
-				Delete Twitter Handle
-			</div>
-		</div>
-        
-        <br/>
-        
-        <a href="/table" class="btn btn-success" id="btnTableSources"><span class="glyphicon glyphicon-align-justify"></span> View Articles Table</a>
-        <a href="/twitter_table" class="btn btn-success" id="btnTableTwitter"><span class="glyphicon glyphicon-align-justify"></span> View Twitter Table</a>
+		<p>Welcome!</p>
+        <p>This is made by Team Chihuahuas (16) as part of our CSCC01 Project, Fall 2014.</p>
     </div>
     <script type=text/javascript>
         $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};

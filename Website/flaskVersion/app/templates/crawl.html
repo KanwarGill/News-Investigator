@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <h1>Feed Crawl</h1>
+    <p>The feed crawler will start crawling RSS feeds (<a href="http://www.aljazeera.com/Services/Rss/?PostingId=2007731105943979989">Example</a>), and will only save articles if their contents matches and keywords you specified. The feed crawler will only crawl the most recent articles. URLs must start with the <code>http://</code> header.</p>
+
     <div class="sources-container1">
-        <input type="text" name="source" class="custominput" id="inputsource" pattern="www\.[a-zA-Z0-9]{3,}\.[a-z]{2,3}" placeholder="Example: www.aljazeera.com" size="50"/>
+        <input type="text" name="source" class="custominput" id="inputsource" placeholder="Enter RSS url" size="50"/>
         <div class="btn btn-primary custombtn" href="#" id="btnAddSource">
           Add Source
         </div>
@@ -14,38 +17,17 @@
     </div>
     
     <div class="sources-container2">
-        <input type="text" name="deletesource" class="custominput" id="deletesource" placeholder="Ex: www.aljazeera.com" size="30"/>
+        <input type="text" name="deletesource" class="custominput" id="deletesource" placeholder="Delete RSS url" size="30"/>
         <div class="btn btn-primary custombtn" href="#" id="btnDeleteSource">
           Delete Source
         </div>
     </div>
     
-    <br/>
-    
-    <div class="keywords-container1">
-        <input type="text" name="keyword" class="custominput" id="inputkeyword" pattern="[a-zA-Z0-9]+" placeholder="Example: Israel" size="50"/>
-        <div class="btn btn-primary custombtn" href="#" id="btnAddKeyword">
-          Add Keyword
-        </div>
-        <br/>
-        <button type="button" href="#collapse2" id="show-keywords" class="btn btn-primary">Show Keywords</button>
-        <div id="collapse2" style="display:none">
-            <div class="getkeywords"></div>
-        </div>
-    </div>
-    
-    <div class="keywords-container2">
-        <input type="text" name="deletekeyword" class="custominput" id="deletekeyword" placeholder="Ex: Israel" size="30"/>
-        <div class="btn btn-primary custombtn" href="#" id="btnDeleteKeyword">
-          Delete Keyword
-        </div>
-    </div>
-    
     <br />
     <div>
-        <div class="btn btn-primary custombtn" href="#" id="btnStartCrawl">
-        Start Crawl
-        </div>
+        <button class="btn btn-primary custombtn" id="btnStartCrawl">
+        Start Feed Crawl
+        </button>
     </div>
     <script type=text/javascript>
         $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
@@ -58,6 +40,7 @@
             action: "crawl"
         }).done(function(result) {
             console.log(result);
+            $("#btnStartCrawl").toggleClass("disabled", true);
             alert("Crawl will be finished shortly. You can view the results in 'View Results");
         }).fail(function() {
             console.log("Error.");

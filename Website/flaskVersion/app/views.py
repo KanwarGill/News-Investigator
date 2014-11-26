@@ -66,10 +66,10 @@ def index_page():
     '''Return the index/home page.'''
     return render_template('index.html', title='Home')
 
-@app.route('/crawl')
+@app.route('/feed_crawl')
 def crawl_page():
     '''Return the crawl page.'''
-    return render_template('crawl.html', title='Crawl')
+    return render_template('crawl.html', title='Feed Crawl')
 
 @app.route('/twitter_crawl')
 def twitter_crawl_page():
@@ -95,6 +95,16 @@ def signup():
 def forgotpassword():
     '''Return the password recovery page.'''
     return render_template('forgotpassword.html', title='Forgot Password')
+
+@app.route('/keywords')
+def keywords_page():
+    '''Return the keywords page.'''
+    return render_template('keywords.html', title='Keywords')
+    
+@app.route('/article_crawl')
+def article_crawl_page():
+    '''Return the keywords page.'''
+    return render_template('article_crawl.html', title='Article Crawl')
 
 '''
 GET/POST methods
