@@ -29,6 +29,10 @@
         Start Twitter Crawl
         </div>
     </div>
+    <script type=text/javascript>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    <script src="/static/js/main.js"></script>
     <script>
     $("#btnStartCrawl").click(function() {
         console.log("YAYs!");
