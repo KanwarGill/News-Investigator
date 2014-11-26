@@ -13,15 +13,41 @@
     <div class="btn btn-primary custombtn" href="_blank" id="btnTweetsGraph">
           View Tweets Graph
     </div>
+    <div>
+        Tweets Graph appears at bottom of page (scroll down)
+    </div>
     <table id="twitter-table"></table>
-    <canvas id="pieChart" width="600" height="400"></canvas>
+    <canvas id="barChart" width="600" height="400"></canvas>
 </div>
 <script type="text/javascript" src="/static/js/charts.js"></script>
 <script>
+    tweets_id = 0;
+
+    function showTweets(id) {
+        $('.tweets_' + id).toggle(function(){
+            if($(this).css('display')=='none'){
+              //change the button label to be 'Show'
+              $(this).closest('td').find('a').html('Show Tweets');
+            }else{
+              //change the button label to be 'Hide'
+              $(this).closest('td').find('a').html('Hide Tweets');
+            }
+        });
+    }
+
+    function tweetsFormatter(value) {
+        if (value != '') {
+            tweets_id++;
+            return "<a href='#' onClick='showTweets(" + tweets_id + ");return false;'>Show Tweets</a><div style='display:none;' class='tweets_" + tweets_id + "'>" + value + "</div>";
+        } else {
+            return 'None found';
+        }
+    }
+    
     // Generate the results table using Bootstrap Table
     $(function () {
 
-      console.log($("table tbody tr").html())
+      //console.log($("table tbody tr").html())
 
 
         $('#twitter-table').bootstrapTable({
@@ -49,17 +75,17 @@
                 title: 'No. of tweets',
                 align: 'middle',
                 valign: 'left',
-				        width: '100',
+				width: '100',
                 sortable: true
             }, {
-        				field: 'tweets text',
-        				title: 'Tweets',
-        				align: 'middle',
-        				valign: 'left',
-        				width: '1000',
-        				sortable: true,
-        				formatter: 'tweetsTextFormatter'
-			     }]
+        		field: 'tweets text',
+        		title: 'Tweets',
+        		align: 'middle',
+        		valign: 'left',
+        		width: '1000',
+        		sortable: true,
+        		formatter: 'tweetsFormatter'
+			}]
         });
 
         $("#btnExportTableXML").click(function () {
@@ -67,32 +93,34 @@
         });
 
         $("#btnTweetsGraph").click(function(){
-          var data = {
-            labels: [],
-            datasets: [
-                {
-                    label: "My First dataset",
-                    fillColor: "rgba(220,220,220,0.5)",
-                    strokeColor: "rgba(220,220,220,0.8)",
-                    highlightFill: "rgba(220,220,220,0.75)",
-                    highlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59, 80, 81, 56, 55, 40]
-                }
-            ]
-        };
+            
+            $.get("/get_tweets2", function(data) {
+                var barData = {
+                labels: data.keyword,
+                datasets: [
+                    {
+                        label: "My First dataset",
+                        fillColor: "rgba(151,187,205,0.5)",
+                        strokeColor: "rgba(151,187,205,0.8)",
+                        highlightFill: "rgba(151,187,205,0.75)",
+                        highlightStroke: "rgba(151,187,205,1)",
+                        data: data.count
+                    }
+                ]
+            };
 
 
-          var pieOptions = {
-            segmentShowStroke : false,
-            animateScale : true
+          var options = {
+            scaleBeginAtZero : true
           }
 
-          var tweets = document.getElementById("pieChart").getContext("2d");
-          new Chart(tweets).Pie(pieData, pieOptions);
-
+          var tweets = document.getElementById("barChart").getContext("2d");
+          new Chart(tweets).Bar(barData, options);
+            });
 
         });
     });
 </script>
 <script src="/static/js/main.js"></script>
+<script src="/static/js/chart.js"></script>
 {% endblock %}

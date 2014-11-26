@@ -286,15 +286,15 @@ def get_tweets():
 	tweets = []
 	try:
 	    # get the tweets from the database
-	    for tweet in db.get_view('byDocType/byTweet'):
-		# get the tweet handle excluding the string "tweet_"
-		tweet_handle = tweet.value['_id'][6:] 
-		# if the keyword is part of the tweet, then append it to tweets
-		# and increment the number
-		for t in tweet.value['tweet']:
-		    if (keyword in t):
-			tweets.append(t + " [" + tweet_handle + "]")
-			num_of_tweets += 1	
+            for tweet in db.get_view('byDocType/byTweet'):
+                # get the tweet handle excluding the string "tweet_"
+                tweet_handle = tweet.value['_id'][6:] 
+                # if the keyword is part of the tweet, then append it to tweets
+                # and increment the number
+                for t in tweet.value['tweet']:
+                    if (keyword in t):
+                        tweets.append(t + " [" + tweet_handle + "]")
+                        num_of_tweets += 1	
 	except:
 	    print "No documents of type tweet"
         datarow = {
@@ -306,7 +306,32 @@ def get_tweets():
 	
     return json.dumps(results)
 
- 
+@app.route('/get_tweets2', methods=['GET'])
+def get_tweets2():
+    '''Return list keywords and tweet counts for them'''
+    
+    keywords = []
+    tweet_count = []
+    
+    # add the keywords from the database in a list
+    for keyword in db.get_view('byDocType/byKeyword'):
+        keywords.append(keyword.value['keyword'])
+        
+    for keyword in keywords:
+        num_of_tweets = 0
+        # get the tweets from the database
+        for tweet in db.get_view('byDocType/byTweet'):
+            # get the tweet handle excluding the string "tweet_"
+            tweet_handle = tweet.value['_id'][6:] 
+            # if the keyword is part of the tweet, then append it to tweets
+            # and increment the number
+            for t in tweet.value['tweet']:
+                if (keyword in t):
+                    num_of_tweets += 1	
+        tweet_count.append(num_of_tweets)
+    
+    ret = dict(keyword=keywords, count=tweet_count)
+    return jsonify(ret)
 if __name__ == "__main__":
     # Run the web app on localhost:5000
     port = int(environ.get("PORT", 5000))
