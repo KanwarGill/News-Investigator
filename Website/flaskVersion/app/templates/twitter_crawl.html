@@ -1,5 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
+
+    <h1>Twitter Crawl</h1>
+    <p>[Insert brief explanation]</p>
+
+    <div class="handles-container1">
+        <input type="text" name="twitterhandle" class="custominput" id="inputtwitterhandle" pattern="^@[a-zA-Z0-9_]{1,15}$" placeholder="Example: @Bob" size="50"/>
+        <div class="btn btn-primary custombtn" href="#" id="btnAddHandle">
+            Add Twitter Handle
+        </div>
+        <br />
+        <button type="button" href="#collapse3" id="show-handles" class="btn btn-primary">Show Twitter Handles</button>
+        <div id="collapse3" style="display:none">
+            <div class="gethandles"></div>
+        </div>
+    </div>
+    <div class="handles-container2">
+        <input type="text" name="deletehandle" class="custominput" id="deletetwitterhandle" placeholder="Ex: @Bob" size="30"/>
+        <div class="btn btn-primary custombtn" href="#" id="btnDeleteHandle">
+            Delete Twitter Handle
+        </div>
+    </div>
+    
+    <br />
+    
     <div>
         <div class="btn btn-primary custombtn" href="#" id="btnStartCrawl">
         Start Twitter Crawl

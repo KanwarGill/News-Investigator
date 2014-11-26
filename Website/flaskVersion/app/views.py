@@ -66,10 +66,10 @@ def index_page():
     '''Return the index/home page.'''
     return render_template('index.html', title='Home')
 
-@app.route('/crawl')
+@app.route('/feed_crawl')
 def crawl_page():
     '''Return the crawl page.'''
-    return render_template('crawl.html', title='Crawl')
+    return render_template('crawl.html', title='Feed Crawl')
 
 @app.route('/twitter_crawl')
 def twitter_crawl_page():
@@ -95,6 +95,16 @@ def signup():
 def forgotpassword():
     '''Return the password recovery page.'''
     return render_template('forgotpassword.html', title='Forgot Password')
+
+@app.route('/keywords')
+def keywords_page():
+    '''Return the keywords page.'''
+    return render_template('keywords.html', title='Keywords')
+    
+@app.route('/article_crawl')
+def article_crawl_page():
+    '''Return the keywords page.'''
+    return render_template('article_crawl.html', title='Article Crawl')
 
 '''
 GET/POST methods
@@ -183,9 +193,9 @@ def get_results():
     q_results = db.get_view('byDocType/byResults')
     for row in q_results:
         # get all the hyperlinks
-        hyperlinks = re.findall(r'<a[^>]* href="([^"]*)"', row.value['source'])
+        hyperlinks = re.findall(r'<[Aa][^>]* href="([^"]*)"', row.value['html'])
         # get all the quotes
-        quotes = re.findall(r'"(?:[^"\\]|\\.)*"', row.value['source'])
+        quotes = re.findall(r'"(?:[^"\\]|\\.)*"', row.value['text'])
         quotes_modified = []
         # modify the quotes to remove false positives
         for i in range(len(quotes)):
@@ -194,6 +204,7 @@ def get_results():
             else:
                 quotes_modified.append(quotes[i])         
         datarow = {
+            'date_crawled': row.value['date_crawled'],
             'title': row.value['title'],
             'link': row.value['link'],
             'date': row.value['date'],

@@ -13,7 +13,8 @@ class ArticleItem(scrapy.Item):
     source = scrapy.Field()
     hyperlinks = scrapy.Field()
     date = scrapy.Field()
-    # etc...
+    text = scrapy.Field()
+    html = scrapy.Field()
     
 class NewYorkTimesItem(scrapy.Item):
     title = scrapy.Field()

@@ -1,10 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
-    <div>
-        <div class="btn btn-primary custombtn" href="#" id="btnStartCrawl">
-        Start Crawl
+
+    <h1>Feed Crawl</h1>
+    <p>The feed crawler will start crawling RSS feeds (<a href="http://www.aljazeera.com/Services/Rss/?PostingId=2007731105943979989">Example</a>), and will only save articles if their contents matches and keywords you specified. The feed crawler will only crawl the most recent articles. URLs must start with the <code>http://</code> header.</p>
+
+    <div class="sources-container1">
+        <input type="text" name="source" class="custominput" id="inputsource" placeholder="Enter RSS url" size="50"/>
+        <div class="btn btn-primary custombtn" href="#" id="btnAddSource">
+          Add Source
+        </div>
+        <br/>
+        <button type="button" href="#collapse1" id="show-sources" class="btn btn-primary">Show Sources</button>
+        <div id="collapse1" style="display:none">
+            <div class="getsources"></div>
         </div>
     </div>
+    
+    <div class="sources-container2">
+        <input type="text" name="deletesource" class="custominput" id="deletesource" placeholder="Delete RSS url" size="30"/>
+        <div class="btn btn-primary custombtn" href="#" id="btnDeleteSource">
+          Delete Source
+        </div>
+    </div>
+    
+    <br />
+    <div>
+        <button class="btn btn-primary custombtn" id="btnStartCrawl">
+        Start Feed Crawl
+        </button>
+    </div>
+    <script type=text/javascript>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    <script src="/static/js/main.js"></script>
     <script>
     $("#btnStartCrawl").click(function() {
         console.log("YAYs!");
@@ -12,6 +40,7 @@
             action: "crawl"
         }).done(function(result) {
             console.log(result);
+            $("#btnStartCrawl").toggleClass("disabled", true);
             alert("Crawl will be finished shortly. You can view the results in 'View Results");
         }).fail(function() {
             console.log("Error.");
