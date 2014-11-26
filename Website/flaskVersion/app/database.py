@@ -56,6 +56,18 @@ class NewsInvestigatorDatabase(object):
         '''
         self._save_document('tweet_' + id, document, 'tweet')
         
+    def save_site(self, id, document):
+        '''
+        Save a site to the database.
+        '''
+        self._save_document('site_' + id, document, 'site')
+        
+    def save_domain(self, id, document):
+        '''
+        Save a domain to the database.
+        '''
+        self._save_document('domain_' + id, document, 'domain')
+        
     def delete_document(self, id):
         '''
         Delete a document, given the id.

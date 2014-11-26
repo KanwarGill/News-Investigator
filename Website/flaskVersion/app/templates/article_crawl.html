@@ -2,7 +2,7 @@
 {% block content %}
     <h1>Article Crawl</h1>
     
-    <p>The article crawler will crawl from an arbitrary article. This crawler will also look for hyperlinks within the article was will also crawl those pages if they are within the domain you specified.</p>
+    <p>The article crawler will crawl from an arbitrary article. This crawler will also look for hyperlinks within the article was will also crawl those pages if they are within the domain you specified. The URL entered needs a <code>http://</code> header.</p>
 
     <div class="site-container1">
         <input type="text" name="site" class="custominput" id="inputsite" placeholder="Example: [Add example]" size="50"/>
@@ -10,8 +10,8 @@
           Add Site
         </div>
         <br/>
-        <button type="button" href="#collapse2" id="show-sites" class="btn btn-primary">Show Sites</button>
-        <div id="collapse2" style="display:none">
+        <button type="button" href="#collapse" id="show-sites" class="btn btn-primary">Show Sites</button>
+        <div id="collapse" style="display:none">
             <div class="getsites"></div>
         </div>
     </div>
@@ -53,19 +53,5 @@
     <script type=text/javascript>
         $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
     </script>
-    <script src="/static/js/main.js"></script>
-    <script>
-    $("#btnStartArticleCrawl").click(function() {
-        alert("This action is not yet implemented until boilerpipe is installed.");
-        /*$.post('/crawling', {
-            action: "crawl"
-        }).done(function(result) {
-            console.log(result);
-            $("#btnStartCrawl").toggleClass("disabled", true);
-            alert("Crawl will be finished shortly. You can view the results in 'View Results");
-        }).fail(function() {
-            console.log("Error.");
-        });*/
-    });
-    </script>
+    <script src="/static/js/article_crawl.js"></script>
 {% endblock %}
