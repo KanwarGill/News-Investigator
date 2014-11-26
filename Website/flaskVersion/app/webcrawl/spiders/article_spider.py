@@ -1,14 +1,14 @@
 from ..items import ArticleItem
 from boilerpipe.extract import Extractor
 from lxml import html
-from scrapy.spider import BaseSpider
+from scrapy.spider import Spider
 from scrapy.selector import Selector
 from scrapy.http import Request
 
 import couchdb
 import re
 
-class ArticleSpider(BaseSpider):
+class ArticleSpider(Spider):
     name = "article"
     start_urls = []
     allowed_domains = []

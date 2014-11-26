@@ -175,9 +175,45 @@ def get_handles():
         results.append(row)
     return jsonify(data=results)
 
+@app.route('/add_site', methods=['POST'])
+def add_site():
+    '''Add a article site to the database. Requires the id and url.'''
+    id = request.form['id']
+    url = request.form['url']
+    document = dict(_id=id, url=url)
+    db.save_site(id, document)
+    return jsonify(id=id, url=url, status='good')
+    
+@app.route('/get_sites', methods=['GET'])
+def get_sites():
+    '''Return the list of handles from the database.'''
+    results = []
+    for row in db.get_view('byDocType/bySite'):
+        results.append(row)
+    return jsonify(data=results)
+    
+@app.route('/add_domain', methods=['POST'])
+def add_domain():
+    '''Add a article site to the database. Requires the id and url.'''
+    id = request.form['id']
+    url = request.form['url']
+    document = dict(_id=id, url=url)
+    db.save_domain(id, document)
+    return jsonify(id=id, url=url, status='good')
+    
+@app.route('/get_domains', methods=['GET'])
+def get_domains():
+    '''Return the list of handles from the database.'''
+    results = []
+    for row in db.get_view('byDocType/byDomain'):
+        results.append(row)
+    return jsonify(data=results)
+
 @app.route('/delete_source', methods=['POST'])    
 @app.route('/delete_keyword', methods=['POST'])
 @app.route('/delete_handle', methods=['POST'])
+@app.route('/delete_site', methods=['POST'])
+@app.route('/delete_domain', methods=['POST'])
 def delete_doc():
     '''Delete a document, given the id.'''
     id = request.form['id']
