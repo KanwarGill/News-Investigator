@@ -10,14 +10,20 @@
         <li><a id="btnExportTableXML" href="#">As XML</a></li>
       </ul>
     </div>
-    <div class="btn btn-primary custombtn" href="#" id="btnTweetsGraph">
+    <div class="btn btn-primary custombtn" href="_blank" id="btnTweetsGraph">
           View Tweets Graph
     </div>
     <table id="twitter-table"></table>
+    <canvas id="pieChart" width="600" height="400"></canvas>
 </div>
+<script type="text/javascript" src="/static/js/charts.js"></script>
 <script>
     // Generate the results table using Bootstrap Table
     $(function () {
+
+      console.log($("table tbody tr").html())
+
+
         $('#twitter-table').bootstrapTable({
             method: 'get',
             url: '/get_tweets',
@@ -43,20 +49,48 @@
                 title: 'No. of tweets',
                 align: 'middle',
                 valign: 'left',
-				width: '100',
+				        width: '100',
                 sortable: true
             }, {
-				field: 'tweets text',
-				title: 'Tweets',
-				align: 'middle',
-				valign: 'left',
-				width: '1000',
-				sortable: true,
-				formatter: 'tweetsTextFormatter'
-			}]
+        				field: 'tweets text',
+        				title: 'Tweets',
+        				align: 'middle',
+        				valign: 'left',
+        				width: '1000',
+        				sortable: true,
+        				formatter: 'tweetsTextFormatter'
+			     }]
         });
+
         $("#btnExportTableXML").click(function () {
             $('#twitter-table').tableExport({type:'xml',escape:'false'});
+        });
+
+        $("#btnTweetsGraph").click(function(){
+          var data = {
+            labels: [],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                }
+            ]
+        };
+
+
+          var pieOptions = {
+            segmentShowStroke : false,
+            animateScale : true
+          }
+
+          var tweets = document.getElementById("pieChart").getContext("2d");
+          new Chart(tweets).Pie(pieData, pieOptions);
+
+
         });
     });
 </script>
