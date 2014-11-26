@@ -18,12 +18,57 @@
     <table id="results-table"></table>
 </div>
 <script>
+    quotes_id = 0;
+    hyperlinks_id = 0;
+    
+    function showQuotes(id) {
+        $('.quotes_' + id).toggle(function(){
+            if($(this).css('display')=='none'){
+              //change the button label to be 'Show'
+              $(this).closest('td').find('a').html('Show Quotes');
+            }else{
+              //change the button label to be 'Hide'
+              $(this).closest('td').find('a').html('Hide Quotes');
+            }
+        });
+    }
+    
+    function showHyperlinks(id) {
+        $('.hyperlinks_' + id).toggle(function(){
+            if($(this).css('display')=='none'){
+              //change the button label to be 'Show'
+              $(this).closest('td').find('a').html('Show Hyperlinks');
+            }else{
+              //change the button label to be 'Hide'
+              $(this).closest('td').find('a').html('Hide Hyperlinks');
+            }
+        });
+    }
+    
     function graphFormatter(value){
       return "<button type=\"button\" href=\"#\" id=\"graph\" class=\"btn btn-primary\">Show Graph</button>";
     }
 
     function linkFormatter(value) {
         return "<a href='" + value + "'>Link to Article</a>";
+    }
+    
+    function hyperlinksFormatter(value) {
+        if (value != '') {
+            hyperlinks_id++;
+            return "<a href='#' onClick='showHyperlinks(" + hyperlinks_id + ");return false;'>Show Hyperlinks</a><div style='display:none;' class='hyperlinks_" + hyperlinks_id + "'>" + value + "</div>";
+        } else {
+            return 'None found';
+        }
+    }
+    
+    function quotesFormatter(value) {
+        if (value != '') {
+            quotes_id++;
+            return "<a href='#' onClick='showQuotes(" + quotes_id + ");return false;'>Show Quotes</a><div style='display:none;' class='quotes_" + quotes_id + "'>" + value + "</div>";
+        } else {
+            return 'None found';
+        }
     }
 
     // Generate the results table using Bootstrap Table
@@ -71,12 +116,14 @@
                 field: 'hyperlinks',
                 title: 'Hyperlinks',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                formatter: 'hyperlinksFormatter'
             }, {
                 field: 'quotes',
                 title: 'Quotes',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                formatter: 'quotesFormatter'
             },  {
                 field: 'graph',
                 title: 'Graph',
