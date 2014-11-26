@@ -18,17 +18,12 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=show-sources</td>
+	<td>link=Home</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=show-sources</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=show-keywords</td>
+	<td>link=Keywords</td>
 	<td></td>
 </tr>
 <tr>
@@ -38,12 +33,42 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=btnTableSources</td>
+	<td>link=Web Crawl</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=btnReturnIndex</td>
+	<td>link=Feed Crawl</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=show-sources</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Web Crawl</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Article Crawl</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=show-sites</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=show-domains</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Home</td>
 	<td></td>
 </tr>
 </tbody></table>

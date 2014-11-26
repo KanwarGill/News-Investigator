@@ -13,13 +13,18 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/webapp/c01/index.html</td>
+	<td>http://localhost:5000/index</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Keywords</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>id=deletekeyword</td>
-	<td>Brasil</td>
+	<td>AppTest</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -28,7 +33,7 @@
 </tr>
 <tr>
 	<td>assertAlert</td>
-	<td>Successfully deleted Brasil</td>
+	<td>Successfully deleted AppTest</td>
 	<td></td>
 </tr>
 <tr>
