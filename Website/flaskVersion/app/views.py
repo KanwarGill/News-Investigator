@@ -238,11 +238,13 @@ def get_tweets():
 	try:
 	    # get the tweets from the database
 	    for tweet in db.get_view('byDocType/byTweet'):
+		# get the tweet handle excluding the string "tweet_"
+		tweet_handle = tweet.value['_id'][6:] 
 		# if the keyword is part of the tweet, then append it to tweets
 		# and increment the number
 		for t in tweet.value['tweet']:
 		    if (keyword in t):
-			tweets.append(t)
+			tweets.append(t + " [" + tweet_handle + "]")
 			num_of_tweets += 1	
 	except:
 	    print "No documents of type tweet"
