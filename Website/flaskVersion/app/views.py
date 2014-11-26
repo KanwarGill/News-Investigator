@@ -263,7 +263,7 @@ def get_results():
         results.append(datarow)
     # Return the results as a JSON list
     return json.dumps(results)
-
+ 
 @app.route('/get_tweets', methods=['GET'])
 def get_tweets():
     '''Return the tweets of the twitter crawl in a JSON object'''

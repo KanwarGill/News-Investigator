@@ -49,6 +49,10 @@
       return "<button type=\"button\" href=\"#\" id=\"graph\" class=\"btn btn-primary\">Show Graph</button>";
     }
 
+    function titleFormatter(value, row) {
+        return "<a href='" + row.link + "'>" + value + "</a>";
+    }
+    
     function linkFormatter(value) {
         return "<a href='" + value + "'>Link to Article</a>";
     }
@@ -98,14 +102,8 @@
                 title: 'Article Title',
                 align: 'center',
                 valign: 'middle',
-                sortable: true
-            }, {
-                field: 'link',
-                title: 'Article Link',
-                align: 'center',
-                valign: 'middle',
                 sortable: true,
-                formatter: 'linkFormatter'
+                formatter: 'titleFormatter'
             }, {
                 field: 'date',
                 title: 'Article Date',

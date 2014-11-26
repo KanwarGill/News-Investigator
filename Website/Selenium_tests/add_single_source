@@ -13,17 +13,27 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/webapp/c01/index.html</td>
+	<td>http://localhost:5000/index</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Web Crawl</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Article Crawl</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=inputsource</td>
+	<td>id=inputdomain</td>
 	<td>www.abc.com</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=btnAddSource</td>
+	<td>id=btnAddDomain</td>
 	<td></td>
 </tr>
 <tr>
@@ -33,12 +43,12 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=show-sources</td>
+	<td>id=show-domains</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>css=li.sources</td>
+	<td>id=domain_abc</td>
 	<td>www.abc.com</td>
 </tr>
 </tbody></table>
