@@ -2,7 +2,7 @@ from ..items import ArticleItem
 from boilerpipe.extract import Extractor
 from scrapy.contrib.spiders import CrawlSpider
 from scrapy.http import Request
-from scrapy.selector import HtmlXPathSelector
+from scrapy import Selector
 from urlparse import urlparse
 
 import couchdb
@@ -52,12 +52,12 @@ class FeedSpider(CrawlSpider):
                 
     def parse_link(self, response):
         self.log('Grabbing source from %s' % response.url)
-        hxs = HtmlXPathSelector(response)
+        hxs = Selector(response)
         item = response.meta.get('item')
         # The articles in Al Jazeera is under the td tag,
         # Detailed Summary class
         # item ["source"] = hxs.select('//td[@class="DetailedSummary"]/p').extract()
-        item ["source"] = hxs.select('//p').extract()
+        item ["source"] = hxs.xpath('//p').extract()
         
         return item
 

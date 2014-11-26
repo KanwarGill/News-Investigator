@@ -1,5 +1,5 @@
 from celery import Celery, task
-from crawl import webcrawl
+from crawl import article_crawl, feed_crawl
 from twitter_crawl import twitter_crawl
 from database import NewsInvestigatorDatabase
 from flask import Flask, render_template, jsonify, request, g
@@ -41,10 +41,15 @@ db = NewsInvestigatorDatabase(app)
 Celery tasks
 '''
 
-@task(name='tasks.start_crawl')
-def start_crawl():
-    '''Add the crawl task into the task queue.'''
-    return webcrawl()
+@task(name='tasks.start_article_crawl')
+def start_article_crawl():
+    '''Add the article crawl task into the task queue.'''
+    return article_crawl()
+    
+@task(name='tasks.start_feed_crawl')
+def start_feed_crawl():
+    '''Add the feed crawl task into the task queue.'''
+    return feed_crawl()
 
 @task(name='tasks.start_twitter_crawl')
 def start_twitter_crawl():
@@ -110,14 +115,22 @@ def article_crawl_page():
 GET/POST methods
 ''' 
 
-@app.route('/crawling', methods=['POST'])
-def crawling_task():
+@app.route('/article_crawling', methods=['POST'])
+def article_crawling_task():
     '''Start the web crawl task. Return the task id of the task.'''
-    res = start_crawl.apply_async()
+    res = start_feed_crawl.apply_async()
     context = {"id": res.task_id}
-    result = 'start_crawl()'
+    result = 'start_feed_crawl()'
     return jsonify(status='started')
 
+@app.route('/feed_crawling', methods=['POST'])
+def feed_crawling_task():
+    '''Start the web crawl task. Return the task id of the task.'''
+    res = start_feed_crawl.apply_async()
+    context = {"id": res.task_id}
+    result = 'start_feed_crawl()'
+    return jsonify(status='started')
+    
 @app.route('/twitter_crawling', methods=['POST'])
 def twitter_task():
     '''Start the twitter crawl task. Return the task id of the task.'''

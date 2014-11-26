@@ -35,8 +35,7 @@
     <script src="/static/js/main.js"></script>
     <script>
     $("#btnStartCrawl").click(function() {
-        console.log("YAYs!");
-        $.post('/crawling', {
+        $.post('/feed_crawling', {
             action: "crawl"
         }).done(function(result) {
             console.log(result);

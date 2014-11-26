@@ -147,8 +147,7 @@ $("#btnDeleteDomain").click(function() {
 });
 
 $("#btnStartArticleCrawl").click(function() {
-    alert("This action is not yet implemented until boilerpipe is installed.");
-    /*$.post('/crawling', {
+    $.post('/article_crawling', {
         action: "crawl"
     }).done(function(result) {
         console.log(result);
@@ -156,7 +155,7 @@ $("#btnStartArticleCrawl").click(function() {
         alert("Crawl will be finished shortly. You can view the results in 'View Results");
     }).fail(function() {
         console.log("Error.");
-    });*/
+    });
 });
 
 window.onload = function() {

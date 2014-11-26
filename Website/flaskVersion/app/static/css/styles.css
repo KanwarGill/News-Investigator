@@ -17,13 +17,22 @@
 }
 
 .customlogin h2{
-    margin-left: 60px;
-    float: left;
+    margin-left: auto;
+    margin-right:auto;
+    width: 80px;
 }
 
 .customlogin{
-    margin-left: 500px;
-    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+}
+
+.cl-input{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3px;
+    width: 250px;
 }
 
 .custominput{
@@ -85,6 +94,6 @@
     margin-top: 10px
 }
 
-#show-sources, #show-keywords, #show-handles, #show-sites, #show-domains {
+#show-sources, #show-keywords, #show-handles, #show-sites, #show-domains, h1, p, #btnStartArticleCrawl, #btnStartCrawl{
     margin-left: 20px;
 }
