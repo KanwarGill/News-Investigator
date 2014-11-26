@@ -240,6 +240,7 @@ def get_results():
     results = []
     # Query the database for the documents
     q_results = db.get_view('byDocType/byResults')
+    #q_results = db_stub_hyperlink()
     for row in q_results:
         # get all the hyperlinks
         hyperlinks = re.findall(r'<[Aa][^>]* href="([^"]*)"', row.value['html'])
@@ -263,7 +264,21 @@ def get_results():
         results.append(datarow)
     # Return the results as a JSON list
     return json.dumps(results)
+ 
+def db_stub_hyperlink(*args, **kwargs):
+    '''Stub that contains a hyperlink.'''
+    value = {"_id":"44a","_rev":"1-a57a","date":"Tue, 11 Nov 2014 20:38:11 GMT","source":"<p>Iraqi soldiers battling the Islamic State of Iraq and the Levant (ISIL) have recaptured the heart of the town of Beiji, home to the country's largest oil refinery, according to state television and a military official.</p><a href=\"http://www.aljazeera.com/news/middleeast/2014/11/iraqi-forces-close-beiji-20141111131541430331.html\">Something</a>","link":"http://www.aljazeera.com/news/middleeast/2014/11/iraqi-forces-close-beiji-20141111131541430331.html","id":"al2","title":"Iraqi forces close in on major oil refinery", "text":"something else", "html":"<a href=\"http://www.aljazeera.com/news/middleeast/2014/11/iraqi-forces-close-beiji-20141111131541430331.html\">Something</a>","date_crawled":"something"}
+    response = [FakeViewResults("1234", "al2", value)]
+    return response
+    
+class FakeViewResults(object):
+    '''A replicated couchdb.client.ViewResults object.'''
+    def __init__(self, id, key, value):
+        self.id = id
+        self.key = key
+        self.value = value
 
+ 
 @app.route('/get_tweets', methods=['GET'])
 def get_tweets():
     '''Return the tweets of the twitter crawl in a JSON object'''
