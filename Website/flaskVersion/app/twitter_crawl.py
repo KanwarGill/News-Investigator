@@ -27,10 +27,22 @@ def twitter_crawl():
     handles_list = []
     keywords = []
     tweets = []
+    ids = []
     
     # create the handles list
     for handle in db.view('byDocType/byHandle'):
 	handles_list.append(handle.value['handle'])
+	
+    # get the list of current tweet ids
+    for tweet_id in db.view('byDocType/byTweet'):
+	ids = []
+	t_id = (tweet_id.value['_id'])[6:]
+	ids.append(t_id)
+	for handle in handles_list:
+	    # if the handle exists in the ids then remove it
+	    if (handle in ids):
+		db.delete(tweet_id.value)
+		print "Deleted " + t_id
 	
     # loop through the list of handles and save the tweets in the database
     for handle in handles_list:
@@ -38,10 +50,14 @@ def twitter_crawl():
 	page_num = 0
 	user_tweets = []
 	# look at the first five pages of tweets for each handle
-	while (page_num < 6):
+	while (page_num < 11):
 	    for tweet in (api.user_timeline(handle, page=page_num)):
 		user_tweets.append(tweet.text)
 	    page_num += 1
-	# save the tweet in the database
-	document = dict(_id="tweet_" + handle, doc_type="tweet", tweet=user_tweets)
-	db.save(document)
+	try:
+	    # save the tweet in the database
+	    document = dict(_id="tweet_" + handle, doc_type="tweet", tweet=user_tweets)
+	    db.save(document)
+	    print "Document with id " + _id + "saved"
+	except:
+	    print "ID tweet_" + handle + " already exists"
