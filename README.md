@@ -16,7 +16,7 @@ Please note that the excel file contains eight worksheets each of which contains
 
 Build and Run Instructions
 ---------------------------
-_For simplicity, please following these instructions while on mathlab._
+_For simplicity, please follow these instructions while on mathlab._
 
 1. Clone the repo from the master branch
 2. Open 3 terminals and change their directories to `Website/flaskVersion/app`
