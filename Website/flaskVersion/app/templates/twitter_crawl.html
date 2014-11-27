@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Twitter Crawl</h1>
+    <p><span class="glyphicon glyphicon-chevron-right"></span> Twitter Crawl gets 120 most recent tweets for each of the handle which are saved in the database. In order to see how many hits does each keyword have for all these tweets click on the "View Results" from the Twitter Crawl dropdown.</p>
+
+    <div class="handles-container1">
+        <input type="text" name="twitterhandle" class="custominput" id="inputtwitterhandle" pattern="^@[a-zA-Z0-9_]{1,15}$" placeholder="Example: @Bob" size="50"/>
+        <div class="btn btn-primary custombtn" href="#" id="btnAddHandle">
+            Add Twitter Handle
+        </div>
+        <br />
+        <button type="button" href="#collapse3" id="show-handles" class="btn btn-primary">Show Twitter Handles</button>
+        <div id="collapse3" style="display:none">
+            <div class="gethandles"></div>
+        </div>
+    </div>
+    <div class="handles-container2">
+        <input type="text" name="deletehandle" class="custominput" id="deletetwitterhandle" placeholder="Ex: @Bob" size="30"/>
+        <div class="btn btn-primary custombtn" href="#" id="btnDeleteHandle">
+            Delete Twitter Handle
+        </div>
+    </div>
+    
+    <br />
+    
+    <div>
+        <div class="btn btn-primary custombtn" href="#" id="btnStartCrawl">
+        Start Twitter Crawl
+        </div>
+    </div>
+    <script type=text/javascript>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    <script src="/static/js/main.js"></script>
+    <script>
+    $("#btnStartCrawl").click(function() {
+        console.log("YAYs!");
+        $.post('/twitter_crawling', {
+            action: "crawl"
+        }).done(function(result) {
+            console.log(result);
+            alert("Twitter Crawl will be finished shortly. You can view the results in 'View Results");
+        }).fail(function() {
+            console.log("Error.");
+        });
+    });
+    </script>
+{% endblock %}

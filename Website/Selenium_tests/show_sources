@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/" />
+<title>Show Sources</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Show Sources</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://localhost:5000/index</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Web Crawl</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Feed Crawl</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=show-sources</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=news_source_bbci.co.uk/news/world/middle_east/rss</td>
+	<td>http://feeds.bbci.co.uk/news/world/middle_east/rss.xml</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=show-sources</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Web Crawl</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Article Crawl</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=show-sites</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=site_1</td>
+	<td>http://www.aljazeera.com/indepth/opinion/2014/07/israel-dominant-media-narrative-20147675736829395.html</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=show-domains</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=id_domain1</td>
+	<td>www.aljazeera.com</td>
+</tr>
+</tbody></table>
+</body>
+</html>

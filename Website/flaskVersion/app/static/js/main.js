@@ -1,130 +1,153 @@
 $("#btnAddSource").click(function() {
-    var urlRegex = new RegExp("^w{3}.[a-zA-Z0-9]{2,}.[a-z]{2,3}$");
+    var urlRegex = /^https?:\/\/(\-\.)?([^\s\/?\.#-]+\.?)+(\/[^\s]*)?$/m;
     var source = $("#inputsource").val();
     if (!urlRegex.test(source)) {
         alert("Please enter a valid url");
         return;
     }
     var id = source.substring(source.indexOf(".") + 1, source.lastIndexOf("."));
-    $.ajax({
-        type: "POST",
-        url: "http://www.chihuahuas.iriscouch.com/news_source",
-        dataType: "json",
-        data: '{ "_id" : "' + id + '", "url": "' + source + '" }',
-        contentType: "application/json",
-        processData: false,
-        success: function(data) {
-            alert("Successfully added " + source);
-        },
-        error: function() {
-            alert("Cannot add duplicate news source");
-        }
+
+    $.post($SCRIPT_ROOT + '/add_source', {
+        id: id,
+        url: source
+    }).done(function(result) {
+        console.log(result)
+    getSources();
+        alert("Successfully added " + source);
+    }).fail(function(xhr, status, error) {
+        console.log(error)
+        alert("Cannot add duplicate news source");
     });
 });
 
-$('#show-sources').on('click', function() {
-    console.log("Hello");
+$('#show-sources').on('click', function () {
     //get collapse content selector
-    var collapse_content_selector = $(this).attr('href');
+    var collapse_content_selector = $(this).attr('href');         
 
     //make the collapse content to be shown or hide
     var toggle_switch = $(this);
 
-    $(collapse_content_selector).toggle(function() {
-        if ($(this).css('display') == 'none') {
-            //change the button label to be 'Show'
-            toggle_switch.html('Show Sources');
-        }
-        else {
-            //change the button label to be 'Hide'
-            toggle_switch.html('Hide Sources');
-        }
+    $(collapse_content_selector).toggle(function(){
+      if($(this).css('display')=='none'){
+      //change the button label to be 'Show'
+      toggle_switch.html('Show Sources');
+      }else{
+      //change the button label to be 'Hide'
+      toggle_switch.html('Hide Sources');
+      }
     });
 });
 
-$('#show-keywords').on('click', function() {
+$('#show-keywords').on('click', function () {
     //get collapse content selector
-    var collapse_content_selector = $(this).attr('href');
+    var collapse_content_selector = $(this).attr('href');         
 
     //make the collapse content to be shown or hide
     var toggle_switch = $(this);
 
-    $(collapse_content_selector).toggle(function() {
-        if ($(this).css('display') == 'none') {
-            //change the button label to be 'Show'
-            toggle_switch.html('Show Keywords');
-        }
-        else {
-            //change the button label to be 'Hide'
-            toggle_switch.html('Hide Keywords');
-        }
+    $(collapse_content_selector).toggle(function(){
+      if($(this).css('display')=='none'){
+      //change the button label to be 'Show'
+      toggle_switch.html('Show Keywords');
+      }else{
+      //change the button label to be 'Hide'
+      toggle_switch.html('Hide Keywords');
+      }
     });
 });
 
-window.onload = function() {
-    $(".getsources").empty();
-    $.getJSON(
-        "http://www.chihuahuas.iriscouch.com/news_source/_all_docs?include_docs=true",
-        function(data) {
-            var sources = [];
-            $.each(data.rows, function(key, val) {
-                sources.push("<li id='" + val.doc._id +
-                    "'>" + val.doc.url + "</li>");
-            });
+$('#show-handles').click(function () {
+    //get collapse content selector
+    var collapse_content_selector = $(this).attr('href');         
 
-            $("<ul/>", {
-                "class": "listofsources",
-                html: sources.join("")
-            }).appendTo(".getsources");
-        });
+    //make the collapse content to be shown or hide
+    var toggle_switch = $(this);
 
-    $(".getkeywords").empty();
-    // Display the current keywords form the DB
-    $.getJSON(
-        "http://www.chihuahuas.iriscouch.com/keywords/_all_docs?include_docs=true",
-        function(data) {
-            var keywords = [];
-            $.each(data.rows, function(key, val) {
-                // console.log(val.doc);
-                keywords.push("<li class='keywords'>" +
-                    val.doc.keyword + "</li>");
-            });
-
-            $("<ul/>", {
-                "class": "listofkeywords",
-                html: keywords.join("")
-            }).appendTo(".getkeywords");
-        });
-};
+    $(collapse_content_selector).toggle(function(){
+        if($(this).css('display')=='none'){
+          //change the button label to be 'Show'
+          toggle_switch.html('Show Handles');
+        }else{
+          //change the button label to be 'Hide'
+          toggle_switch.html('Hide Handles');
+        }
+    });
+});
 
 $("#btnDeleteSource").click(function() {
     var source = $("#deletesource").val();
-    var id = source.substring(source.indexOf(".") + 1, source.lastIndexOf(
-        "."));
-    var rev = "";
-    $.getJSON("http://www.chihuahuas.iriscouch.com/news_source/" +
-        id, function(data) {
-            $.each(data, function(key, val) {
-                rev = data._rev;
-            });
-            $.ajax({
-                type: "DELETE",
-                url: "http://www.chihuahuas.iriscouch.com/news_source/" +
-                    id + "?rev=" + rev,
-                dataType: "json",
-                contentType: "application/json",
-                success: function(data) {
-                    alert("Successfully deleted " +
-                        source);
-                },
-                error: function() {
-                    alert(
-                        "ERROR: Cannot get keyword"
-                    );
-                }
-            });
-        });
+    var id = source.substring(source.indexOf(".") + 1, 
+        source.lastIndexOf("."));
+        
+    $.post($SCRIPT_ROOT + '/delete_source', {
+        id: 'news_source_' + id
+    }).done(function(result) {
+        console.log(result)
+    getSources();
+        alert("Successfully deleted " + source);
+    }).fail(function(xhr, status, error) {
+        console.log(error)
+        alert("News source not found.");
+    });
 });
+
+function getSources(){
+  $(".getsources").empty();
+
+  $.get($SCRIPT_ROOT + '/get_sources').done(function(result){
+      console.log(result.data);
+      var sources = [];
+      $.each(result.data, function(key, val) {
+          sources.push("<li class='sources' id='" + val.id + "'>" + val.key + "</li>");
+      });            
+
+      $("<ul/>", {
+          "class": "listofsources",
+          html: sources.join("")
+      }).appendTo(".getsources");
+  });
+};
+
+function getKeywords(){
+  $(".getkeywords").empty();
+    // Display the current keywords form the DB
+      $.get($SCRIPT_ROOT + '/get_keywords').done(function(result){
+    console.log(result.data);
+    var keywords = [];
+    $.each(result.data, function(key, val) {
+        keywords.push("<li class='keywords'>" + val.key + "</li>");
+    });            
+
+    $("<ul/>", {
+        "class": "listofkeywords",
+        html: keywords.join("")
+    }).appendTo(".getkeywords");
+
+});
+};
+
+function getHandles(){
+  $(".gethandles").empty();
+  $.get($SCRIPT_ROOT + '/get_handles').done(function(result) {
+    console.log(result.data);
+    var handles = [];
+    $.each(result.data, function(key, val) {
+      handles.push("<li class='handles'>" + val.key + "</li>");
+    });
+    
+    $("<ul/>", {
+      "class": "listofhandles",
+      html: handles.join("")
+    }).appendTo(".gethandles");
+  });
+};
+
+window.onload = function() {
+  getSources();
+  getKeywords();
+  getHandles();
+};
+
 
 $("#btnAddKeyword").click(function() {
     var key = $("#inputkeyword").val();
@@ -133,49 +156,109 @@ $("#btnAddKeyword").click(function() {
         alert("Please enter an alphanumeric keyword");
         return;
     }
-    $.ajax({
-        type: "POST",
-        url: "http://www.chihuahuas.iriscouch.com/keywords/",
-        dataType: "json",
-        data: '{ "_id" : "' + key + '", "keyword" : "' +
-            key + '" }',
-        contentType: "application/json",
-        processData: false,
-        success: function(data) {
-            alert("Successfully added " + key);
-        },
-        error: function() {
-            alert("Cannot add duplicate keyword");
-        }
+
+    $.post($SCRIPT_ROOT + '/add_keyword', {
+        id: key,
+        keyword: key
+    }).done(function(result) {
+        console.log(result)
+    getKeywords();
+        alert("Successfully added " + key);
+    }).fail(function(xhr, status, error) {
+        console.log(xhr.responseText + ': ' + error)
+        alert("Cannot add duplicate keyword");
     });
 });
 
 $("#btnDeleteKeyword").click(function() {
     var key = $("#deletekeyword").val();
-    var rev = "";
-    $.getJSON("http://www.chihuahuas.iriscouch.com/keywords/" +
-        key, function(data) {
-            $.each(data, function(key, val) {
-                rev = data._rev;
-            });
-            $.ajax({
-                type: "DELETE",
-                url: "http://www.chihuahuas.iriscouch.com/keywords/" +
-                    key + "?rev=" + rev,
-                dataType: "json",
-                contentType: "application/json",
-                success: function(data) {
-                    alert("Successfully deleted " +
-                        key);
-                },
-                error: function() {
-                    alert(
-                        "ERROR: Cannot get keyword"
-                    );
-                }
-            });
-        });
+
+    $.post($SCRIPT_ROOT + '/delete_source', {
+        id: 'keyword_' + key
+    }).done(function(result) {
+        console.log(result)
+    getKeywords();
+        alert("Successfully deleted " + key);
+    }).fail(function(xhr, status, error) {
+        console.log(error)
+        alert("Keyword not found.");
+    });
 });
+
+    $("#btnAddHandle").click(function () {
+      var handleRegex = new RegExp("^@{1}[a-zA-Z0-9_]{1,15}$");
+      var handle = $("#inputtwitterhandle").val();
+      if (!handleRegex.test(handle)) {
+        alert("Please enter a valid twitter handle");
+        return;
+      }
+      var id = handle.substring(handle.indexOf("@") + 1);
+      $.post($SCRIPT_ROOT + '/add_handle', {
+        id: id,
+        handle: handle
+      }).done(function(result) {
+          console.log(result);
+      getHandles();
+          alert("Successfully added " + id);
+      }).fail(function(xhr, status, error) {
+          console.log(error);
+          alert("Cannot add duplicate handle");
+      });
+      /*$.ajax({
+        type: "POST",
+        url: "http://www.chihuahuas.iriscouch.com/handles",
+        dataType: "json",
+        data: '{ "_id" : "' + id + '", "handle": "' + handle + '" }',
+        contentType: "application/json",
+        processData: false,
+        success: function (data) {
+          alert("Successfully added " + handle);
+      getHandles();
+        },
+        error: function(){
+          alert("Cannot add twitter handle");
+        }
+      });*/
+    });
+    
+    $("#btnDeleteHandle").click(function () {
+      var handle = $("#deletetwitterhandle").val();
+      var rev = "";
+      var id = handle.substring(handle.indexOf("@") + 1);
+
+      $.post($SCRIPT_ROOT + '/delete_handle', {
+        id: 'handle_' + id
+        }).done(function(result) {
+            console.log(result);
+            getHandles();
+            alert("Successfully deleted " + id);
+        }).fail(function(xhr, status, error) {
+            console.log(error);
+            alert("Handle not found.");
+        });
+      /*$.getJSON("http://www.chihuahuas.iriscouch.com/handles/" + id, function(data) {
+        $.each(data, function(key, val) {
+          rev = data._rev;
+        });
+        $.ajax({
+          type: "DELETE",
+          url: "http://www.chihuahuas.iriscouch.com/handles/" + id + "?rev=" + rev,
+          dataType: "json",
+          contentType: "application/json",
+          success: function (data) {
+            alert("Successfully deleted " + handle);
+      getHandles();
+          },
+          error: function(){
+            alert("ERROR: cannot get twitter handle");
+          }
+        });
+      }).error(function(){alert("ERROR: twitter handle not in database");});*/
+    });
+
+/* $("#btnTweetsGraph").click(function() {
+    
+}); */
 
 $("#btnTableSources").click(function() {
     location.href = "table.html";

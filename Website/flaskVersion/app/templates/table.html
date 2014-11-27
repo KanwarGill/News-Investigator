@@ -1,37 +1,90 @@
 {% extends "base.html" %}
 {% block content %}
-<!--
-<div class="container">
-    <h1>News Investigator</h1><br/>
 
-    <table data-toggle="table" data-url="/static/js/data1.json" data-height="399" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1">
-      <thead>
-      <tr>
-          <th data-field="title" data-align="center">Title</th>
-          <th data-field="link" data-align="center">Link</th>
-          <th data-field="hyperlink" data-align="center">Hyperlink</th>
-          <th data-field="quote" data-align="center">Quotes</th>
-          <th data-field="mention" data-align="center">Mentions</th>
-      </tr>
-      </thead>
-  </table>
-  <div></div><br>
-  <a href="/index" class="btn btn-primary custombtn" href="#" id="btnReturnIndex">
-      Back to main page
-  </a>
-</div>
--->
+<h1>Web Crawl Results</h1>
 <div class="results-table-container">
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        Export Table Data <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a id="btnExportTableXML" href="#">As XML</a></li>
+      </ul>
+    </div>
+    <a class="btn btn-primary custombtn" href="#barChart" id="btnArticlesGraph">
+          View Articles Graph
+    </a>
+    
     <table id="results-table"></table>
+
+    <div id="legend" style="display:none;">
+      The red columns represent the number of quotes per article and the blue represents the hyperlinks.
+    </div>
+    <canvas id="barChart" width="800" height="600"></canvas>
+
 </div>
+<script type="text/javascript" src="/static/js/charts.js"></script>
 <script>
+    quotes_id = 0;
+    hyperlinks_id = 0;
+    
+    function showQuotes(id) {
+        $('.quotes_' + id).toggle(function(){
+            if($(this).css('display')=='none'){
+              //change the button label to be 'Show'
+              $(this).closest('td').find('a').html('Show Quotes');
+            }else{
+              //change the button label to be 'Hide'
+              $(this).closest('td').find('a').html('Hide Quotes');
+            }
+        });
+    }
+    
+    function showHyperlinks(id) {
+        $('.hyperlinks_' + id).toggle(function(){
+            if($(this).css('display')=='none'){
+              //change the button label to be 'Show'
+              $(this).closest('td').find('a').html('Show Hyperlinks');
+            }else{
+              //change the button label to be 'Hide'
+              $(this).closest('td').find('a').html('Hide Hyperlinks');
+            }
+        });
+    }
+    
+    function titleFormatter(value, row) {
+        return "<a href='" + row.link + "'>" + value + "</a>";
+    }
+    
+    function linkFormatter(value) {
+        return "<a href='" + value + "'>Link to Article</a>";
+    }
+    
+    function hyperlinksFormatter(value) {
+        if (value != '') {
+            hyperlinks_id++;
+            return "<a href='#' onClick='showHyperlinks(" + hyperlinks_id + ");return false;'>Show Hyperlinks</a><div style='display:none;' class='hyperlinks_" + hyperlinks_id + "'>" + value + "</div>";
+        } else {
+            return 'None found';
+        }
+    }
+    
+    function quotesFormatter(value) {
+        if (value != '') {
+            quotes_id++;
+            return "<a href='#' onClick='showQuotes(" + quotes_id + ");return false;'>Show Quotes</a><div style='display:none;' class='quotes_" + quotes_id + "'>" + value + "</div>";
+        } else {
+            return 'None found';
+        }
+    }
+
     // Generate the results table using Bootstrap Table
     $(function () {
         $('#results-table').bootstrapTable({
             method: 'get',
             url: '/get_results',
             cache: false,
-            height: 1000,
+            height: 500,
             striped: true,
             pagination: true,
             pageSize: 50,
@@ -42,17 +95,24 @@
             minimumCountColumns: 2,
             clickToSelect: true,
             columns: [{
-                field: 'title',
-                title: 'Article Title',
-                align: 'left',
-                valign: 'left',
+                field: 'row_number',
+                title: ' ',
+                align: 'center',
+                valign: 'middle',
                 sortable: true
             }, {
-                field: 'link',
-                title: 'Article Link',
-                align: 'left',
-                valign: 'left',
+                field: 'date_crawled',
+                title: 'Date Crawled',
+                align: 'center',
+                valign: 'middle',
                 sortable: true
+            }, {
+                field: 'title',
+                title: 'Article Title',
+                align: 'center',
+                valign: 'middle',
+                sortable: true,
+                formatter: 'titleFormatter'
             }, {
                 field: 'date',
                 title: 'Article Date',
@@ -63,19 +123,57 @@
                 field: 'hyperlinks',
                 title: 'Hyperlinks',
                 align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                formatter: 'hyperlinksFormatter'
             }, {
                 field: 'quotes',
                 title: 'Quotes',
                 align: 'center',
-                valign: 'middle'
-            }, {
-                field: 'mentions',
-                title: 'Mentions',
-                align: 'center',
-                valign: 'middle'
+                valign: 'middle',
+                formatter: 'quotesFormatter'
             }]
         });
+        $("#btnExportTableXML").click(function () {
+            $('#results-table').tableExport({type:'xml',escape:'false'});
+        });
+
+        $("#btnArticlesGraph").click(function () {
+            // Show the 'legend'
+            $('#legend').toggle();
+        
+            $.get("/table_graph", function(data){
+                var barData = {
+                    labels: data.row,
+                    datasets: [
+                        {
+                            label: "Quote Count",
+                            fillColor: "rgba(220,0,0,0.5)",
+                            strokeColor: "rgba(220,20,20,0.8)",
+                            highlightFill: "rgba(220,40,40,0.75)",
+                            highlightStroke: "rgba(220,60,60,1)",
+                            data: data.quotes
+                        },
+                        {
+                            label: "Hyperlink Count",
+                            fillColor: "rgba(0,0,220,0.5)",
+                            strokeColor: "rgba(20,20,220,0.8)",
+                            highlightFill: "rgba(40,40,220,0.75)",
+                            highlightStroke: "rgba(60,60,220,1)",
+                            data: data.links
+                        }
+                    ]
+                };
+                var options = {
+                    scaleBeginAtZero: true,
+                    barValueSpacing : 1,
+                    barStrokeWidth: 1,
+                    barDataSetSpacing : 1
+                }
+                var article_graph = document.getElementById("barChart").getContext("2d");
+                new Chart(article_graph).Bar(barData, options);
+            });
+        });
     });
+
 </script>
 {% endblock %}

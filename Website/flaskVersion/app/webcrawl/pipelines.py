@@ -17,46 +17,70 @@ class CouchDBPipeline(object):
         # chihuahuas.iriscouch.com
         couch = couchdb.Server(settings['COUCHDB_SERVER'])
         self.db = couch[settings['COUCHDB_DB']]
-        self.keyword_db = couch[settings['KEYWORDS']]
         self.keywords = []
         # Grab all keywords from the keywords database
-        for row in self.keyword_db.view('_all_docs'):
-            document = self.keyword_db.get(row.id)
+        for row in self.db.view('byDocType/byKeyword'):
             # add the keywords to the list
-            self.keywords.append(document.items()[2][1])
-        print self.keywords
-
-    def process_item(self, item, spider):
-
+            self.keywords.append(row.key)
         # join the keywords from the list with or to facilitate regex
-        keywords = "|".join(self.keywords)
-        print "Keywords: ", keywords
+        self.keywords_regex = "|".join(self.keywords)
         
-        print "Title: ", item["title"]
+    
+    def process_item(self, item, spider):
+        '''Process each crawled object and save it to the news_investigator database'''
+    
+        if spider.name in ['feed']:
+            return self.process_feed_item(item, spider)
+        elif spider.name in ['article']:
+            return self.process_article_item(item, spider)
+        
+    def process_feed_item(self, item, spider):
+        '''Process each crawled object and save it to the news_investigator database'''
         
         # join the strings in the source to create one giant string
+        # and change the encoding to ascii
         source = " ".join(item["source"])
-        source = source.encode('ascii', 'ignore')
-        #try:
-            #spurce = source.decode(parsed_feed.encoding).encode('ascii', 'xmlcharrefreplace')
-        #except UnicodeDecodeError:
-            #print "UnicodeDecodeError"
-        print "Source: ", source
+        source = source.encode("ascii", "ignore")
         
         # parse the source to to see if it contains the keyword
-        pattern = re.compile(keywords)
+        pattern = re.compile(self.keywords_regex)
         m = pattern.search(source)
         if (m):
-            print "Match found: ", m.group(), "in source ", source
+            #print "Match found: ", m.group(), "in source ", source
             # create a dictionary with the name, title, link, and the source 
             # from the spider
-            data = dict([('id', spider.name), ('title', item["title"][0]), 
-                         ('link', item["link"][0]), 
-                         ('source', source), ('date', item["date"][0])])
+            data = dict([("id", "results_" + spider.name), ("title", item["title"][0]), 
+                         ("link", item["link"][0]), ("doc_type", "results"), 
+                         ("source", source), ("date", item["date"][0]),
+                         ("text", item["text"]), ("html", item["html"]),
+                         ("date_crawled", datetime.datetime.today().isoformat(' '))])
     
             self.db.save(data)
             log.msg("Item wrote to CouchDB database %s/%s" %
-                        (settings['COUCHDB_SERVER'], settings['COUCHDB_DB']),
+                        (settings["COUCHDB_SERVER"], settings["COUCHDB_DB"]),
+                        level=log.DEBUG, spider=spider)             
+        else:
+            print "No Match"
+       
+        return item
+        
+    def process_article_item(self, item, spider):
+        # parse the source to to see if it contains the keyword
+        pattern = re.compile(self.keywords_regex)
+        m = pattern.search(item["text"])
+        if (m):
+            #print "Match found: ", m.group(), "in source ", source
+            # create a dictionary with the name, title, link, and the source 
+            # from the spider
+            data = dict([("id", "results_" + spider.name), ("title", item["title"][0]), 
+                         ("link", item["link"]), ("doc_type", "results"), 
+                         ("source", "--"), ("date", "-"),
+                         ("text", item["text"]), ("html", item["html"]),
+                         ("date_crawled", datetime.datetime.today().isoformat(' '))])
+    
+            self.db.save(data)
+            log.msg("Item wrote to CouchDB database %s/%s" %
+                        (settings["COUCHDB_SERVER"], settings["COUCHDB_DB"]),
                         level=log.DEBUG, spider=spider)             
         else:
             print "No Match"

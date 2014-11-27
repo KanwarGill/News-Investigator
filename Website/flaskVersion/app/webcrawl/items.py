@@ -7,13 +7,14 @@
 
 import scrapy
     
-class AlJazeeraItem(scrapy.Item):
+class ArticleItem(scrapy.Item):
     title = scrapy.Field()
     link = scrapy.Field()
     source = scrapy.Field()
     hyperlinks = scrapy.Field()
     date = scrapy.Field()
-    # etc...
+    text = scrapy.Field()
+    html = scrapy.Field()
     
 class NewYorkTimesItem(scrapy.Item):
     title = scrapy.Field()

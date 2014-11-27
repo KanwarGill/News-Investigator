@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Article Crawl</h1>
+    
+    <p><span class="glyphicon glyphicon-chevron-right"></span>The article crawler will crawl from an arbitrary article (<a href="http://www.nytimes.com/2014/11/11/dining/how-to-cook-thanksgiving-dinner-frequently-asked-questions.html?hp&action=click&pgtype=Homepage&module=second-column-region&region=top-news&WT.nav=top-news&_r=0" target="_blank">Example</a>). This crawler will also look for hyperlinks within the article was will also crawl those pages if they are within the domain you specified. The URL entered for sites needs a <code>http://</code> header, and <code>www.</code> for domains.</p>
+
+    <div class="site-container1">
+        <input type="text" name="site" class="custominput" id="inputsite" placeholder="Enter site URL" size="50"/>
+        <div class="btn btn-primary custombtn" href="#" id="btnAddSite">
+          Add Site
+        </div>
+        <br/>
+        <button type="button" href="#collapse" id="show-sites" class="btn btn-primary">Show Sites</button>
+        <div id="collapse" style="display:none">
+            <div class="getsites"></div>
+        </div>
+    </div>
+    
+    <div class="site-container2">
+        <input type="text" name="deletesite" class="custominput" id="deletesite" placeholder="Delete site URL" size="30"/>
+        <div class="btn btn-primary custombtn" href="#" id="btnDeleteSite">
+          Delete Site
+        </div>
+    </div>
+    
+    <br />
+    
+    <div class="domain-container1">
+        <input type="text" name="site" class="custominput" id="inputdomain" placeholder="Example: www.aljazeera.com" size="50"/>
+        <div class="btn btn-primary custombtn" href="#" id="btnAddDomain">
+          Add Domain
+        </div>
+        <br/>
+        <button type="button" href="#collapse2" id="show-domains" class="btn btn-primary">Show Domains</button>
+        <div id="collapse2" style="display:none">
+            <div class="getdomains"></div>
+        </div>
+    </div>
+    
+    <div class="domain-container2">
+        <input type="text" name="deletedomain" class="custominput" id="deletedomain" placeholder="Ex: www.aljazeera.com" size="30"/>
+        <div class="btn btn-primary custombtn" href="#" id="btnDeleteDomain">
+          Delete Domain
+        </div>
+    </div>
+    
+    <br />
+    <div>
+        <div class="btn btn-primary custombtn" href="#" id="btnStartArticleCrawl">
+        Start Article Crawl
+        </div>
+    </div>
+    <script type=text/javascript>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    <script src="/static/js/article_crawl.js"></script>
+{% endblock %}

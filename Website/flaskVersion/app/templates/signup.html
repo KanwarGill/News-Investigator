@@ -1,60 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>News Investigator</title>
-    
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="img/favicon.png" />
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-<nav class="navbar navbar-inverse" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Web Crawler</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Sign in</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+{% extends "loginbase.html" %}
+{% block content %}
     <div class="customlogin">
-        <h2><b>Sign Up</b></h2><br/>
-        <input type="text" name="source" class="signupinput" id="inputsource" placeholder="Name" size="40"/><br>
-        <input type="text" name="source" class="signupinput" id="inputsource" placeholder="Email" size="40"/><br>
-        <input type="text" name="source" class="signupinput" id="inputsource" placeholder="Username" size="40"/><br>
-        <input type="text" name="source" class="signupinput" id="inputsource" placeholder="Password" size="40"/><br>
-        <input type="text" name="source" class="signupinput" id="inputsource" placeholder="Confirm Password" size="40"/><br>
+        <h1><b>Sign Up</b></h1><br/>
+        <input type="text" name="source" class="signupinput" id="inputusername" placeholder="Username" size="40"/><br>
+        <input type="password" name="source" class="signupinput" id="inputpassword" placeholder="Password" size="40"/><br>
+        <input type="password" name="source" class="signupinput" id="inputpassword2" placeholder="Confirm Password" size="40"/><br>
+        <input type="text" name="source" class="signupinput" id="inputsecurityquestion" placeholder="Security Question" size="40"/><br>
+        <input type="text" name="source" class="signupinput" id="inputsecurityanswer" placeholder="Security Question Answer" size="40"/><br>
         <div></div>
-        <div class="btn btn-primary btnlogin" href="#" id="">
+        <div class="btn btn-primary btnlogin" href="#" id="btnCreateAccount">
           Create my account
         </div>
-        <div class="btn btn-primary btnlogin" href="#" id="">
+        <a href="/login">
+        <div class="btn btn-primary btnlogin" href="#" id="btnCancel">
           Cancel
         </div>
+        </a>
     </div>
 
 
@@ -62,6 +23,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-  </body>
-</html>
+    <script src="/static/js/main.js"></script>
+	  <script src="/static/js/signup.js"></script>
+{% endblock %}
