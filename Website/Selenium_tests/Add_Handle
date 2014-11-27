@@ -49,7 +49,7 @@
 <tr>
 	<td>assertText</td>
 	<td>css=ul.listofhandles</td>
-	<td>@AlJazeera@BBC@BBCBreaking@CNN@nytimes@Testing@TorontoStar</td>
+	<td>@CNN@nytimes@Testing</td>
 </tr>
 </tbody></table>
 </body>
