@@ -14,9 +14,14 @@
     <div class="btn btn-primary custombtn" href="#" id="btnArticlesGraph">
           View Articles Graph
     </div>
-
+    <div>After you click the view graphs button, the graph is shown below the table. Please scroll down.</div>
     <table id="results-table"></table>
+    <div>
+      The red columns represent the number of quotes per article and the blue represents the hyperlinks.
+    </div>
+    <canvas id="barChart" width="4000" height="800"></canvas>
 </div>
+<script type="text/javascript" src="/static/js/charts.js"></script>
 <script>
     quotes_id = 0;
     hyperlinks_id = 0;
@@ -127,10 +132,10 @@
 	$("#btnArticlesGraph").click(function () {
 		$.get("/table_graph", function(data){
 			var barData = {
-				labels: data.article
+				labels: data.article,
 				datasets: [
 					{
-						label: "Quote Count"
+						label: "Quote Count",
 						fillColor: "rgba(220,0,0,0.5)",
 						strokeColor: "rgba(220,20,20,0.8)",
 						highlightFill: "rgba(220,40,40,0.75)",
@@ -138,7 +143,7 @@
 						data: data.quotes
 					},
 					{
-						label: "Hyperlink Count"
+						label: "Hyperlink Count",
 						fillColor: "rgba(0,0,220,0.5)",
 						strokeColor: "rgba(20,20,220,0.8)",
 						highlightFill: "rgba(40,40,220,0.75)",
@@ -148,10 +153,13 @@
 				]
 			};
 			var options = {
-				scaleBeginAtZero: true
+				scaleBeginAtZero: true,
+        barValueSpacing : 1,
+        barStrokeWidth: 5,
+        barDataSetSpacing : 1
 			}
 			var article_graph = document.getElementById("barChart").getContext("2d");
-			new Chart(article_graph).Bar(barData, options);
+      new Chart(article_graph).Bar(barData, options);
 		});
 	});
     });
