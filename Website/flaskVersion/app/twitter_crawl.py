@@ -39,7 +39,7 @@ def twitter_crawl():
 	page_num = 0
 	user_tweets = []
 	# look at the first five pages of tweets for each handle
-	while (page_num < 11):
+	while (page_num < 6):
 	    for tweet in (api.user_timeline(handle, page=page_num)):
 		user_tweets.append(tweet.text)
 	    page_num += 1
