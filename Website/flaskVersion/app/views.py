@@ -118,9 +118,9 @@ GET/POST methods
 @app.route('/article_crawling', methods=['POST'])
 def article_crawling_task():
     '''Start the web crawl task. Return the task id of the task.'''
-    res = start_feed_crawl.apply_async()
+    res = start_article_crawl.apply_async()
     context = {"id": res.task_id}
-    result = 'start_feed_crawl()'
+    result = 'start_article_crawl()'
     return jsonify(status='started')
 
 @app.route('/feed_crawling', methods=['POST'])

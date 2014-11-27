@@ -5,7 +5,7 @@ import settings
 import couchdb
 
 couch = couchdb.Server('http://chihuahuas.iriscouch.com:5984/')
-db = couch['test_news_investigator']
+db = couch['p4_test_news_investigator']
 
 
 def twitter_crawl():

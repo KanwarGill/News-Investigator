@@ -18,7 +18,7 @@ ITEM_PIPELINES = {
 }
 
 COUCHDB_SERVER = 'http://chihuahuas.iriscouch.com:5984/'
-COUCHDB_DB = 'test_news_investigator'
+COUCHDB_DB = 'p4_test_news_investigator'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'webcrawl (+http://www.yourdomain.com)'

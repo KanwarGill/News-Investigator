@@ -16,7 +16,7 @@ class ArticleSpider(Spider):
     
     # Access CouchDB database
     couch = couchdb.Server('http://chihuahuas.iriscouch.com:5984/')
-    db = couch['test_news_investigator']
+    db = couch['p4_test_news_investigator']
     
     # Grab all urls from the site
     for row in db.view('byDocType/bySite'):

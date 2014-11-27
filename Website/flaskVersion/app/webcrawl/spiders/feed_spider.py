@@ -16,7 +16,7 @@ class FeedSpider(CrawlSpider):
     
     # Access CouchDB database
     couch = couchdb.Server('http://chihuahuas.iriscouch.com:5984/')
-    db = couch['test_news_investigator']
+    db = couch['p4_test_news_investigator']
     # Grab all urls from the news_source database
     for row in db.view('byDocType/byNewsSource'):
         parsed = urlparse(row.key)
