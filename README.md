@@ -29,9 +29,9 @@ _For simplicity, please follow these instructions while on mathlab._
   
 - Keyword management
 - Feed Crawl and Article Crawl
-.. View the results of the crawl
+  * View the results of the crawl
 - Twitter Crawl
-.. View the results of the crawl
+  * View the results of the crawl
 
 Code Reviews
 -----------------------
