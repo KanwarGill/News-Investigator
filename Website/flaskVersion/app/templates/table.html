@@ -14,10 +14,16 @@
     <div class="btn btn-primary custombtn" href="#" id="btnArticlesGraph">
           View Articles Graph
     </div>
-
+    <div>After you click the view graphs button, the graph is shown below the table. Please scroll down.</div>
     <table id="results-table"></table>
 
+    <div>
+      The red columns represent the number of quotes per article and the blue represents the hyperlinks.
+    </div>
+    <canvas id="barChart" width="4000" height="800"></canvas>
+
 </div>
+<script type="text/javascript" src="/static/js/charts.js"></script>
 <script>
     quotes_id = 0;
     hyperlinks_id = 0;
@@ -46,10 +52,6 @@
         });
     }
     
-    function graphFormatter(value){
-      return "<button type=\"button\" href=\"#\" id=\"graph\" class=\"btn btn-primary\">Show Graph</button>";
-    }
-
     function titleFormatter(value, row) {
         return "<a href='" + row.link + "'>" + value + "</a>";
     }
@@ -123,16 +125,44 @@
                 align: 'center',
                 valign: 'middle',
                 formatter: 'quotesFormatter'
-            },  {
-                field: 'graph',
-                title: 'Graph',
-                align: 'center',
-                valign: 'middle',
-                formatter: 'graphFormatter'
             }]
         });
         $("#btnExportTableXML").click(function () {
             $('#results-table').tableExport({type:'xml',escape:'false'});
+        });
+
+        $("#btnArticlesGraph").click(function () {
+            $.get("/table_graph", function(data){
+                var barData = {
+                    labels: data.article,
+                    datasets: [
+                        {
+                            label: "Quote Count",
+                            fillColor: "rgba(220,0,0,0.5)",
+                            strokeColor: "rgba(220,20,20,0.8)",
+                            highlightFill: "rgba(220,40,40,0.75)",
+                            highlightStroke: "rgba(220,60,60,1)",
+                            data: data.quotes
+                        },
+                        {
+                            label: "Hyperlink Count",
+                            fillColor: "rgba(0,0,220,0.5)",
+                            strokeColor: "rgba(20,20,220,0.8)",
+                            highlightFill: "rgba(40,40,220,0.75)",
+                            highlightStroke: "rgba(60,60,220,1)",
+                            data: data.links
+                        }
+                    ]
+                };
+                var options = {
+                    scaleBeginAtZero: true,
+                    barValueSpacing : 1,
+                    barStrokeWidth: 5,
+                    barDataSetSpacing : 1
+                }
+                var article_graph = document.getElementById("barChart").getContext("2d");
+                new Chart(article_graph).Bar(barData, options);
+            });
         });
     });
 
