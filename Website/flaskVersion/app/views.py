@@ -251,7 +251,9 @@ def get_results():
             if re.match(r'.*(=|_|<|>|http|internallink).*', quotes[i]):
                 continue
             else:
-                quotes_modified.append(quotes[i])         
+                # Clean the string to remove any special characters
+                clean_quotes = re.sub('[^A-Za-z0-9\"\'\.\ \-\,\;\!\:]', '', quotes[i])
+                quotes_modified.append(clean_quotes)         
         datarow = {
             'date_crawled': row.value['date_crawled'],
             'title': row.value['title'],
