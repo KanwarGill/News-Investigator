@@ -48,6 +48,8 @@ Unit Test Instructions
 
 Automation Tests Instructions
 ------------------------------
+_Automation tests are run from the flask branch._
+
 Note: They only work in the Firefox browser because it has support for the Selenium IDE.
 
 1. Open the website in Firefox.
