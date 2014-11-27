@@ -332,6 +332,38 @@ def get_tweets2():
     
     ret = dict(keyword=keywords, count=tweet_count)
     return jsonify(ret)
+
+@app.route('/table_graph', methods=['GET'])
+def table_graph():
+	'''Return a list of dates to use, and a set of graph datasets'''
+	articles = []
+	quote_count = []
+	link_count = []
+	
+	#grab results
+	table = db.get_view('byDocType/byResults')
+	
+	for row in table:
+		articles.append(row.value['title'])
+		#grab hyperlinks
+		hyperlinks = re.findall(r'<[Aa][^>]* href="([^"]*)"', row.value['html'])
+		#count links, add to link count dataset
+		link_count.append(len(hyperlinks))
+		#grab quotes
+		quotes = re.findall(r'"(?:[^"\\]|\\.)*"', row.value['text'])
+		quotes_modified = []
+		# modify the quotes to remove false positives
+		for i in range(len(quotes)):
+			if re.match(r'.*(=|_|<|>|http|internallink).*', quotes[i]):
+				continue
+			else:
+				quotes_modified.append(quotes[i])
+		#count quotes, add to quote count dataset
+		quote_count.append(len(quotes_modified)) 
+	
+	graph_data = dict(article=articles, quotes=quote_count, links=link_count)
+	return jsonify(graph_data)
+
 if __name__ == "__main__":
     # Run the web app on localhost:5000
     port = int(environ.get("PORT", 5000))
