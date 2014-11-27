@@ -93,6 +93,6 @@
     margin-top: 10px
 }
 
-#show-sources, #show-keywords, #show-handles, #show-sites, #show-domains, h1, p, #btnStartArticleCrawl, #btnStartCrawl{
+#show-sources, #show-keywords, #show-handles, #show-sites, #show-domains, h1, p, #btnStartArticleCrawl, #btnStartCrawl, #twitter-table-container, #btnTweetsGraph{
     margin-left: 20px;
 }

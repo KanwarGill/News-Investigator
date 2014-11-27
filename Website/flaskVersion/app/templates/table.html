@@ -11,16 +11,16 @@
         <li><a id="btnExportTableXML" href="#">As XML</a></li>
       </ul>
     </div>
-    <div class="btn btn-primary custombtn" href="#" id="btnArticlesGraph">
+    <a class="btn btn-primary custombtn" href="#barChart" id="btnArticlesGraph">
           View Articles Graph
-    </div>
-    <div>After you click the view graphs button, the graph is shown below the table. Please scroll down.</div>
+    </a>
+    
     <table id="results-table"></table>
 
-    <div>
+    <div id="legend" style="display:none;">
       The red columns represent the number of quotes per article and the blue represents the hyperlinks.
     </div>
-    <canvas id="barChart" width="4000" height="800"></canvas>
+    <canvas id="barChart" width="800" height="600"></canvas>
 
 </div>
 <script type="text/javascript" src="/static/js/charts.js"></script>
@@ -84,7 +84,7 @@
             method: 'get',
             url: '/get_results',
             cache: false,
-            height: 1000,
+            height: 500,
             striped: true,
             pagination: true,
             pageSize: 50,
@@ -95,6 +95,12 @@
             minimumCountColumns: 2,
             clickToSelect: true,
             columns: [{
+                field: 'row_number',
+                title: ' ',
+                align: 'center',
+                valign: 'middle',
+                sortable: true
+            }, {
                 field: 'date_crawled',
                 title: 'Date Crawled',
                 align: 'center',
@@ -132,9 +138,12 @@
         });
 
         $("#btnArticlesGraph").click(function () {
+            // Show the 'legend'
+            $('#legend').toggle();
+        
             $.get("/table_graph", function(data){
                 var barData = {
-                    labels: data.article,
+                    labels: data.row,
                     datasets: [
                         {
                             label: "Quote Count",
@@ -157,7 +166,7 @@
                 var options = {
                     scaleBeginAtZero: true,
                     barValueSpacing : 1,
-                    barStrokeWidth: 5,
+                    barStrokeWidth: 1,
                     barDataSetSpacing : 1
                 }
                 var article_graph = document.getElementById("barChart").getContext("2d");

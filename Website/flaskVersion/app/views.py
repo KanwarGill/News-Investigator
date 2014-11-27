@@ -238,11 +238,21 @@ def delete_doc():
 def get_results():
     '''Return the results of the crawl in a JSON object.'''
     results = []
+    row_number = 0
     # Query the database for the documents
     q_results = db.get_view('byDocType/byResults')
     for row in q_results:
+        row_number += 1
         # get all the hyperlinks
         hyperlinks = re.findall(r'<[Aa][^>]* href="([^"]*)"', row.value['html'])
+        clean_hyperlinks = []
+        for hyperlink in hyperlinks:
+            i = hyperlink.find('?')
+            if i > 0:
+                clean_hyperlinks.append(hyperlink[:i])
+            else:
+                clean_hyperlinks.append(hyperlink)
+        
         # get all the quotes
         quotes = re.findall(r'"(?:[^"\\]|\\.)*"', row.value['text'])
         quotes_modified = []
@@ -255,11 +265,12 @@ def get_results():
                 clean_quotes = re.sub('[^A-Za-z0-9\"\'\.\ \-\,\;\!\:]', '', quotes[i])
                 quotes_modified.append(clean_quotes)         
         datarow = {
+            'row_number': row_number,
             'date_crawled': row.value['date_crawled'],
             'title': row.value['title'],
             'link': row.value['link'],
             'date': row.value['date'],
-            'hyperlinks': hyperlinks,
+            'hyperlinks': clean_hyperlinks,
             'quotes': quotes_modified
         }
         results.append(datarow)
@@ -337,35 +348,39 @@ def get_tweets2():
 
 @app.route('/table_graph', methods=['GET'])
 def table_graph():
-	'''Return a list of dates to use, and a set of graph datasets'''
-	articles = []
-	quote_count = []
-	link_count = []
-	
-	#grab results
-	table = db.get_view('byDocType/byResults')
-	
-	for row in table:
-	    articles.append(row.value['title'][:10])
-	    #grab hyperlinks
-	    hyperlinks = re.findall(r'<[Aa][^>]* href="([^"]*)"', row.value['html'])
-	    #count links, add to link count dataset
-	    link_count.append(len(hyperlinks))
-	    #grab quotes
-	    quotes = re.findall(r'"(?:[^"\\]|\\.)*"', row.value['text'])
-	    quotes_modified = []
-	    # modify the quotes to remove false positives
-	    for i in range(len(quotes)):
-		if re.match(r'.*(=|_|<|>|http|internallink).*', quotes[i]):
-			continue
-		else:
-			quotes_modified.append(quotes[i])
-	    #count quotes, add to quote count dataset
-	    quote_count.append(len(quotes_modified)) 
-	
-	graph_data = dict(article=articles, quotes=quote_count, links=link_count)
-	
-	return jsonify(graph_data)
+    '''Return a list of dates to use, and a set of graph datasets'''
+    articles = []
+    quote_count = []
+    link_count = []
+    row_number = 0
+    #grab results
+    table = db.get_view('byDocType/byResults')
+    for row in table:
+        row_number += 1
+        articles.append(row.value['title'][:10])
+        #grab hyperlinks
+        hyperlinks = re.findall(r'<[Aa][^>]* href="([^"]*)"', row.value['html'])
+        #count links, add to link count dataset
+        link_count.append(len(hyperlinks))
+        #grab quotes
+        quotes = re.findall(r'"(?:[^"\\]|\\.)*"', row.value['text'])
+        quotes_modified = []
+        # modify the quotes to remove false positives
+        for i in range(len(quotes)):
+            if re.match(r'.*(=|_|<|>|http|internallink).*', quotes[i]):
+                continue
+            else:
+                quotes_modified.append(quotes[i])
+        #count quotes, add to quote count dataset
+        quote_count.append(len(quotes_modified))
+        
+    article_row = []
+    for i in range(1, row_number+1):
+        article_row.append("Article #" + str(i))
+
+    graph_data = dict(article=articles, quotes=quote_count, links=link_count, row=article_row)
+
+    return jsonify(graph_data)
 
 if __name__ == "__main__":
     # Run the web app on localhost:5000

@@ -2,20 +2,11 @@
 {% block content %}
 <h1>Twitter Crawl Results</h1>
 <div class="twitter-table-container">
-    <div class="btn-group">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-        Export Table Data <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        <li><a id="btnExportTableXML" href="#">As XML</a></li>
-      </ul>
-    </div>
-    <div class="btn btn-primary custombtn" href="_blank" id="btnTweetsGraph">
+
+    <a class="btn btn-primary custombtn" href="#barChart" id="btnTweetsGraph">
           View Tweets Graph
-    </div>
-    <div>
-        Tweets Graph appears at bottom of page (scroll down)
-    </div>
+    </a>
+
     <table id="twitter-table"></table>
     <canvas id="barChart" width="600" height="400"></canvas>
 </div>
