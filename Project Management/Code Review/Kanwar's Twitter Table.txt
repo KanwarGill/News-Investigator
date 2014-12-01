@@ -1,0 +1,19 @@
+CODE REVIEW
+-----------------------------
+Code: team16-project/Website/flaskVersion/app/templates/twitter_table.html [flask] and team16-project/Website/flaskVersion/app/views.py [flask]
+Code Written By: Kanwar
+Commit: eda088ccd6710fb0302a17ba1b241517c6b5dab9 [Nov 17, 2014]
+Inspection By: Kenny
+Inspection Date: November 18th
+-----------------------------
+1) Correctness
+	- Twitter table layout as expected.
+	- Twitter table properly generated with desired contents.
+2) Coding style/guidelines
+	- variable names makes sense.
+	- indentation and line spacing looks good.
+	- consistent use of single quotes.
+3) Quality of documentation
+	- Code is commented minimally.
+4) Quality of testing
+	- Can create selenium tests to test whether new twitter handles are properly added to table.
