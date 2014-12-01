@@ -1,0 +1,46 @@
+CODE REVIEW
+
+Code: Added functionality to article graph [master branch]
+Code Written By: Carlos
+Commit: 259dd63a6ea0e4c28063214b57a79e2369edd542 [NOV 26, 2014]
+Inspection By: Samson
+Inspection Date: December 1st
+
+
+Files under review:
+	  Website/flaskVersion/app/views.py [Javascript]
+	  Website/flaskVersion/app/templates/table.html [Backend]
+
+
+ Correctness:
+ Javascript
+ - Uses chart.js to create graphs, given data from the backend
+ - Modified the examples from online documentation for the Javascript portion
+ Backend
+ - From the backend, it is slightly modified from the get_results function
+   to now count the number of hyperlinks and quotes from the results table
+ - Therefore correctness of table_graph() depends on the correctness of
+   get_results()
+
+ Coding Style/Coding Guidelines:
+ Javascript
+ - Indentation in the javascript can be more consistent (lines 155/156)
+ - Variables names are well named.
+ - The javascript can be moved to its own js file instead of being
+   embedded with the html file.
+ Backend
+ - The if/else statement on lines 357-360 can be simplified since one of the
+   cases do not do anything.
+ - Appropriate variable names
+
+ Quality of Documentation:
+ Javascript
+ - No documentation given.
+ Backend
+ - Sufficient documentation, but can be improved (e.g. state the resulting 
+   JSON object format)
+ 
+ Quality of Testing:
+ - No tests added for this piece of code.
+ - While the javascript cannot be fully tested, as it uses a library, the
+   backend function to give input to the chart generation can be tested.
