@@ -35,9 +35,9 @@ As Alex (a grad student), I want to request a list of sources to monitor, so tha
 Acceptance criteria: A list of sources to monitor is created and is readable.
 
 Tasks for this user story:
-2.1) Have a different landing page for the grad student (Vinicius) [DD 0.5]
-2.2) Include a request button beside the news sources field (Kanwar) [DD 0.5]
-2.3) Include a notification for the researcher so that he can approve the request (Samson) [DD1]
+2.1) Have a different landing page for the grad student (Vinicius) [DD 0.5] -- Abandoned
+2.2) Include a request button beside the news sources field (Kanwar) [DD 0.5] -- Abandoned
+2.3) Include a notification for the researcher so that he can approve the request (Samson) [DD1] -- Abandoned
 
 Total: 2 DD
 
@@ -48,7 +48,7 @@ articles it references.
 
 Tasks for this user story:
 19.1) Use the data from the article tables to feed into charting tool (Carlos) [DD1]
-19.2) Create the directed graph using that data (Carlos) [DD1]
+19.2) Create the directed graph using that data (Carlos) [DD1] -- Abandoned
 
 Total: 2 DD
 
@@ -58,4 +58,4 @@ Other tasks:
 3) Graphs for twitter (Kanwar and Kenny) [DD2]
 
 Project Velocity at the beginning: 12.75 DD
-Project Velocity at the end: 
+Project Velocity at the end: 11.5 DD
