@@ -15,7 +15,7 @@ class ArticleSpider(Spider):
     crawled_links = []
     
     # Access CouchDB database
-    couch = couchdb.Server('http://chihuahuas.iriscouch.com:5984/')
+    couch = couchdb.Server('http://cscc01-team16.iriscouch.com:5984/')
     db = couch['p4_test_news_investigator']
     
     # Grab all urls from the site

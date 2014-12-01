@@ -17,7 +17,7 @@ ITEM_PIPELINES = {
     'webcrawl.pipelines.CouchDBPipeline': 300,
 }
 
-COUCHDB_SERVER = 'http://chihuahuas.iriscouch.com:5984/'
+COUCHDB_SERVER = 'http://cscc01-team16.iriscouch.com:5984/'
 COUCHDB_DB = 'p4_test_news_investigator'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
