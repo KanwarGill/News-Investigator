@@ -295,11 +295,11 @@ def get_tweets():
 	
     # loop over the keyowrds
     for keyword in keywords:
-	# flush the number of tweets and tweets for each keyword
-	num_of_tweets = 0
-	tweets = []
-	try:
-	    # get the tweets from the database
+        # flush the number of tweets and tweets for each keyword
+        num_of_tweets = 0
+        tweets = []
+        try:
+            # get the tweets from the database
             for tweet in db.get_view('byDocType/byTweet'):
                 # get the tweet handle excluding the string "tweet_"
                 tweet_handle = tweet.value['_id'][6:] 
@@ -309,12 +309,13 @@ def get_tweets():
                     if (keyword in t):
                         tweets.append(t + " [" + tweet_handle + "]")
                         num_of_tweets += 1	
-	except:
-	    print "No documents of type tweet"
+        except:
+            print "No documents of type tweet"
+
         datarow = {
-	    'keyword': keyword,
-	    'tweets': num_of_tweets,
-	    'tweets text': tweets
+        'keyword': keyword,
+        'tweets': num_of_tweets,
+        'tweets text': tweets
         }
         results.append(datarow)
 	
