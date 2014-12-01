@@ -4,7 +4,7 @@ from flaskext.couchdb import CouchDBManager
 import settings
 import couchdb
 
-couch = couchdb.Server('http://chihuahuas.iriscouch.com:5984/')
+couch = couchdb.Server('http://cscc01-team16.iriscouch.com:5984/')
 db = couch['p4_test_news_investigator']
 
 

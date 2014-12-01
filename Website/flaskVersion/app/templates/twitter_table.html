@@ -85,7 +85,7 @@
 
         $("#btnTweetsGraph").click(function(){
             
-            $.get("/get_tweets2", function(data) {
+            $.get("/get_tweets_table", function(data) {
                 var barData = {
                 labels: data.keyword,
                 datasets: [

@@ -33,8 +33,8 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>id=news_source_bbci.co.uk/news/world/middle_east/rss</td>
-	<td>http://feeds.bbci.co.uk/news/world/middle_east/rss.xml</td>
+	<td>id=news_source_aljazeera</td>
+	<td>http://www.aljazeera.com/Services/Rss/?PostingId=2007731105943979989</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -58,8 +58,8 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>id=site_1</td>
-	<td>http://www.aljazeera.com/indepth/opinion/2014/07/israel-dominant-media-narrative-20147675736829395.html</td>
+	<td>id=site_cnn.com/2014/11/25/world/james-watson-to-sell-nobel-prize/index</td>
+	<td>http://www.cnn.com/2014/11/25/world/james-watson-to-sell-nobel-prize/index.html?hpt=wo_c2</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -68,8 +68,8 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>id=id_domain1</td>
-	<td>www.aljazeera.com</td>
+	<td>id=domain_cnn</td>
+	<td>www.cnn.com</td>
 </tr>
 </tbody></table>
 </body>
