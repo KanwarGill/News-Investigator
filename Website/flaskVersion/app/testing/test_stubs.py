@@ -11,6 +11,12 @@ def db_stub_hyperlink(*args, **kwargs):
     response = [FakeViewResults("1234", "al2", value)]
     return response
     
+def db_stub_hyperlink_clean(*args, **kwargs):
+    '''Stub that contains a hyperlink that needs to be cleaned.'''
+    value = {"_id":"44a","_rev":"1-a57a","date":"Tue, 11 Nov 2014 20:38:11 GMT","source":"<p>Iraqi soldiers battling the Islamic State of Iraq and the Levant (ISIL) have recaptured the heart of the town of Beiji, home to the country's largest oil refinery, according to state television and a military official.</p><a href=\"http://www.aljazeera.com/news/middleeast/2014/11/iraqi-forces-close-beiji-20141111131541430331.html?action=true&search=something+else\">Something</a>","link":"http://www.aljazeera.com/news/middleeast/2014/11/iraqi-forces-close-beiji-20141111131541430331.html","id":"al2","title":"Iraqi forces close in on major oil refinery", "text":"something else", "html":"<a href=\"http://www.aljazeera.com/news/middleeast/2014/11/iraqi-forces-close-beiji-20141111131541430331.html\">Something</a>","date_crawled":"Tue, 11 Nov 2014 20:38:11 GMT"}
+    response = [FakeViewResults("1234", "al2", value)]
+    return response
+    
 def db_stub_hyperlinks(*args, **kwargs):
     '''Stub that contains two hyperlinks.'''
     value = {"_id":"44a","_rev":"1-a57a","date":"11 Nov 2014","source":"something","html":"<a href=\"http://www.aljazeera.com/news/middleeast/2014/11/iraqi-forces-close-beiji.html\">Something</a> <p>Iraqi soldiers battling the Islamic State of Iraq and the Levant (ISIL) have recaptured the heart of the town of Beiji, home to the country's largest oil refinery, according to state television and a military official.</p><a href=\"http://www.aljazeera.com/news/middleeast/2014/11/iraqi-forces-close-beiji-20141111131541430331.html\">Something</a>","link":"www.aljazeera.com","id":"al2","title":"Iraqi forces close in on major oil refinery", "text":"something", "date_crawled":"Tue, 11 Nov 2014 20:38:11 GMT"}
@@ -20,6 +26,12 @@ def db_stub_hyperlinks(*args, **kwargs):
 def db_stub_quote(*args, **kwargs):
     '''Stub that contains one quote.'''
     value = {"_id":"44a","_rev":"1-a57a","date":"Tue, 11 Nov 2014 20:38:11 GMT","source":"something","html":"<p>Iraqi soldiers battling the Islamic State of Iraq and the Levant (ISIL) have recaptured the heart of the town of Beiji, home to the country's largest oil refinery, according to state television and a \"military official\".</p>","link":"http://www.aljazeera.com/news/middleeast/2014/11/iraqi-forces-close-beiji.html","id":"al2","title":"Iraqi forces close in on major oil refinery", "text":"\"military official\"", "date_crawled":"Tue, 11 Nov 2014 20:38:11 GMT"}
+    response = [FakeViewResults("1234", "al2", value)]
+    return response
+    
+def db_stub_quote_clean(*args, **kwargs):
+    '''Stub that contains one quote that has weird characters.'''
+    value = {"_id":"44a","_rev":"1-a57a","date":"Tue, 11 Nov 2014 20:38:11 GMT","source":"something","html":"<p>Iraqi soldiers battling the Islamic State of Iraq and the Levant (ISIL) have recaptured the heart of the town of Beiji, home to the country's largest oil refinery, according to state television and a \"military&#160; official***\".</p>","link":"http://www.aljazeera.com/news/middleeast/2014/11/iraqi-forces-close-beiji.html","id":"al2","title":"Iraqi forces close in on major oil refinery", "text":"\"military official\"", "date_crawled":"Tue, 11 Nov 2014 20:38:11 GMT"}
     response = [FakeViewResults("1234", "al2", value)]
     return response
     

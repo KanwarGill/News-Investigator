@@ -243,8 +243,9 @@ def get_results():
     q_results = db.get_view('byDocType/byResults')
     for row in q_results:
         row_number += 1
-        # get all the hyperlinks
+        # Get all the hyperlinks
         hyperlinks = re.findall(r'<[Aa][^>]* href="([^"]*)"', row.value['html'])
+        # Clean the hyperlink by removing characters from ? onwards
         clean_hyperlinks = []
         for hyperlink in hyperlinks:
             i = hyperlink.find('?')
@@ -319,9 +320,12 @@ def get_tweets():
 	
     return json.dumps(results)
 
-@app.route('/get_tweets2', methods=['GET'])
-def get_tweets2():
-    '''Return list keywords and tweet counts for them'''
+@app.route('/get_tweets_graph', methods=['GET'])
+def get_tweets_graph():
+    '''
+    Return list keywords and tweet counts for them.
+    Used for the twitter graph.
+    '''
     
     keywords = []
     tweet_count = []
