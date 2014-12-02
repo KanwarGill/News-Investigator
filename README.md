@@ -1,18 +1,22 @@
 Team Chihuahuas (16) CSCC01 Project
 ===================================
-**Imporant**: Please install the `boilerpipe` library before checking out. Do `pip install boilerpipe` to install; Be sure to have set JAVA_HOME properly since jpype depends on this setting.
+**Imporant**: The host for our database has been going offline very recently. If it does, the website will not start and the unittests cannot run. A quick observation shows that our database is operational during the morning and late in the evening, but encounters a internal server error in the afternoon.
 
 Phase 4
 -------
 _All items are located under the master branch._
 
-**Report Location**: In Progress
+**Report Location**: Our report is located in `Course Related Items/Reports/Phase 4 Report.pdf`.
 
 **Burndown Chart**: The Burndown charts are located in the excel file located in `Project Management/Iteration Planning/Burndown_Charts.xslx`
 
 Please note that the excel file contains eight worksheets each of which contains the burndown chart for that week except the last week. The ideal burndown is shown with the blue line and the actual burndown is shown with the red line.
 
 **Release Plan & Task Board**: These are contained in our team trello account. The access to this account has already been given to you.
+
+Improvement from Phase 3
+------------------------
+Please see the improved unittests for `GetResultsTestCase`, located in `Website/flaskVersion/app/tests.py`
 
 Build and Run Instructions
 ---------------------------
@@ -34,8 +38,8 @@ _For simplicity, please follow these instructions while on mathlab._
   * View the results of the crawl
 
 Code Reviews
------------------------
-All the code reviews are located in `Project Management/Code Review`. The reviews follow the format mentioned in the handout.
+------------
+All the code reviews are located in `Project Management/Code Review`.
 
 
 **Code Inspection Video**: Video location at `Project Management/Code Review/Code_Inspection_Phase_IV.mov`
