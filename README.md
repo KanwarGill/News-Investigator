@@ -45,6 +45,7 @@ All the code reviews are located in `Project Management/Code Review`. New code r
 - `Kenny's get_tweets.txt` - Kanwar reviewed Kenny's view tweets table functionality.
 - `Samson_review.txt` - Vinicius reviewed Samson's save documents to database functionality.
 - `Kanwar's Twitter Table.txt` - Kenny reviewed Kanwar's view tweets table functionality (frontend).
+- `Vinicius' signup fix.txt` - Carlos reviewed Vinicius' login functionality.
 
 **Code Inspection Video**: Video location at `Project Management/Code Review/Code_Inspection_Phase_IV.mov`
 
