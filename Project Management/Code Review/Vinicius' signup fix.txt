@@ -1,0 +1,19 @@
+CODE REVIEW
+--------------------------
+Code: team16-project/Website/flaskVersion/app/templates/forgotpassword.html [db_issue branch]
+Code Written By: Vinicius
+Commit: 95f19b54083ac0c52f6649d11f6e35a0654983af [Nov 26, 2014, 2:30 PM EDT]
+Inspection By: Carlos
+Inspection Date: November 25th
+--------------------------
+1) Correctness
+	Code now accurately checks security answers for forgetting password
+	Fixed misplacement of a button on layout previously missed
+	User is correctly directed to proper pages
+2) Coding style/guidelines
+	Proper and consistent naming conventions used for variable names.
+	Properly indented and consitent spacing and quote style between parameters
+3) Quality of documentation
+	Poor documentation, No comments present
+4) Quality of testing
+	Tested on application successfully, works as intended and layout is correctly fixed
