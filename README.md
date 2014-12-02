@@ -39,8 +39,12 @@ _For simplicity, please follow these instructions while on mathlab._
 
 Code Reviews
 ------------
-All the code reviews are located in `Project Management/Code Review`.
+All the code reviews are located in `Project Management/Code Review`. New code reviews are as follows:
 
+- `Carlos' table_graph.txt` - Samson reviewed Carlos' graph functionality for tweets.
+- `Kenny's get_tweets.txt` - Kanwar reviewed Kenny's view tweets table functionality.
+- `Samson_review.txt` - Vinicius reviewed Samson's save documents to database functionality.
+- `Kanwar's Twitter Table.txt` - Kenny reviewed Kanwar's view tweets table functionality (frontend).
 
 **Code Inspection Video**: Video location at `Project Management/Code Review/Code_Inspection_Phase_IV.mov`
 
